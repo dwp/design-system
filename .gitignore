@@ -1,0 +1,8 @@
+node_modules
+sass-cache
+.DS_Store
+package-lock.json
+public/
+.vscode/
+settings.json
+npm-debug.log

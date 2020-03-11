@@ -1,0 +1,51 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+
+  <div class="app-pane ">
+
+    {% include "header.html" %}
+
+    {{ govukPhaseBanner({
+      classes: "app-phase-banner govuk-width-container",
+      tag: {
+        text: "beta"
+      },
+      html: 'This is a new service – your <a class="govuk-link" href="/get-in-touch">feedback</a> will help us to improve it.'
+    }) }}
+
+    {% include "nav.html" %}
+
+    <div class="app-pane__body">
+
+      <div class="app-pane__subnav">
+        {% block subNav %}{% endblock %}
+        <div class="app-back-to-top" data-module="app-back-to-top">
+          <a href="#top">
+            <svg class="app-back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+              <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
+            </svg>Back to top
+          </a>
+        </div>
+      </div>
+
+      <div class="app-pane__content">
+        <main class="app-content" role="main">
+          {% block pageContent %}{% endblock %}
+        </main>
+      </div>
+    </div>
+
+    {% include "footer.html" %}
+
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script>
+    $('.app-tabs').each(function(e, el) {
+      new Tabs($(el));
+    });
+  </script>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "layouts/landing.html" %}
+
+{% set pageTitle = "Home" %}
+
+{% block pageContent %}
+
+<div class="app-masthead">
+
+  <div class="govuk-width-container">
+
+    <h1 class="govuk-heading-xl app-masthead__title">Design your service using DWP styles, components and patterns</h1>
+
+    <p class="app-masthead__description">Use this design system to make your service consistent with DWP. Learn from the research and experience of other service teams and avoid repeating work that’s already been done.</p>
+
+    <a class="app-button-start govuk-!-margin-top-6 govuk-!-margin-bottom-0" href="/get-started">Get started</a>
+
+  </div>
+
+</div>
+
+<div class="govuk-width-container">
+
+  <div class="app-main-wrapper govuk-main-wrapper govuk-main-wrapper--l">
+
+    <div class="govuk-grid-row">
+
+      <div class="govuk-grid-column-one-third govuk-!-margin-bottom-8">
+        <h2 class="govuk-heading-l">Styles</h2>
+        <p>Make your service look like DWP with guides for applying layout, typography, colour and images.</p>
+        <p><a class="app-link govuk-!-font-weight-bold" href="/styles">Browse styles</a></p>
+      </div>
+
+      <div class="govuk-grid-column-one-third govuk-!-margin-bottom-8">
+        <h2 class="govuk-heading-l">Components</h2>
+        <p>Save time with reusable, accessible components for forms, navigation, panels, tables and more.</p>
+        <p><a class="app-link govuk-!-font-weight-bold" href="/components">Browse components</a></p>
+      </div>
+
+      <div class="govuk-grid-column-one-third govuk-!-margin-bottom-8">
+        <h2 class="govuk-heading-l">Patterns</h2>
+        <p>Help users complete common tasks like entering names and addresses, filling in forms and creating accounts.</p>
+        <p><a class="app-link govuk-!-font-weight-bold" href="/patterns">Browse patterns</a></p>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}
