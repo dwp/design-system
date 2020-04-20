@@ -1,0 +1,26 @@
+{% extends "layouts/guidance.html" %}
+
+{% set sectionId = "components" %}
+{% set pageId = "timeline" %}
+{% set pageTitle = "Timeline" %}
+
+{% block subNav %}
+  {% include "components-subnav.html" %}
+{% endblock %}
+
+{% block pageContent %}
+
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-4"><span class="govuk-caption-xl">Components</span> {{pageTitle}}</h1>
+
+  {{ govukTag({
+    classes: 'govuk-!-margin-bottom-8',
+    text: 'experimental'
+  }) }}
+
+  <div class="app-prose-scope">
+    {% markdown %}{% include "./README.md" %}{% endmarkdown %}
+  </div>
+
+  {{dsContactPanel()}}
+
+{% endblock %}

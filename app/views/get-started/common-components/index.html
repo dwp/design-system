@@ -1,0 +1,19 @@
+{% extends "layouts/guidance.html" %}
+
+{% set sectionId = "get-started" %}
+{% set pageId = "common-components" %}
+{% set pageTitle = "Working with common components" %}
+
+{% block subNav %}
+  {% include "get-started-subnav.html" %}
+{% endblock %}
+
+{% block pageContent %}
+
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-4"><span class="govuk-caption-xl">Get started</span> {{pageTitle}}</h1>
+
+  <div class="app-prose-scope">
+    {% markdown %}{% include "./README.md" %}{% endmarkdown %}
+  </div>
+
+{% endblock %}

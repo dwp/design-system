@@ -1,0 +1,12 @@
+{% extends "layouts/guidance.html" %}
+
+{% set sectionId = "get-started" %}
+{% set pageTitle = "Get started" %}
+
+{% block subNav %}
+  {% include "get-started-subnav.html" %}
+{% endblock %}
+
+{% block pageContent %}
+  <div class="app-prose-scope">{% markdown %}{% include "./README.md" %}{% endmarkdown %}</div>
+{% endblock %}
