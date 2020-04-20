@@ -1,26 +1,25 @@
 {
-  "name": "hmcts-design-system",
+  "name": "dwp-design-system",
   "version": "1.0.0-alpha",
-  "description": "HMCTS Design System",
+  "description": "DWP Design System",
   "main": "index.js",
   "scripts": {
     "start": "gulp"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hmcts/hmcts-design-system.git"
+    "url": "git+https://github.com/dwp/design-system.git"
   },
-  "author": "Adam Silver, Trevor Saint",
+  "author": "Adam Silver, Trevor Saint, Jon Hurrell, Simone Duca",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hmcts/hmcts-design-system/issues"
+    "url": "https://github.com/dwp/design-system"
   },
-  "homepage": "https://github.com/hmcts/hmcts-design-system#readme",
+  "homepage": "https://github.com/dwp/design-system#readme",
   "engines": {
-    "node": "8.12.0"
+    "node": "12.13.1"
   },
   "dependencies": {
-    "@hmcts/frontend": "0.0.39-alpha",
     "express": "^4.16.3",
     "govuk-frontend": "^3.0.0",
     "gray-matter": "^4.0.1",
