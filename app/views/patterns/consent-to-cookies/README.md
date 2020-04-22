@@ -53,6 +53,6 @@ A link to Cookies policy page is displayed in the footer of every page of the se
 
 <img src="/public/images/cookies/cookies-footer.png" alt="" />
 
-## Research on this component
+## Research on this pattern
 
 This pattern is being tested by the Apply for help arranging child maintenance team. We'll update this section with insights from the team.
