@@ -23,17 +23,17 @@ The cookie banner is displayed the first time a service is used and persists on 
 
 It should display initially on the first page of the service after the GOV.UK start page if it's in Live or in Public Beta or your own start page if it's in Private Beta.
 
-<img src="/public/images/cookies/cookies-banner.png" alt="" />
+<img src="/public/images/cookies/cookies-banner.png" alt="The cookies banner asks users if we can have their permission to use analytics cookies to improve the service. There's a link to read more about cookies before the user decides. It has buttons which allow users to select their preference." />
 
 #### If the user accepts the use of cookies
 
 If the user updates their settings a confirmation message is displayed until they select “Hide” or navigate away from the page.
 
-<img src="/public/images/cookies/cookies-accept.png" alt="" />
+<img src="/public/images/cookies/cookies-accept.png" alt="If the user accepts the use of cookies, a confirmation message is displayed with a link which allows them to change their cookie setting at any time" />
 
 #### If the user doesn't accept the use of cookies
 
-<img src="/public/images/cookies/cookies-reject.png" alt="" />
+<img src="/public/images/cookies/cookies-reject.png" alt="If the user does not accept the use of cookies, a confirmation message is displayed with a link which allows them to change their cookie setting at any time" />
 
 ### <a href="https://pension-age.herokuapp.com/cookies/cookies_details">Cookies policy page</a>
 
