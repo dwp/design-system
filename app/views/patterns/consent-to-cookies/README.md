@@ -35,7 +35,7 @@ If the user updates their settings a confirmation message is displayed until the
 
 <img src="/public/images/cookies/cookies-reject.png" alt="If the user does not accept the use of cookies, a confirmation message is displayed with a link which allows them to change their cookie setting at any time" />
 
-### <a href="https://pension-age.herokuapp.com/cookies/cookies_details">Cookies policy page</a>
+### <a href="https://pension-age.herokuapp.com/cookies/cookie_policy">Cookies policy page</a>
 
 Explains how we use cookies, which are optional or essential and allows users to update their settings.
 
