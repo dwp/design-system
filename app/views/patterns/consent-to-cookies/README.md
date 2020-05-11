@@ -18,6 +18,12 @@ You can see the prototype on <a href="https://pension-age.herokuapp.com/cookies/
 Username: <code>Cookies</code>
 Password: <code>Policy</code>
 
+## Content
+
+The content in the prototype is to be used as a basis for all DWP services but will need to change depending on the service name and the cookies it uses.
+
+Here's the <a href="/public/docs/english_cookie_content.md" alt="">english</a> and <a href="/public/docs/welsh_cookie_content.md">welsh</a> content for the pattern. 
+
 ### Show the cookie banner and related actions
 The cookie banner is displayed the first time a service is used and persists on every page of the service until the user updates their settings.
 
