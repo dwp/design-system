@@ -1,0 +1,12 @@
+{% extends "layouts/guidance.html" %}
+
+{% set sectionId = "components" %}
+{% set pageTitle = "Components" %}
+
+{% block subNav %}
+  {% include "components-subnav.html" %}
+{% endblock %}
+
+{% block pageContent %}
+  <div class="app-prose-scope">{% markdown %}{% include "./README.md" %}{% endmarkdown %}</div>
+{% endblock %}

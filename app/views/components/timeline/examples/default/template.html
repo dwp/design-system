@@ -1,0 +1,42 @@
+{% from 'dwp-timeline/macro.njk' import dwpTimeline %}
+
+{{dwpTimeline({
+  events: [
+    {
+      title: { text: 'Response submitted'},
+      by: 'DWP Appeals Officer',
+      dateUtc: '2018-01-25T14:04',
+      date: '25 Jan 2018',
+      time: '14:04pm',
+      description: { text: 'This is a description of the event. And this is what happens when it is long.' },
+      documents: [{
+        name: 'Statement of information',
+        href: '#1'
+      }, {
+        name: 'Another document',
+        href: '#2'
+      }]
+    },
+    {
+      title: { text: 'Appeal marked as compliant'},
+      by: 'DJ DeVere',
+      dateUtc: '2017-12-05T09:10',
+      date: '5 Dec 2017',
+      time: '9:10am',
+      description: { text: 'This is a description of the event. And this is what happens when it is long.' },
+      documents: [{
+        name: 'Statement of information',
+        href: '#3'
+      }]
+    },
+    {
+      title: { text: 'Interlocutory referral to DJ DeVere'},
+      by: 'DLC Admin',
+      dateUtc: '2017-11-20T14:27',
+      date: '20 Nov 2017',
+      time: '14:27pm',
+      description: { text: 'This is a description of the event. And this is what happens when it is long.' }
+
+    }
+  ]
+}) }}

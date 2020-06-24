@@ -1,0 +1,20 @@
+<nav class="app-subnav{% if params.classes %} {{ params.classes }}{% endif %}">
+
+  {% if params.sections %}
+    {% for section in params.sections %}
+      <h4 class="app-subnav__title">{{section.heading.text}}</h4>
+      <ul class="app-subnav__list">
+        {% for item in section.items %}
+          <li class="app-subnav__list-item{% if item.selected %} app-subnav__list-item--selected{% endif %}"><a href="{{item.link}}"{% if item.selected %} aria-current="location"{% endif %}>{{item.title}}</a></li>
+        {% endfor %}
+      </ul>
+    {% endfor %}
+  {% else %}
+    <ul class="app-subnav__list">
+      {% for item in params.items %}
+        <li class="app-subnav__list-item{% if item.selected %} app-subnav__list-item--selected{% endif %}"><a href="{{item.link}}"{% if item.selected %} aria-current="location"{% endif %}>{{item.title}}</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+</nav>
