@@ -1,0 +1,78 @@
+[
+    {
+      "ParameterKey": "pVpcID",
+      "ParameterValue": "vpc-0ad25bd99ab4a162f"
+      },
+    {
+      "ParameterKey": "pTier1Subnet1ID",
+      "ParameterValue": "subnet-0827ad39819c185d4"
+      },
+    {
+      "ParameterKey": "pTier1Subnet2ID",
+      "ParameterValue": "subnet-056aa8feaf209c3e6"
+      },
+    {
+      "ParameterKey": "pTier1Subnet3ID",
+      "ParameterValue": "subnet-0ea72c62fc8b05fea"
+      },
+    {
+      "ParameterKey": "pTier2Subnet1ID",
+      "ParameterValue": "subnet-0de517bbcf69ffe57"
+      },
+    {
+      "ParameterKey": "pTier2Subnet2ID",
+      "ParameterValue": "subnet-0e26d0b1cc74a75a0"
+      },
+    {
+      "ParameterKey": "pTier2Subnet3ID",
+      "ParameterValue": "subnet-0dfe5f318734fc887"
+      },
+    {
+      "ParameterKey": "pCloudFrontCertificateARN",
+      "ParameterValue": "arn:aws:acm:us-east-1:031153374938:certificate/718a6441-2cf5-4735-b9c4-1e9a4c8cd1ab" 
+      },
+    {
+      "ParameterKey": "pLoadBalancerCertificateARN",
+      "ParameterValue": "arn:aws:acm:eu-west-2:031153374938:certificate/a1234b53-6cc4-4e8c-a029-0e95bf4fae02" 
+      },
+    {
+      "ParameterKey": "pServiceName",
+      "ParameterValue": "DesignSystem"
+      },
+    {
+      "ParameterKey": "pContainerPort",
+      "ParameterValue": "3000"
+      },
+    {
+      "ParameterKey": "pLoadBalancerPort",
+      "ParameterValue": "443"
+      },
+    {
+      "ParameterKey": "pHealthCheckPath",
+      "ParameterValue": "/"
+      },
+    {
+      "ParameterKey": "pEnableAutoScaling",
+      "ParameterValue": "true"
+      },
+    {
+      "ParameterKey": "pMinContainers",
+      "ParameterValue": "1"
+      },
+    {
+      "ParameterKey": "pMaxContainers",
+      "ParameterValue": "10"
+      },
+    {
+      "ParameterKey": "pAutoScalingTargetValue",
+      "ParameterValue": "50"
+      },
+    {
+      "ParameterKey": "pOriginDNSPrepend",
+      "ParameterValue": "134763"
+      },
+    {
+      "ParameterKey": "pProject",
+      "ParameterValue": "Content-Design"
+    }
+]

@@ -1,0 +1,597 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Description: Creates Fargate Task Definition, Service and ALB
+
+Metadata:
+  cfn-lint:
+    config:
+      ignore_checks:
+      # Complex conditions trigger this warning.
+      - W1001
+
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+    - Label:
+        default: General Parameters
+      Parameters:
+      - pFeatureName
+      - pProject
+    - Label:
+        default: VPC Parameters
+      Parameters:
+      - pVpcID
+      - pTier1Subnet1ID
+      - pTier1Subnet2ID
+      - pTier1Subnet3ID
+      - pTier2Subnet1ID
+      - pTier2Subnet2ID
+      - pTier2Subnet3ID
+    - Label:
+        default: Application Parameters
+      Parameters:
+      - pLoadBalancerCertificateARN
+      - pContainerImage
+      - pTaskCPU
+      - pTaskMemory
+      - pServiceName
+      - pContainerPort
+      - pLoadBalancerPort
+      - pHealthCheckPath
+      - pHostedZoneName
+      - pECSServiceMinimumHealthyPercent
+      - pECSServiceMaximumPercent
+      - pECSServiceHealthCheckGracePeriod
+      - pLoadBalancerIdleTimeout
+      - pTargetGroupHealthCheckInterval
+      - pHealthCheckTimeout
+      - pUnhealthyThresholdCount
+      - pHealthyThresholdCount
+      - pTargetGroupDeregistrationDelayTimeout
+    - Label:
+        default: Auto Scaling Parameters
+      Parameters:
+      - pEnableAutoScaling
+      - pMinContainers
+      - pMaxContainers
+      - pAutoScalingTargetValue
+      - pScaleInCooldown
+      - pScaleOutCooldown
+    - Label:
+        default: CloudFront Parameters
+      Parameters:
+      - pEnableCloudFront
+      - pOriginDNSPrepend
+      - pCloudFrontCertificateARN
+
+    ParameterLabels:
+      pVpcID:
+        default: VPC ID
+      pTier1Subnet1ID:
+        default: Tier 1 subnet 1 ID
+      pTier1Subnet2ID:
+        default: Tier 1 subnet 2 ID
+      pTier1Subnet3ID:
+        default: Tier 1 subnet 3 ID
+      pTier2Subnet1ID:
+        default: Tier 2 subnet 1 ID
+      pTier2Subnet2ID:
+        default: Tier 2 subnet 2 ID
+      pTier2Subnet3ID:
+        default: Tier 2 subnet 3 ID
+      pLoadBalancerCertificateARN:
+        default: AWS ACM certificate ARN for the Load Balancer certificate
+      pCloudFrontCertificateARN:
+        default: AWS ACM certificate ARN for the CloudFront certificate
+      pContainerImage:
+        default: Path to container image
+      pTaskCPU:
+        default: CPU resources to assign to the Task
+      pTaskMemory:
+        default: Memory resources to assign to the Task
+      pServiceName:
+        default: Name of application service
+      pContainerPort:
+        default: Container listening port
+      pLoadBalancerPort:
+        default: Load Balancer listening port
+      pHealthCheckPath:
+        default: Path for the application healthcheck
+      pHostedZoneName:
+        default: DNS zone to use
+      pEnableAutoScaling:
+        default: Whether to enable Auto Scaling for the Fargate Service
+      pMinContainers:
+        default: Minimum number of containers for static configuration or Auto Scaling configuration
+      pMaxContainers:
+        default: Maximum number of containers for Auto Scaling configuration
+      pAutoScalingTargetValue:
+        default: Target utilisation value for Auto Scaling configuration
+      pScaleInCooldown:
+        default: Auto Scaling scale in cool down period in seconds
+      pScaleOutCooldown:
+        default: Auto Scaling scale out cool down period in seconds
+      pECSServiceMinimumHealthyPercent:
+        default: Min % of running tasks for the Service to be considered healthy
+      pECSServiceMaximumPercent:
+        default: Max % of allowed running tasks for the Service
+      pECSServiceHealthCheckGracePeriod:
+        default: ECS Service health check grace period in seconds
+      pLoadBalancerIdleTimeout:
+        default: Idle timeout for load balancer in seconds
+      pTargetGroupHealthCheckInterval:
+        default: Health check interval in seconds
+      pHealthCheckTimeout:
+        default: Health check timeout in seconds
+      pUnhealthyThresholdCount:
+        default: Health check unhealthy threshold count
+      pHealthyThresholdCount:
+        default: Health check healthy threshold count
+      pTargetGroupDeregistrationDelayTimeout:
+        default: De-registration delay timeout for Target Group in seconds
+      pEnableCloudFront:
+        Default: Whether to enable CloudFront
+      pOriginDNSPrepend:
+        Default: Name to prepend to DNS record for origin
+      pFeatureName:
+        default: Name to appear ahead of the root domain, semantically a feature
+      pProject:
+        default: Project or business area used for Resource Tags
+  
+Parameters:
+  pVpcID:
+    Type: AWS::EC2::VPC::Id
+    Description: ID of the VPC where the application will be deployed
+  
+  pTier1Subnet1ID:
+    Type: AWS::EC2::Subnet::Id
+    Description: ID of subnet 1 where the internet-facing load balancer will be deployed
+
+  pTier1Subnet2ID:
+    Type: AWS::EC2::Subnet::Id
+    Description: ID of subnet 2 where the internet-facing load balancer will be deployed
+
+  pTier1Subnet3ID:
+    Type: AWS::EC2::Subnet::Id
+    Description: ID of subnet 3 where the internet-facing load balancer will be deployed
+
+  pTier2Subnet1ID:
+    Type: AWS::EC2::Subnet::Id
+    Description: ID of subnet 1 where the application will be deployed
+
+  pTier2Subnet2ID:
+    Type: AWS::EC2::Subnet::Id
+    Description: ID of subnet 2 where the application will be deployed
+
+  pTier2Subnet3ID:
+    Type: AWS::EC2::Subnet::Id
+    Description: ID of subnet 3 where the application will be deployed
+
+  pLoadBalancerCertificateARN:
+    Type: String
+    Description: ARN of the ACM certificate which will be deployed to the ALB
+
+  pCloudFrontCertificateARN:
+    Type: String
+    Description: ARN of the ACM certificate which will be deployed to CloudFront
+
+  pContainerImage:
+    Type: String
+    Description: Path to the container image in the repository
+
+  pTaskCPU:
+    Type: Number
+    Description: CPU resources to assign to the Task
+    Default: 256
+      # 256 (.25 vCPU) - Available memory values: 0.5GB, 1GB, 2GB
+      # 512 (.5 vCPU) - Available memory values: 1GB, 2GB, 3GB, 4GB
+      # 1024 (1 vCPU) - Available memory values: 2GB, 3GB, 4GB, 5GB, 6GB, 7GB, 8GB
+      # 2048 (2 vCPU) - Available memory values: Between 4GB and 16GB in 1GB increments
+      # 4096 (4 vCPU) - Available memory values: Between 8GB and 30GB in 1GB increments
+
+  pTaskMemory:
+    Type: String
+    Description: Memory resources to assign to the Task
+    Default: 0.5GB
+      # 0.5GB, 1GB, 2GB - Available cpu values: 256 (.25 vCPU)
+      # 1GB, 2GB, 3GB, 4GB - Available cpu values: 512 (.5 vCPU)
+      # 2GB, 3GB, 4GB, 5GB, 6GB, 7GB, 8GB - Available cpu values: 1024 (1 vCPU)
+      # Between 4GB and 16GB in 1GB increments - Available cpu values: 2048 (2 vCPU)
+      # Between 8GB and 30GB in 1GB increments - Available cpu values: 4096 (4 vCPU)
+
+  pServiceName:
+    Type: String
+    Description: Name of application service
+
+  pContainerPort:
+    Type: Number
+    Description: Container listening port
+
+  pLoadBalancerPort:
+    Type: Number
+    Description: Load Balancer listening port
+
+  pHealthCheckPath:
+    Type: String
+    Description: Path for the application healthcheck
+
+  pHostedZoneName:
+    Type: String
+    Description: DNS zone to use
+  
+  pEnableAutoScaling:
+    Type: String
+    Description: Whether to enable Auto Scaling for the Fargate Service
+    Default: false
+    AllowedValues: [true, false]
+
+  pMinContainers:
+    Type: Number
+    Description: Minimum number of containers for static configuration or Auto Scaling configuration
+    Default: 1
+
+  pMaxContainers:
+    Type: Number
+    Description: Maximum number of containers for Auto Scaling configuration
+
+  pAutoScalingTargetValue:
+    Type: Number
+    Description: Target utilisation value for Auto Scaling configuration
+  
+  pScaleInCooldown:
+    Type: Number
+    Description: Auto Scaling scale in cool down period in seconds
+    Default: 10
+  
+  pScaleOutCooldown:
+    Type: Number
+    Description: Auto Scaling scale out cool down period in seconds
+    Default: 10
+
+  pECSServiceMinimumHealthyPercent:
+    Type: Number
+    Description: Min % of running tasks for the Service to be considered healthy
+    Default: 100
+
+  pECSServiceMaximumPercent:
+    Type: Number
+    Description: Max % of allowed running tasks for the Service
+    Default: 200
+
+  pECSServiceHealthCheckGracePeriod:
+    Type: Number
+    Description: ECS Service health check grace period in seconds
+    Default: 30
+
+  pLoadBalancerIdleTimeout:
+    Type: Number
+    Description: Idle timeout for load balancer in seconds
+    Default: 60
+
+  pTargetGroupHealthCheckInterval:
+    Type: Number
+    Description: Health check interval in seconds
+    Default: 10
+
+  pHealthCheckTimeout:
+    Type: Number
+    Description: Health check timeout in seconds
+    Default: 5
+
+  pUnhealthyThresholdCount:
+    Type: Number
+    Description: Health check unhealthy threshold count
+    Default: 2
+
+  pHealthyThresholdCount:
+    Type: Number
+    Description: Health check healthy threshold count
+    Default: 2
+
+  pTargetGroupDeregistrationDelayTimeout:
+    Type: Number
+    Description: De-registration delay timeout for Target Group in seconds
+    Default: 60
+
+  pEnableCloudFront:
+    Type: String
+    Description: Whether to enable CloudFront
+    Default: false
+    AllowedValues: [true, false]
+
+  pOriginDNSPrepend:
+    Type: String
+    Description: Name to prepend to DNS record for origin
+
+  pFeatureName:
+    Type: String
+    Description: Name to appear ahead of the root domain, semantically a feature
+    Default: 'live'
+
+  pProject:
+    Type: String
+    Description: Project or business area used for Resource Tags
+
+Conditions:
+
+  cIsLive: !Equals [ !Ref 'pFeatureName', live ]
+  cAutoScalingEnabled: !Equals [ !Ref 'pEnableAutoScaling', true]
+  cCloudFrontEnabled: !Equals [ !Ref 'pEnableCloudFront', true]
+
+Resources:
+
+  rCluster:
+    Type: AWS::ECS::Cluster
+    Properties:
+      ClusterName: !Join ['-', [!Ref pFeatureName, !Ref pServiceName, Cluster]]
+      Tags:
+        - Key: Project
+          Value: !Ref pProject
+  
+  rTaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    DependsOn: rLogGroup
+    Properties:
+      Family: !Join ['-', [!Ref pFeatureName, !Ref pServiceName, TaskDefinition]]
+      NetworkMode: awsvpc
+      RequiresCompatibilities:
+        - FARGATE
+      Cpu: !Ref pTaskCPU
+      Memory: !Ref pTaskMemory
+      ExecutionRoleArn: !Ref rExecutionRole
+      TaskRoleArn: !Ref rTaskRole
+      ContainerDefinitions:
+        - Name: !Ref pServiceName
+          Image: !Ref pContainerImage
+          PortMappings:
+            - ContainerPort: !Ref pContainerPort
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-region: !Ref AWS::Region
+              awslogs-group: !Ref rLogGroup
+              awslogs-stream-prefix: ecs
+      Tags:
+        - Key: Project
+          Value: !Ref pProject
+    
+  rExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Join ['-', [!Ref pFeatureName, !Ref pServiceName, ExecutionRole]]
+      AssumeRolePolicyDocument:
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ecs-tasks.amazonaws.com
+            Action: 'sts:AssumeRole'
+      ManagedPolicyArns:
+        - 'arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy'
+
+  rTaskRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Join ['-', [!Ref pFeatureName, !Ref pServiceName, TaskRole]]
+      AssumeRolePolicyDocument:
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ecs-tasks.amazonaws.com
+            Action: 'sts:AssumeRole'
+
+  rAutoScalingRole:
+    Type: AWS::IAM::Role
+    Condition: cAutoScalingEnabled
+    Properties:
+      RoleName: !Join ['-', [!Ref pFeatureName, !Ref pServiceName, AutoScalingRole]]
+      AssumeRolePolicyDocument:
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ecs-tasks.amazonaws.com
+            Action: 'sts:AssumeRole'
+      ManagedPolicyArns:
+        - 'arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceAutoscaleRole'
+
+  rContainerSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: !Join ['-', [!Ref pFeatureName, !Ref pServiceName, ContainerSecurityGroup]]
+      VpcId: !Ref pVpcID
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: !Ref pContainerPort
+          ToPort: !Ref pContainerPort
+          SourceSecurityGroupId: !Ref rLoadBalancerSecurityGroup
+      Tags:
+        - Key: Project
+          Value: !Ref pProject
+
+  rLoadBalancerSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: !Join ['-', [!Ref pFeatureName, !Ref pServiceName, LoadBalancerSecurityGroup]]
+      VpcId: !Ref pVpcID
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: !Ref pLoadBalancerPort
+          ToPort: !Ref pLoadBalancerPort
+          CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: Project
+          Value: !Ref pProject
+# To do: Add logic to use CloudFront CIDR ranges if CloudFront is enabled
+
+  rECSService:
+    Type: AWS::ECS::Service
+    DependsOn:
+      - rListenerHTTPS
+    Properties: 
+      ServiceName: !Join ['-', [!Ref pFeatureName, !Ref pServiceName]]
+      Cluster: !Ref rCluster
+      TaskDefinition: !Ref rTaskDefinition
+      DeploymentConfiguration:
+        MinimumHealthyPercent: !Ref pECSServiceMinimumHealthyPercent
+        MaximumPercent: !Ref pECSServiceMaximumPercent
+      DesiredCount: !Ref pMinContainers
+      HealthCheckGracePeriodSeconds: !Ref pECSServiceHealthCheckGracePeriod
+      LaunchType: FARGATE
+      NetworkConfiguration: 
+        AwsvpcConfiguration:
+          AssignPublicIp: DISABLED
+          Subnets:
+            - !Ref pTier2Subnet1ID
+            - !Ref pTier2Subnet2ID
+            - !Ref pTier2Subnet3ID
+          SecurityGroups:
+            - !Ref rContainerSecurityGroup
+      LoadBalancers:
+        - ContainerName: !Ref pServiceName
+          ContainerPort: !Ref pContainerPort
+          TargetGroupArn: !Ref rTargetGroup
+      Tags:
+        - Key: Project
+          Value: !Ref pProject
+
+  rTargetGroup:
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+    Properties:
+      HealthCheckIntervalSeconds: !Ref pTargetGroupHealthCheckInterval
+      HealthCheckPath: !Ref pHealthCheckPath
+      HealthCheckTimeoutSeconds: !Ref pHealthCheckTimeout
+      UnhealthyThresholdCount: !Ref pUnhealthyThresholdCount
+      HealthyThresholdCount: !Ref pHealthyThresholdCount
+      Name: !Join ['-', [!Ref pFeatureName, !Ref pServiceName]]
+      Port: !Ref pContainerPort
+      Protocol: HTTP
+      TargetGroupAttributes:
+        - Key: deregistration_delay.timeout_seconds
+          Value: !Ref pTargetGroupDeregistrationDelayTimeout
+      TargetType: ip
+      VpcId: !Ref pVpcID
+      Tags:
+        - Key: Project
+          Value: !Ref pProject
+
+  rListenerHTTPS:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    Properties:
+      DefaultActions:
+        - TargetGroupArn: !Ref rTargetGroup
+          Type: forward
+      LoadBalancerArn: !Ref rLoadBalancer
+      Port: !Ref pLoadBalancerPort
+      Protocol: HTTPS
+      SslPolicy: ELBSecurityPolicy-TLS-1-2-Ext-2018-06
+      Certificates:
+        - CertificateArn: !Ref pLoadBalancerCertificateARN
+
+  rLoadBalancer:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      LoadBalancerAttributes:
+        - Key: idle_timeout.timeout_seconds
+          Value: !Ref pLoadBalancerIdleTimeout
+      Name: !Join ['-', [!Ref pFeatureName, !Ref pServiceName]]
+      Scheme: internet-facing
+      SecurityGroups:
+        - !Ref rLoadBalancerSecurityGroup
+      Subnets:
+        - !Ref pTier1Subnet1ID
+        - !Ref pTier1Subnet2ID
+        - !Ref pTier1Subnet3ID
+      Tags:
+        - Key: Project
+          Value: !Ref pProject
+
+  rDNSRecord:
+    Type: AWS::Route53::RecordSetGroup
+    Properties:
+      HostedZoneName: !Join ['', [!Ref pHostedZoneName, .]]
+      RecordSets:
+      - Name: !If ["cIsLive", !Join ['', [!Ref pHostedZoneName, .,]], !Join ['', [!Ref pFeatureName, ., !Ref pHostedZoneName, .]]]
+        Type: A
+        AliasTarget:
+          DNSName: !If [ cCloudFrontEnabled, !GetAtt rCloudFrontDistribution.DomainName, !GetAtt rLoadBalancer.DNSName ]
+          HostedZoneId: !If [ cCloudFrontEnabled, 'Z2FDTNDATAQYW2', !GetAtt rLoadBalancer.CanonicalHostedZoneID ]
+
+  rDNSRecordOrigin:
+    Type: AWS::Route53::RecordSetGroup
+    Condition: cCloudFrontEnabled
+    Properties:
+      HostedZoneName: !Join ['', [!Ref pHostedZoneName, .]]
+      RecordSets:
+      - Name: !Join ['', [ !Ref pOriginDNSPrepend, !If ["cIsLive", !Join ['', [., !Ref pHostedZoneName]], !Join ['', [!Ref pFeatureName, ., !Ref pHostedZoneName]]]]]
+        Type: A
+        AliasTarget:
+          DNSName: !GetAtt rLoadBalancer.DNSName
+          HostedZoneId: !GetAtt rLoadBalancer.CanonicalHostedZoneID
+
+  rLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Join ['', [/ecs/, !Ref pFeatureName, !Ref pServiceName, TaskDefinition]]
+      RetentionInDays: 7
+
+  rAutoScalingTarget:
+    Type: AWS::ApplicationAutoScaling::ScalableTarget
+    Condition: cAutoScalingEnabled
+    Properties:
+      MinCapacity: !Ref pMinContainers
+      MaxCapacity: !Ref pMaxContainers
+      ResourceId: !Join ['/', [service, !Ref rCluster, !GetAtt rECSService.Name]]
+      ScalableDimension: ecs:service:DesiredCount
+      ServiceNamespace: ecs
+      RoleARN: !GetAtt rAutoScalingRole.Arn
+
+  rAutoScalingPolicy:
+    Type: AWS::ApplicationAutoScaling::ScalingPolicy
+    Condition: cAutoScalingEnabled
+    Properties:
+      PolicyName: !Join ['-', [!Ref pFeatureName, !Ref pServiceName, AutoScalingPolicy]]
+      PolicyType: TargetTrackingScaling
+      ScalingTargetId: !Ref rAutoScalingTarget
+      TargetTrackingScalingPolicyConfiguration:
+        PredefinedMetricSpecification:
+          PredefinedMetricType: ECSServiceAverageCPUUtilization
+        ScaleInCooldown: !Ref pScaleInCooldown
+        ScaleOutCooldown: !Ref pScaleOutCooldown
+        TargetValue: !Ref pAutoScalingTargetValue
+
+  rCloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Condition: cCloudFrontEnabled
+    Properties:
+      DistributionConfig:
+        Origins:
+        - DomainName: !Join ['', [ !Ref pOriginDNSPrepend, !If ["cIsLive", !Join ['', [., !Ref pHostedZoneName]], !Join ['', [!Ref pFeatureName, ., !Ref pHostedZoneName]]]]]
+          Id: !If ["cIsLive", !Ref pHostedZoneName, !Join ['', [!Ref pFeatureName, ., !Ref pHostedZoneName]]]
+          CustomOriginConfig:
+            OriginProtocolPolicy: https-only
+        Enabled: true
+        Aliases:
+          - !If ["cIsLive", !Ref pHostedZoneName, !Join ['', [!Ref pFeatureName, ., !Ref pHostedZoneName]]]
+        DefaultRootObject: index.html
+        DefaultCacheBehavior:
+          AllowedMethods:
+            - GET
+            - HEAD
+          TargetOriginId: !If ["cIsLive", !Ref pHostedZoneName, !Join ['', [!Ref pFeatureName, ., !Ref pHostedZoneName]]]
+          ForwardedValues:
+            QueryString: 'false'
+          ViewerProtocolPolicy: redirect-to-https
+        PriceClass: PriceClass_100
+        ViewerCertificate:
+          AcmCertificateArn: !Ref pCloudFrontCertificateARN
+          SslSupportMethod: sni-only
+          MinimumProtocolVersion: TLSv1.2_2018
+      Tags:
+        - Key: Project
+          Value: !Ref pProject
+# To do: Parameterise CloudFront config
+
+Outputs:
+
+  oEndpoint:
+    Description: Endpoint
+    Value: !Join ['', ['https://', !If ["cIsLive", !Ref pHostedZoneName, !Join ['', [!Ref pFeatureName, ., !Ref pHostedZoneName]]]]]
+  
