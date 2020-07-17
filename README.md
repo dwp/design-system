@@ -27,9 +27,9 @@ To make your changes:
 
 ## Site Architecture
 
-The following describes the CI/CD pipeline, the architecture of the site, and the AWS infrastructure used to host it.
+The following section describes the CI/CD pipeline, the architecture of the site, and the AWS infrastructure used to host it.
 
-![Figure 1 - Summary Architecture](/infrastructure/images/design-system-aws-summary.png)
+![Figure 1 - Summary Architecture](/infrastructure/images/design-system-aws-summary.png)  
 *Figure 1 - Summary Architecture*
 
 ### Gitlab CI Pipeline
@@ -38,12 +38,12 @@ The following describes the CI/CD pipeline, the architecture of the site, and th
 * New changes should be tracked using issues with branches opened for each issue.
 * Once this issue is completed the branch should be merged back into the master branch.
 
-* There is a CI/CD pipeline setup for the repository, defined in '.gitlab-ci.yml'.
+* There is a CI/CD pipeline setup for the repository, defined in `.gitlab-ci.yml`.
 * It has 7 stages: test-code, build-feature, test-container, deploy, tag-master and release.
     * test-code - runs tests against the code. Two parallel jobs run, one to test node and one to lint the Dockerfile
-    * build-feature - builds the Docker image, tags it with the Git commit reference and pushes it to ECR. There is a check in place not to create and upload the Docker image if this is the first branch pipeline run, as we want to deploy the 'master' container initially to the feature site.
+    * build-feature - builds the Docker image, tags it with the Git commit reference and pushes it to ECR.
     
-    Without this logic when creating a new branch another copy of the master container would be created with the same commit ref as the master image (as when creating a new branch the commit ref is the same as the ref of the last merge to master), which has the undesirable effects of creating an un-needed new container image and un-tagging the current master image.
+    Within this stage there is a check in place not to create and upload the Docker image if this is the first branch pipeline run, as we want to deploy the 'master' container initially to the feature site. Without this logic when creating a new branch another copy of the master container would be created with the same commit ref as the master image (as when creating a new branch the commit ref is the same as the ref of the last merge to master), which has the undesirable effects of creating an un-needed new container image and un-tagging the current master image.
 
     For each subsequent pipeline run a new container image is created and tagged with the commit ref.
 
@@ -55,19 +55,19 @@ The following describes the CI/CD pipeline, the architecture of the site, and th
 
 ### Docker
 
-The Dockerfile located in the root of the project is used to build the Design System Node.JS application container, based on the Alpine Linux Node image.
+The Dockerfile located in the root of the project is used to build the Design System Node.JS application container, based on an Alpine Linux Node image.
 
-Within the Dockerfile 'npm ci' is used to build the application as opposed to 'npm build'. The npm ci command is intended to be ran as part of a pipeline, and provides more consistent results than the npm build command.
+Within the Dockerfile `npm ci` is used to build the application as opposed to `npm build`. The npm ci command is intended to be ran as part of a pipeline, and provides more consistent results than the npm build command.
 
 In order to use npm ci some changes were required within the Node.JS project:
 
-* `.npmrc` was changed, with `package-lock=true` added
+* `.npmrc` was changed, with an entry for `package-lock=true` added
 * `npm -i` was ran as a one off to create `package-lock.json`
-* `.gitignore` was updated with `package-lock.json` removed
+* `.gitignore` was updated with the entry for `package-lock.json` removed
 
 ### AWS Architecture
 
-![Figure 2 - AWS Architecture](/infrastructure/images/design-system-aws-architecture.png)
+![Figure 2 - AWS Architecture](/infrastructure/images/design-system-aws-architecture.png)  
 *Figure 2 - AWS Architecture*
 
 The Design System site is hosted using AWS Fargate (ECS), deployed to a VPC within the DWP Architecture account in the London (eu-west-2) Region. The Fargate Service and Tasks (Containers) run in private subnets across all 3 availability zones, with an Application Load Balancer proxying access from a public subnet. Autoscaling is configured for the Fargate Service which enables the number of Tasks to scale in/out based on load.
@@ -78,4 +78,4 @@ AWS Route 53 is used to manage DNS for the `design-system.dwp.gov.uk` domain. AW
 
 Feature sites are deployed to a Test VPC, and the Live site is deployed to a Live VPC.
 
-The site infrastructure is deployed using AWS CloudFormation, which allow each feature site and the live site to be managed as single units that can be easily built or destroyed. Where supported tagging is used to identify the Design System resources, with a tag of `Project : Content-Design`.
+The site infrastructure is deployed using AWS CloudFormation, which allow each feature site and the live site to be managed as single units that can be easily built or destroyed. Where supported, tagging is used to identify the Design System resources, with a tag of `Project : Content-Design`.
