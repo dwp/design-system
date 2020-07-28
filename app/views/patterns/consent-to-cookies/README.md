@@ -59,6 +59,9 @@ A link to Cookies policy page is displayed in the footer of every page of the se
 
 <img src="/public/images/cookies/cookies-footer.png" alt="" />
 
+## Technical Guidance
+Cookies should be enabled without a page refresh. This will stop the analytics data converting from referral to direct traffic. 
+
 ## Research on this pattern
 
 This pattern is being tested by the Apply for help arranging child maintenance team. We'll update this section with insights from the team.
