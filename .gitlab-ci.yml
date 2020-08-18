@@ -38,7 +38,6 @@ build-docker-image:
     # Instead we want to skip image creation and use the same image used by the live site (from the master branch)
     # This statement checks for the presence of a Docker image with the same commit ref tag and skips if it exists
     - >
-      #if [[ "$(docker images -q $REPOSITORY_URL:${CI_COMMIT_SHA:0:8} 2> /dev/null)" == "" ]]; then
       if [[ "DOCKER_CLI_EXPERIMENTAL=enabled docker manifest inspect $REPOSITORY_URL:${CI_COMMIT_SHA:0:8} 2> /dev/null)" == "" ]]; then
         docker build --no-cache -t $CI_PROJECT_NAME:${CI_COMMIT_SHA:0:8} .
         docker tag $CI_PROJECT_NAME:${CI_COMMIT_SHA:0:8} $REPOSITORY_URL:${CI_COMMIT_SHA:0:8}
