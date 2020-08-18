@@ -29,11 +29,11 @@
       },
     {
       "ParameterKey": "pCloudFrontCertificateARN",
-      "ParameterValue": "arn:aws:acm:us-east-1:031153374938:certificate/718a6441-2cf5-4735-b9c4-1e9a4c8cd1ab" 
+      "ParameterValue": "arn:aws:acm:us-east-1:031153374938:certificate/ca6bb70c-0924-4f73-b61b-f2170f7a5f71" 
       },
     {
       "ParameterKey": "pLoadBalancerCertificateARN",
-      "ParameterValue": "arn:aws:acm:eu-west-2:031153374938:certificate/a1234b53-6cc4-4e8c-a029-0e95bf4fae02" 
+      "ParameterValue": "arn:aws:acm:eu-west-2:031153374938:certificate/a9389939-dfeb-48bf-b00c-56e31cf66e94" 
       },
     {
       "ParameterKey": "pServiceName",
