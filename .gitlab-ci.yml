@@ -47,13 +47,6 @@ build-docker-image:
         echo $REPOSITORY_URL:${CI_COMMIT_SHA:0:8} >> latest_artifact.txt
         docker push $REPOSITORY_URL:${CI_COMMIT_SHA:0:8}
       fi
-      #if [[ "DOCKER_CLI_EXPERIMENTAL=enabled docker manifest inspect $REPOSITORY_URL:${CI_COMMIT_SHA:0:8} 2> /dev/null)" == "" ]]; then
-       # docker build --no-cache -t $CI_PROJECT_NAME:${CI_COMMIT_SHA:0:8} .
-       # docker tag $CI_PROJECT_NAME:${CI_COMMIT_SHA:0:8} $REPOSITORY_URL:${CI_COMMIT_SHA:0:8}
-       # echo $CI_PROJECT_NAME:${CI_COMMIT_SHA:0:8} >> latest_artifact.txt
-      #  echo $REPOSITORY_URL:${CI_COMMIT_SHA:0:8} >> latest_artifact.txt
-       # docker push $REPOSITORY_URL:${CI_COMMIT_SHA:0:8}
-      #fi
   artifacts:
     paths:
       - latest_artifact.txt
