@@ -79,7 +79,7 @@ deploy-feature:
     - apk add --no-cache py-pip jq
     - pip install awscli
   script:
-    - aws cloudformation deploy --template-file infrastructure/fargate-app.yml --stack-name designsystem-$CI_COMMIT_REF_NAME --parameter-overrides $(cat infrastructure/test-parameters.json | jq -r '.[] | .ParameterKey + "=" + .ParameterValue') pFeatureName=$CI_COMMIT_REF_NAME pContainerImage=$REPOSITORY_URL:${CI_COMMIT_SHA:0:8} pHostedZoneName=$ROOT_DOMAIN_NAME pEnableCloudFront=$ENABLE_CLOUDFRONT --capabilities CAPABILITY_NAMED_IAM --region $AWS_REGION
+    - aws cloudformation deploy --template-file infrastructure/fargate-app.yml --stack-name designsystem-$CI_COMMIT_REF_NAME --parameter-overrides $(cat infrastructure/test-parameters.json | jq -r '.[] | .ParameterKey + "=" + .ParameterValue') pFeatureName=$CI_COMMIT_REF_NAME pContainerImage=$REPOSITORY_URL:${CI_COMMIT_SHA:0:8} pHostedZoneName=$ROOT_DOMAIN_NAME pEnableCloudFront=$ENABLE_CLOUDFRONT --capabilities CAPABILITY_NAMED_IAM --region $AWS_REGION --no-fail-on-empty-changeset
     - >
       if [ "$ENABLE_CLOUDFRONT" == "true" ]; then
         ./infrastructure/create-invalidation.sh $CI_COMMIT_REF_NAME.$ROOT_DOMAIN_NAME
@@ -135,7 +135,7 @@ release:
     - apk add --no-cache py-pip jq
     - pip install awscli
   script:
-    - aws cloudformation deploy --template-file infrastructure/fargate-app.yml --stack-name designsystem-live --parameter-overrides $(cat infrastructure/live-parameters.json | jq -r '.[] | .ParameterKey + "=" + .ParameterValue') pContainerImage=$REPOSITORY_URL:${CI_COMMIT_SHA:0:8} pHostedZoneName=$ROOT_DOMAIN_NAME pEnableCloudFront=$ENABLE_CLOUDFRONT --capabilities CAPABILITY_NAMED_IAM --region $AWS_REGION
+    - aws cloudformation deploy --template-file infrastructure/fargate-app.yml --stack-name designsystem-live --parameter-overrides $(cat infrastructure/live-parameters.json | jq -r '.[] | .ParameterKey + "=" + .ParameterValue') pContainerImage=$REPOSITORY_URL:${CI_COMMIT_SHA:0:8} pHostedZoneName=$ROOT_DOMAIN_NAME pEnableCloudFront=$ENABLE_CLOUDFRONT --capabilities CAPABILITY_NAMED_IAM --region $AWS_REGION --no-fail-on-empty-changeset
     - >
       if [ "$ENABLE_CLOUDFRONT" == "true" ]; then
         ./infrastructure/create-invalidation.sh $ROOT_DOMAIN_NAME
