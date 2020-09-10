@@ -4,7 +4,7 @@ The DWP Design System is for everyone. It brings together the latest research, d
 <!-- Find out [how to contribute](/community/how-you-can-contribute), or see what people are currently working on in the [community backlog](/community/backlog).
 
 If you’ve got a question, idea or suggestion you can:
-- [email the Design System team](mailto:design-system@hmcts.net)
+- [email the Design System team](mailto:dwp-design-system@engineering.digital.dwp.gov.uk)
 - send a message on the #design-system Slack channel -->
 
 Find out:
