@@ -1,0 +1,43 @@
+{% from "button/macro.njk" import govukButton %}
+
+  {% if not cookieMessage %}
+    <div class="cookie-banner govuk-!-padding-top-4 govuk-!-padding-bottom-2" role="region" aria-label="cookie banner">
+      <div class="cookie-banner--main govuk-width-container govuk-body">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <h2 id='cookie-banner-heading' class="govuk-heading-m">Can we use cookies in our services?</h2>
+            <p class="govuk-body">We’d like to use analytics cookies to collect information about how you use our services. We use this information to improve our service.</p>
+            <p class="govuk-body">You can <a class="cookie-policy" href="/cookies/cookie-policy" class="govuk-link\">read more about our cookies</a> before you decide.</p>
+            <form method="post" action="/set-cookie-message" novalidate>
+              {{ govukButton({
+                classes: 'govuk-!-margin-bottom-4 govuk-!-margin-right-4',
+                text: 'Yes, I’m OK with analytics cookies',
+                name: 'cookieChoice',
+                value: 'accept'
+              }) }}
+              {{ govukButton({
+                classes: 'govuk-!-margin-bottom-4',
+                text: 'No, do not use analytics cookies',
+                name: 'cookieChoice',
+                value: 'reject'
+              }) }}
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% elif cookieChoiceJustMade === true and cookieMessage === 'accept' %}
+    <div class="cookie-banner govuk-!-padding-top-4 govuk-!-padding-bottom-2" role="region" aria-label="cookie banner">
+      <div class="cookie-banner--accept govuk-width-container govuk-body" tabindex="-1">
+        <p class="govuk-!-margin-top-1 govuk-!-margin-bottom-3">You’ve accepted analytics cookies. You can <a class="cookie-policy" href="/cookies/cookie-policy" class="govuk-link">change your cookie settings</a> at any time.</p>
+        <a href="{{ currentUrl }}" class="cookie-banner--hide govuk-link govuk-!-margin-top-1  govuk-!-margin-bottom-3">Hide</a>
+      </div>
+    </div>
+  {% elif cookieChoiceJustMade === true and cookieMessage === 'reject' %}
+    <div class="cookie-banner govuk-!-padding-top-4 govuk-!-padding-bottom-2" role="region" aria-label="cookie banner">
+      <div class="cookie-banner--reject govuk-width-container govuk-body" tabindex="-1">
+        <p class="govuk-!-margin-top-1 govuk-!-margin-bottom-3">You’ve rejected analytics cookies. You can <a class="cookie-policy" href="/cookies/cookie-policy" class="govuk-link">change your cookie settings</a> at any time.</p>
+        <a href="{{ currentUrl }}" class="cookie-banner--hide govuk-link govuk-!-margin-top-1  govuk-!-margin-bottom-3">Hide</a>
+      </div>
+    </div>
+  {% endif %}
