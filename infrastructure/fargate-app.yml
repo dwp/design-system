@@ -575,6 +575,11 @@ Resources:
           AllowedMethods:
             - GET
             - HEAD
+            - DELETE
+            - OPTIONS
+            - PATCH
+            - POST
+            - PUT
           TargetOriginId: !If ["cIsLive", !Ref pHostedZoneName, !Join ['', [!Ref pFeatureName, ., !Ref pHostedZoneName]]]
           ForwardedValues:
             QueryString: 'false'
