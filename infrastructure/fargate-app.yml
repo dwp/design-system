@@ -608,7 +608,7 @@ Resources:
       OriginRequestPolicyConfig:
         HeadersConfig:
           HeaderBehavior: allViewer
-        Name: !If ["cIsLive", !Ref pHostedZoneName, !Join ['', [!Ref pFeatureName, !Ref pHostedZoneName]]]
+        Name: !If ["cIsLive", DesignSystemOriginPolicy, !Join ['', [!Ref pFeatureName, DesignSystemOriginPolicy]]]
         QueryStringsConfig:
           QueryStringBehavior: all
         CookiesConfig:
