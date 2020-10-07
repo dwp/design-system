@@ -605,8 +605,9 @@ Resources:
     Type: AWS::CloudFront::OriginRequestPolicy
     Condition: cCloudFrontEnabled
     Properties:
-      CookiesConfig:
-        CookieBehavior: all
+      OriginRequestPolicyConfig:
+        CookiesConfig:
+          CookieBehavior: all
 # To do: Parameterise CloudFront config
 
 Outputs:
