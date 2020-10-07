@@ -561,20 +561,20 @@ Resources:
     Type: AWS::CloudFront::Distribution
     Condition: cCloudFrontEnabled
     Properties:
-      CacheBehavior:
-        AllowedMethods:
-          - GET
-          - HEAD
-          - DELETE
-          - OPTIONS
-          - PATCH
-          - POST
-          - PUT
-        OriginRequestPolicyID: !Ref rCloudFrontOriginRequestPolicy
-        PathPattern: set-cookie-message/
-        TargetOriginId: !If ["cIsLive", !Ref pHostedZoneName, !Join ['', [!Ref pFeatureName, ., !Ref pHostedZoneName]]]
-        ViewerProtocolPolicy: redirect-to-https
       DistributionConfig:
+        CacheBehavior:
+          AllowedMethods:
+            - GET
+            - HEAD
+            - DELETE
+            - OPTIONS
+            - PATCH
+            - POST
+            - PUT
+          OriginRequestPolicyID: !Ref rCloudFrontOriginRequestPolicy
+          PathPattern: set-cookie-message
+          TargetOriginId: !If ["cIsLive", !Ref pHostedZoneName, !Join ['', [!Ref pFeatureName, ., !Ref pHostedZoneName]]]
+          ViewerProtocolPolicy: redirect-to-https
         Origins:
         - DomainName: !Join ['', [ !Ref pOriginDNSPrepend, !If ["cIsLive", !Join ['', [., !Ref pHostedZoneName]], !Join ['', [!Ref pFeatureName, ., !Ref pHostedZoneName]]]]]
           Id: !If ["cIsLive", !Ref pHostedZoneName, !Join ['', [!Ref pFeatureName, ., !Ref pHostedZoneName]]]
