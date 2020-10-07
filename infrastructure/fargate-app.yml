@@ -571,7 +571,7 @@ Resources:
           - POST
           - PUT
         OriginRequestPolicyID: !Ref rCloudFrontOriginRequestPolicy
-        PathPattern: set-cookie-message
+        PathPattern: set-cookie-message/
         TargetOriginId: !If ["cIsLive", !Ref pHostedZoneName, !Join ['', [!Ref pFeatureName, ., !Ref pHostedZoneName]]]
         ViewerProtocolPolicy: redirect-to-https
       DistributionConfig:
