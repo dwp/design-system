@@ -561,6 +561,19 @@ Resources:
     Type: AWS::CloudFront::Distribution
     Condition: cCloudFrontEnabled
     Properties:
+      CacheBehavior:
+        AllowedMethods:
+          - GET
+          - HEAD
+          - DELETE
+          - OPTIONS
+          - PATCH
+          - POST
+          - PUT
+        OriginRequestPolicyID: !Ref rCloudFrontOriginRequestPolicy
+        PathPattern: set-cookie-message
+        TargetOriginId: !If ["cIsLive", !Ref pHostedZoneName, !Join ['', [!Ref pFeatureName, ., !Ref pHostedZoneName]]]
+        ViewerProtocolPolicy: redirect-to-https
       DistributionConfig:
         Origins:
         - DomainName: !Join ['', [ !Ref pOriginDNSPrepend, !If ["cIsLive", !Join ['', [., !Ref pHostedZoneName]], !Join ['', [!Ref pFeatureName, ., !Ref pHostedZoneName]]]]]
@@ -575,11 +588,6 @@ Resources:
           AllowedMethods:
             - GET
             - HEAD
-            - DELETE
-            - OPTIONS
-            - PATCH
-            - POST
-            - PUT
           TargetOriginId: !If ["cIsLive", !Ref pHostedZoneName, !Join ['', [!Ref pFeatureName, ., !Ref pHostedZoneName]]]
           ForwardedValues:
             QueryString: 'false'
@@ -592,6 +600,13 @@ Resources:
       Tags:
         - Key: Project
           Value: !Ref pProject
+
+  rCloudFrontOriginRequestPolicy:
+    Type: AWS::CloudFront::OriginRequestPolicy
+    Condition: cCloudFrontEnabled
+    Properties:
+      CookiesConfig:
+        CookieBehavior: all
 # To do: Parameterise CloudFront config
 
 Outputs:
