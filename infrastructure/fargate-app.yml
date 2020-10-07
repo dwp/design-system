@@ -606,6 +606,11 @@ Resources:
     Condition: cCloudFrontEnabled
     Properties:
       OriginRequestPolicyConfig:
+        HeadersConfig:
+          HeaderBehavior: allViewer
+        Name: !If ["cIsLive", !Ref pHostedZoneName, !Join ['', [!Ref pFeatureName, ., !Ref pHostedZoneName]]]
+        QueryStringsConfig:
+          QueryStringBehavior: all
         CookiesConfig:
           CookieBehavior: all
 # To do: Parameterise CloudFront config
