@@ -557,25 +557,12 @@ Resources:
         ScaleOutCooldown: !Ref pScaleOutCooldown
         TargetValue: !Ref pAutoScalingTargetValue
 
+  
   rCloudFrontDistribution:
     Type: AWS::CloudFront::Distribution
     Condition: cCloudFrontEnabled
     Properties:
       DistributionConfig:
-        CacheBehaviors:
-        - PathPattern: set-cookie-message
-          AllowedMethods:
-            - GET
-            - HEAD
-            - DELETE
-            - OPTIONS
-            - PATCH
-            - POST
-            - PUT
-          CachePolicyId: !Ref rCloudFrontCachePolicy
-          OriginRequestPolicyId: !Ref rCloudFrontOriginRequestPolicy
-          TargetOriginId: !If ["cIsLive", !Ref pHostedZoneName, !Join ['', [!Ref pFeatureName, ., !Ref pHostedZoneName]]]
-          ViewerProtocolPolicy: redirect-to-https
         Origins:
         - DomainName: !Join ['', [ !Ref pOriginDNSPrepend, !If ["cIsLive", !Join ['', [., !Ref pHostedZoneName]], !Join ['', [!Ref pFeatureName, ., !Ref pHostedZoneName]]]]]
           Id: !If ["cIsLive", !Ref pHostedZoneName, !Join ['', [!Ref pFeatureName, ., !Ref pHostedZoneName]]]
@@ -587,11 +574,18 @@ Resources:
         DefaultRootObject: index.html
         DefaultCacheBehavior:
           AllowedMethods:
+            - DELETE
             - GET
             - HEAD
+            - OPTIONS
+            - PATCH
+            - POST
+            - PUT
           TargetOriginId: !If ["cIsLive", !Ref pHostedZoneName, !Join ['', [!Ref pFeatureName, ., !Ref pHostedZoneName]]]
           ForwardedValues:
             QueryString: 'false'
+            Cookies:
+              Forward: all
           ViewerProtocolPolicy: redirect-to-https
         PriceClass: PriceClass_100
         ViewerCertificate:
@@ -601,35 +595,6 @@ Resources:
       Tags:
         - Key: Project
           Value: !Ref pProject
-
-  rCloudFrontOriginRequestPolicy:
-    Type: AWS::CloudFront::OriginRequestPolicy
-    Condition: cCloudFrontEnabled
-    Properties:
-      OriginRequestPolicyConfig:
-        HeadersConfig:
-          HeaderBehavior: allViewer
-        Name: !If ["cIsLive", !Join ['', [!Ref pProject, OriginPolicy]], !Join ['', [!Ref pFeatureName, !Ref pProject, OriginPolicy]]]
-        QueryStringsConfig:
-          QueryStringBehavior: all
-        CookiesConfig:
-          CookieBehavior: all
-  
-  rCloudFrontCachePolicy:
-    Type: AWS::CloudFront::CachePolicy
-    Condition: cCloudFrontEnabled
-    Properties: 
-      CachePolicyConfig:
-        DefaultTTL: 86400
-        MaxTTL: 31536000
-        MinTTL: 900
-        Name: !If ["cIsLive", !Join ['', [!Ref pProject, CachePolicy]], !Join ['', [!Ref pFeatureName, !Ref pProject, CachePolicy]]]
-        ParametersInCacheKeyAndForwardedToOrigin:
-          CookiesConfig: all
-          EnableAcceptEncodingGzip: false
-          HeadersConfig: none
-          QueryStringsConfig: none
-
 # To do: Parameterise CloudFront config
 
 Outputs:
