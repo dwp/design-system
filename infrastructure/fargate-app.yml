@@ -563,6 +563,7 @@ Resources:
     Properties:
       DistributionConfig:
         CacheBehaviors:
+        - PathPattern: set-cookie-message
           AllowedMethods:
             - GET
             - HEAD
@@ -572,7 +573,6 @@ Resources:
             - POST
             - PUT
           OriginRequestPolicyId: !Ref rCloudFrontOriginRequestPolicy
-          PathPattern: set-cookie-message
           TargetOriginId: !If ["cIsLive", !Ref pHostedZoneName, !Join ['', [!Ref pFeatureName, ., !Ref pHostedZoneName]]]
           ViewerProtocolPolicy: redirect-to-https
         Origins:
