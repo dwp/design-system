@@ -625,7 +625,7 @@ Resources:
         MinTTL: 900
         Name: !If ["cIsLive", !Join ['', [!Ref pProject, CachePolicy]], !Join ['', [!Ref pFeatureName, !Ref pProject, CachePolicy]]]
         ParametersInCacheKeyAndForwardedToOrigin:
-        - CookiesConfig: all
+          CookiesConfig: all
           EnableAcceptEncodingGzip: false
           HeadersConfig: none
           QueryStringsConfig: none
