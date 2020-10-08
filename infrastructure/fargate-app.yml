@@ -562,7 +562,7 @@ Resources:
     Condition: cCloudFrontEnabled
     Properties:
       DistributionConfig:
-        CacheBehavior:
+        CacheBehaviors:
           AllowedMethods:
             - GET
             - HEAD
@@ -571,7 +571,7 @@ Resources:
             - PATCH
             - POST
             - PUT
-          OriginRequestPolicyID: !Ref rCloudFrontOriginRequestPolicy
+          OriginRequestPolicyId: !Ref rCloudFrontOriginRequestPolicy
           PathPattern: set-cookie-message
           TargetOriginId: !If ["cIsLive", !Ref pHostedZoneName, !Join ['', [!Ref pFeatureName, ., !Ref pHostedZoneName]]]
           ViewerProtocolPolicy: redirect-to-https
@@ -608,7 +608,7 @@ Resources:
       OriginRequestPolicyConfig:
         HeadersConfig:
           HeaderBehavior: allViewer
-        Name: !If ["cIsLive", DesignSystemOriginPolicy, !Join ['', [!Ref pFeatureName, DesignSystemOriginPolicy]]]
+        Name: !If ["cIsLive", !Join ['', [!Ref pProject, OriginPolicy]], !Join ['', [!Ref pFeatureName, !Ref pProject, OriginPolicy]]]
         QueryStringsConfig:
           QueryStringBehavior: all
         CookiesConfig:
