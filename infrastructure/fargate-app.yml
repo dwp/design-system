@@ -595,7 +595,7 @@ Resources:
       Tags:
         - Key: Project
           Value: !Ref pProject
-# To do: Parameterise CloudFront config
+# To do: Parameterise CloudFront config.
 
 Outputs:
 
