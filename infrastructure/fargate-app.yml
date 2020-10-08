@@ -585,7 +585,7 @@ Resources:
           ForwardedValues:
             QueryString: 'false'
             Cookies:
-              Forward: none
+              Forward: all
           ViewerProtocolPolicy: redirect-to-https
         PriceClass: PriceClass_100
         ViewerCertificate:
