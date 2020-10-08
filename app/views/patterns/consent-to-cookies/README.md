@@ -1,9 +1,11 @@
-Help users to understand what cookies do on DWP services and allows them to accept or reject them easily. Allow users to review and update their preferences at any time.
+This pattern is experimental because more research is needed to validate it.
 
-It is based on GOV.UK guidelines and cookie policy and the NHS consent mechanism..
+Help users to understand what cookies do on DWP services and accept or reject them. Allow users to review and update their preferences at any time.
+
+The pattern is based on GOV.UK guidelines and cookie policy and the NHS consent mechanism.
 
 <a href="/public/images/cookies/cookies-flow.png">
-    <img src="/public/images/cookies/cookies-flow.png" alt="A screenshot of how the cookies consent pattern flows after user action to approve or not approve the use of cookies" />
+    <img src="/public/images/cookies/cookies-flow.png" alt="A screenshot of how the cookies consent pattern flows after a user has accepted or rejected the use of cookies" />
 </a>
 
 ## When to use this pattern
@@ -12,56 +14,78 @@ This should be used on all public facing DWP services.
 
 ## How it works
 
-The content is to be used as a basis for all DWP services but will need to change depending on the service name and cookies it uses.
-
-You can see the prototype on <a href="https://pension-age.herokuapp.com/cookies/apply_cmg_start_banner_v2.html" alt="">Apply for help arranging child maintenance</a>
+You can see the prototype of the cookies consent pattern on <a href="https://pension-age.herokuapp.com/cookies/apply_cmg_start_banner_v2.html" alt="">Apply for help arranging child maintenance</a>.
 Username: <code>Cookies</code>
 Password: <code>Policy</code>
 
-## Content
+### The cookie banner and related actions
+The cookie banner is displayed the first time a service is used and persists on every page of the service until the user selects an option and updates their settings.
 
-The content in the prototype is to be used as a basis for all DWP services but will need to change depending on the service name and the cookies it uses.
-
-Here's the <a href="/public/docs/english_cookie_content.md" alt="">English</a> and <a href="/public/docs/welsh_cookie_content.md">Welsh</a> content for the pattern. 
-
-### Show the cookie banner and related actions
-The cookie banner is displayed the first time a service is used and persists on every page of the service until the user updates their settings.
-
-It should display initially on the first page of the service after the GOV.UK start page if it's in Live or in Public Beta or your own start page if it's in Private Beta.
+If the service is in 'live' or 'public beta' it should display on the first page of the service. If the service is in 'private beta' it should be shown on your own start page.
 
 <img src="/public/images/cookies/cookies-banner.png" alt="The cookies banner asks users if we can have their permission to use analytics cookies to improve the service. There's a link to read more about cookies before the user decides. It has buttons which allow users to select their preference." />
 
-#### If the user accepts the use of cookies
+#### After the user has accepted or rejected the use of cookies
 
-If the user updates their settings a confirmation message is displayed until they select “Hide” or navigate away from the page.
+After the user accepts or rejects the use of cookies a confirmation message is displayed until they select “hide” or navigate away from the page.
+
+#### If the user accepts the use of cookies
 
 <img src="/public/images/cookies/cookies-accept.png" alt="If the user accepts the use of cookies, a confirmation message is displayed with a link which allows them to change their cookie setting at any time" />
 
-#### If the user doesn't accept the use of cookies
+#### If the user rejects the use of cookies
 
 <img src="/public/images/cookies/cookies-reject.png" alt="If the user does not accept the use of cookies, a confirmation message is displayed with a link which allows them to change their cookie setting at any time" />
 
-### <a href="https://pension-age.herokuapp.com/cookies/cookie_policy">Cookies policy page</a>
+#### If the user changes their cookie settings
 
-Explains how we use cookies, which are optional or essential and allows users to update their settings.
+If the user accepts cookies but then updates their settings to reject them, any cookies already placed on the user’s browser must be removed.
 
-The Yes/No radio button options are empty by default. When the user selects an option and "Save and continue" that option will be pre-selected if they return to the page.
+## Content
 
-<img src="/public/images/cookies/cookies-accept-reject.png" alt="" />
+The content in the prototype is to be used as the basis for all DWP services. You will need to change some elements of the content depending on the service name and the cookies it uses.
 
-### <a href="https://pension-age.herokuapp.com/cookies/cookies_details">Cookies details page</a>
+Here is the <a href="/public/docs/english_cookie_content.md" alt="">English</a> and <a href="/public/docs/welsh_cookie_content.md">Welsh</a> content for the banner and cookie policy page.
 
-More details on the cookies the service uses including their name and duration
+### Cookies policy page</a>
+
+This page explains how we use cookies. It tells the user which cookies are optional or essential and allows users to update their settings.
+
+<a href="https://pension-age.herokuapp.com/cookies/cookie_policy">Example of the cookies policy page</a>
+
+The Yes/No radio button options are empty by default. After the user has selected an option and selected “save and continue” that option will be pre-selected if they return to the page.
+
+
+<img src="/public/images/cookies/cookies-accept-reject.png" alt="Example of the Yes/No radio buttons on the cookie policy page." />
+
+### Cookies details page
+
+This page gives more details on the cookies the service uses, including their name and duration. The content for this page will need to be tailored to individual services.
+
+<a href="https://pension-age.herokuapp.com/cookies/cookies_details">Example of the cookies details page</a>
 
 ### Cookies footer
 
-A link to Cookies policy page is displayed in the footer of every page of the service.
+A link to cookies policy page is displayed in the footer of every page of the service.
 
-<img src="/public/images/cookies/cookies-footer.png" alt="" />
+<img src="/public/images/cookies/cookies-footer.png" alt="Example of the cookie link in the footer of a service" />
 
-## Technical Guidance
-Cookies should be enabled without a page refresh. This will stop the analytics data converting from referral to direct traffic. 
+## Technical guidance
+Cookies should be enabled without a page refresh after a user has accepted them. Enabling Google Analytics and Google Tag Manager cookies with a page refresh will mean referral traffic will be converted to direct traffic.
+
+If the user accepts cookies but then updates their settings to reject them, any cookies already placed on the user’s browser must be removed.
+
 
 ## Research on this pattern
 
-This pattern is being tested by the Apply for help arranging child maintenance team. We'll update this section with insights from the team.
+Services using this pattern:
+<ul>
+<li>Applying for help arranging child maintenance</li>
+<li>Apply for New Style Jobseeker's Allowance</li>
+<li>Apply for New Style Employment and Support Allowance</li>
+<li>Find a job</li>
+<li>Pension Credit</li>
+<li>Video appointment service</li>
+</ul>
+
+More research is needed on the pattern. If your service uses this pattern, get in touch to share your user research findings.
