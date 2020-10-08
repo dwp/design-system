@@ -572,6 +572,7 @@ Resources:
             - PATCH
             - POST
             - PUT
+          CachePolicyId: !Ref rCloudFrontCachePolicy
           OriginRequestPolicyId: !Ref rCloudFrontOriginRequestPolicy
           TargetOriginId: !If ["cIsLive", !Ref pHostedZoneName, !Join ['', [!Ref pFeatureName, ., !Ref pHostedZoneName]]]
           ViewerProtocolPolicy: redirect-to-https
@@ -613,6 +614,22 @@ Resources:
           QueryStringBehavior: all
         CookiesConfig:
           CookieBehavior: all
+  
+  rCloudFrontCachePolicy:
+    Type: AWS::CloudFront::CachePolicy
+    Condition: cCloudFrontEnabled
+    Properties: 
+      CachePolicyConfig:
+        DefaultTTL: 86400
+        MaxTTL: 31536000
+        MinTTL: 900
+        Name: !If ["cIsLive", !Join ['', [!Ref pProject, CachePolicy]], !Join ['', [!Ref pFeatureName, !Ref pProject, CachePolicy]]]
+        ParametersInCacheKeyAndForwardedToOrigin:
+        - CookiesConfig: all
+          EnableAcceptEncodingGzip: false
+          HeadersConfig: none
+          QueryStringsConfig: none
+
 # To do: Parameterise CloudFront config
 
 Outputs:
