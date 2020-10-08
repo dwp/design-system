@@ -64,9 +64,9 @@ This page gives more details on the cookies the service uses, including their na
 
 <a href="https://pension-age.herokuapp.com/cookies/cookies_details">Example of the cookies details page</a>
 
-### Cookies footer
+### "Cookies" link in footer
 
-A link to cookies policy page is displayed in the footer of every page of the service.
+A link to the cookies policy page is displayed in the footer of every page of the service.
 
 <img src="/public/images/cookies/cookies-footer.png" alt="Example of the cookie link in the footer of a service" />
 
@@ -80,11 +80,11 @@ If the user accepts cookies but then updates their settings to reject them, any 
 
 Services using this pattern:
 <ul>
-<li>Applying for help arranging child maintenance</li>
-<li>Apply for New Style Jobseeker's Allowance</li>
+<li>Apply for help arranging child maintenance</li>
+<li>Apply for New Style Jobseeker’s Allowance</li>
 <li>Apply for New Style Employment and Support Allowance</li>
 <li>Find a job</li>
-<li>Pension Credit</li>
+<li>Apply for Pension Credit</li>
 <li>Video appointment service</li>
 </ul>
 
