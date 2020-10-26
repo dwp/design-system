@@ -1,8 +1,19 @@
 const oneYearInMilliseconds = 1000 * 60 * 60 * 24 * 365;
 const CONSENT_COOKIE = 'cookie_consent';
+const COOKIE_DECISION_MADE = 'cookie_decision_made';
 
-const cookieOptions = (res, cookieChoice) => {
+const consentCookieOptions = (res, cookieChoice) => {
   res.cookie(CONSENT_COOKIE, cookieChoice, {
+    path: '/',
+    maxAge: oneYearInMilliseconds,
+    httpOnly: false,
+    sameSite: true,
+    secure: false,
+  });
+};
+
+const cookieDecisionMadeOptions = (res) => {
+  res.cookie(COOKIE_DECISION_MADE, false, {
     path: '/',
     maxAge: oneYearInMilliseconds,
     httpOnly: false,
@@ -13,26 +24,30 @@ const cookieOptions = (res, cookieChoice) => {
 
 const setCookieChoice = (req, res) => {
   const { cookieChoice } = req.body;
+  
   if (cookieChoice) {
-    cookieOptions(res, cookieChoice);
-    res.locals.cookieChoiceJustMade = true;
+    consentCookieOptions(res, cookieChoice);
+    res.cookie(COOKIE_DECISION_MADE, true);
   }
-  res.redirect(req.originalUrl);
+  
+  res.redirect('back');
 };
 
 const getCookieChoice = (req, res, next) => {
   const cookieChoice = req.cookies[CONSENT_COOKIE];
-  res.locals.cookieChoiceJustMade = false;
-  if (cookieChoice) {
-    res.locals.cookieChoiceJustMade = true;
-    res.locals.cookieMessage = cookieChoice;
-  }
-  res.locals.currentUrl = req.originalUrl;
-  next();
-}
-
-const hideConsentMessage = (cookieChoice) => {
+  const cookieDecisionMade = req.cookies[COOKIE_DECISION_MADE];
   
+  if (cookieDecisionMade || cookieChoice) {
+    res.locals.cookieChoiceJustMade = cookieDecisionMade;
+    res.clearCookie(COOKIE_DECISION_MADE);
+    
+    if (cookieChoice) {
+      res.locals.cookieMessage = cookieChoice;
+      res.locals.currentUrl = req.originalUrl;
+    }
+  }
+
+  next();
 }
 
 module.exports = { setCookieChoice, getCookieChoice }

@@ -26,14 +26,14 @@
         </div>
       </div>
     </div>
-  {% elif cookieChoiceJustMade === true and cookieMessage === 'accept' %}
+  {% elif cookieChoiceJustMade === 'true' and cookieMessage === 'accept' %}
     <div class="cookie-banner govuk-!-padding-top-4 govuk-!-padding-bottom-2" role="region" aria-label="cookie banner">
       <div class="cookie-banner--accept govuk-width-container govuk-body" tabindex="-1">
         <p class="govuk-!-margin-top-1 govuk-!-margin-bottom-3">You’ve accepted analytics cookies. You can <a class="cookie-policy" href="/cookies/cookie-policy" class="govuk-link">change your cookie settings</a> at any time.</p>
         <a href="{{ currentUrl }}" class="cookie-banner--hide govuk-link govuk-!-margin-top-1  govuk-!-margin-bottom-3">Hide</a>
       </div>
     </div>
-  {% elif cookieChoiceJustMade === true and cookieMessage === 'reject' %}
+  {% elif  cookieChoiceJustMade === 'true' and cookieMessage === 'reject' %}
     <div class="cookie-banner govuk-!-padding-top-4 govuk-!-padding-bottom-2" role="region" aria-label="cookie banner">
       <div class="cookie-banner--reject govuk-width-container govuk-body" tabindex="-1">
         <p class="govuk-!-margin-top-1 govuk-!-margin-bottom-3">You’ve rejected analytics cookies. You can <a class="cookie-policy" href="/cookies/cookie-policy" class="govuk-link">change your cookie settings</a> at any time.</p>

@@ -10,7 +10,7 @@ const renderCookiePolicy = (req, res) => {
 const cookiePolicyPostHandler = (req, res, next) => {
   const cookieConsent = req.body['selected-option'];
   if (!cookieConsent) {
-    res.send('MAKE A SELECTION');
+    // Validation here
     next();
   } else {
     setCookieChoice(res, cookieConsent);

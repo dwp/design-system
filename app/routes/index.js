@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { renderCookiePolicy, cookiePolicyPostHandler } = require('../middleware/cookies/cookiePolicy');
 const { renderCookieDetails } = require('../middleware/cookies/cookieDetails')
-const { setCookieChoice, getCookieChoice } = require('../utils/cookiesConsent');
+const { setCookieChoice, getCookieChoice } = require('../middleware/cookies/cookiesConsent');
 
 
 router.use(getCookieChoice);
