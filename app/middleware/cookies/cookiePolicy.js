@@ -8,13 +8,12 @@ const renderCookiePolicy = (req, res) => {
 };
 
 const cookiePolicyPostHandler = (req, res, next) => {
-  const cookieConsent = req.body['selected-option'];
-  if (!cookieConsent) {
-    // Validation here
+  const { cookieChoice } = req.body;
+  if (!cookieChoice) {
+    res.locals.validationError = true;
     next();
   } else {
-    setCookieChoice(res, cookieConsent);
-    res.redirect(req.originalUrl);
+    setCookieChoice(req, res);
   }
 };
 

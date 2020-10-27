@@ -52,7 +52,7 @@
             {{ govukRadios({
               classes: "govuk-radios--inline",
               idPrefix: "cookie",
-              name: "selected-option",
+              name: "cookieChoice",
               fieldset: {
                 legend: {
                   text: "Can we use cookies to help us improve the service?",
@@ -77,7 +77,7 @@
             {{ govukRadios({
             classes: "govuk-radios--inline",
             idPrefix: "cookie",
-            name: "selected-option",
+            name: "cookieChoice",
             fieldset: {
               legend: {
                 text: "Can we use cookies to help us improve the service?",
@@ -88,12 +88,12 @@
               {
                 text: "Yes",
                 value: "accept",
-                checked: cookieConsent === "accept"
+                checked: cookieChoice === "accept"
               },
               {
                 text: "No",
                 value: "reject",
-                checked: cookieConsent === "reject"
+                checked: cookieChoice === "reject"
               }
             ]
             }) }}
