@@ -1,6 +1,18 @@
 $govuk-global-styles: true;
 $govuk-page-width: 1100px;
 
+// Colour pallete
+$light-purple: #7c57cc;
+$purple: #4c2c92;
+$mid-purple: #38206b;
+$dark-purple: #1c1037;
+
+// Link Colour pallette overrides
+$govuk-link-colour: $light-purple;
+$govuk-link-visited-colour: $mid-purple;
+$govuk-link-hover-colour: $purple;
+$govuk-link-active-colour: $dark-purple;
+$govuk-focus-text-colour: $dark-purple;
 
 // Import GOV.UK Frontend
 @import "node_modules/govuk-frontend/govuk/all";
@@ -147,15 +159,6 @@ p code {
 
   ul {
     @extend %govuk-list--bullet;
-  }
-
-  ul a,
-  ol a {
-    @include ds-link-style-default;
-  }
-
-  a {
-    @include ds-link-style-default;
   }
 
   hr {
