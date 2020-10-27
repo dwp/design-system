@@ -29,37 +29,14 @@ p {
   max-width: 628px; // Desired CPL 75 (paragraphs) chars at a font size of 19px
 }
 
-
-@mixin ds-link-style-default {
-
-  &:link {
-    color: govuk-colour("purple");
-  }
-
-  &:visited {
-    color: govuk-colour("purple");
-  }
-
-  &:hover {
-    color: govuk-colour("light-purple");
-  }
-
-  &:active {
-    color: govuk-colour("black");
-  }
-
-  &:focus {
-    color: govuk-colour("black");
-  }
-
-}
-
-
 // App utility classes
 .js-enabled .app-js-hidden {
   display: none;
 }
 
+.govuk-tag {
+  background-color: $purple;
+}
 
 .app-content {
 
