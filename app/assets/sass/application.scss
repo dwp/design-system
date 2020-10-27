@@ -217,3 +217,8 @@ pre {
   background-color: #eef7ff;
   padding: 20px 20px 30px 20px;
   margin-bottom: 45px;}
+
+ .app-header__link:hover, .app-header__link:active {
+  margin-bottom: -1px;
+  border-bottom:1px solid
+}
