@@ -12,8 +12,8 @@ const consentCookieOptions = (res, cookieChoice) => {
   });
 };
 
-const cookieDecisionMadeOptions = (res) => {
-  res.cookie(COOKIE_DECISION_MADE, false, {
+const cookieDecisionMadeOptions = (res, flag) => {
+  res.cookie(COOKIE_DECISION_MADE, flag, {
     path: '/',
     maxAge: oneYearInMilliseconds,
     httpOnly: false,
@@ -27,7 +27,7 @@ const setCookieChoice = (req, res) => {
   
   if (cookieChoice) {
     consentCookieOptions(res, cookieChoice);
-    res.cookie(COOKIE_DECISION_MADE, true);
+    cookieDecisionMadeOptions(res, true);
   }
   
   res.redirect('back');
