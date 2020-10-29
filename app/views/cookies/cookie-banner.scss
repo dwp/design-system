@@ -22,15 +22,18 @@
 }
 .cookie-banner--reject p,
 .cookie-banner--accept p,
-.cookie-banner--hide {
+.cookie-banner-accept--hide,
+.cookie-banner-reject--hide {
   display: inline-block;
 }
-.cookie-banner--hide {
+.cookie-banner-accept--hide,
+.cookie-banner-reject--hide {
   float: none;
 }
 
 @media (min-width: 840px) {
-  .cookie-banner--hide {
+  .cookie-banner-accept--hide,
+  .cookie-banner-reject--hide {
     float: right;
     margin-right: 30px;
     width: auto;
