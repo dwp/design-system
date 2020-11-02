@@ -1,5 +1,5 @@
 const oneYearInMilliseconds = 1000 * 60 * 60 * 24 * 365;
-const CONSENT_COOKIE = 'cookie_consent';
+const CONSENT_COOKIE = 'dwp_analytics';
 const COOKIE_DECISION_MADE = 'cookie_decision_made';
 
 const consentCookieOptions = (res, cookieChoice) => {
@@ -29,8 +29,11 @@ const setCookieChoice = (req, res) => {
     consentCookieOptions(res, cookieChoice);
     cookieDecisionMadeOptions(res, true);
   }
-  
-  res.redirect('back');
+  if (res.locals.currentUrl === '/cookies/cookie-policy') {
+    res.redirect('/');
+  } else {
+    res.redirect('back');
+  }
 };
 
 const getCookieChoice = (req, res, next) => {

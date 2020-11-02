@@ -12,7 +12,7 @@
     const date = new Date();
     const days = 365;
     date.setTime(date.getTime() + 24 * days * 60 * 60 * 1e3);
-    document.cookie = 'DWP_COOKIE=' + encodeURIComponent(type) + '; expires=' + date.toGMTString() + '; path=/';
+    document.cookie = 'dwp_analytics=' + encodeURIComponent(type) + '; expires=' + date.toGMTString() + '; path=/';
   }
 
   function hideElement(element) {
@@ -43,13 +43,7 @@
     }
   }
 
-  function cookieConsentGiven() {
-    const cookieValue = document.cookie
-      .split('; ')
-      .find(row => row.startsWith('DWP_COOKIE'))
-      .split('=')[1];
-  }
-  if (document.cookie && document.cookie.includes('DWP_COOKIE')) {
+  if (document.cookie && document.cookie.includes('dwp_analytics')) {
     hideElement(cookieBanner);
   }
 
