@@ -1,27 +1,4 @@
-- Merge branch 'issue-7' into 'master'
-- [steve] add flag to cf deploy command
-- Merge branch 'issue-6' into 'master'
-- [steve] change artifact retention period
-- Merge branch 'issue-4' into 'master'
-- [steve] remove commented code
-- [steve] pipeline change
-- [steve] fix build error
-- [steve] update image check
-- Merge branch 'issue-3' into 'master'
-- [steve] add no-cache to docker build
-- Merge branch 'issue-2' into 'master'
-- [steve] update parameters to use live domain
-- [steve] fixed typos in readme [skip ci]
-- [steve] updated documentation [skip ci]
-- Merge branch 'issue-1000' into 'master'
-- [Steve] update readme
-- [Steve] Add infrastructure pipeline
-- [Steve] Add CI support files
-- [Steve] Add docker files
-- [Steve] push copy of Github repo with changes to support npm ci
-- [Steve] Remove old content
-- Add sample style.
-- Change config. Add html to public folder.
-- Add public folder
-- Add .gitlab-ci.yml
-- Adds readme
+# 1.0.0-alpha (2020-11-03)
+
+
+
