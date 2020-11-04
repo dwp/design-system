@@ -1,0 +1,58 @@
+<script>
+  const cookieBannerButtonAcceptHide = document.querySelector('.cookie-banner-accept--hide');
+  const cookieBannerButtonRejectHide = document.querySelector('.cookie-banner-reject--hide');
+  const cookieBannerButtonAccept = document.querySelector('.cookie-banner-button--accept');
+  const cookieBannerButtonReject = document.querySelector('.cookie-banner-button--reject');
+  const cookieBannerAccept = document.querySelector('.cookie-banner--accept');
+  const cookieBannerReject = document.querySelector('.cookie-banner--reject');
+  const cookieBannerMain = document.querySelector('.cookie-banner--main');
+  const cookieBanner = document.querySelector('.cookie-banner');
+
+  function setCookie(type) {
+    const date = new Date();
+    const days = 365;
+    date.setTime(date.getTime() + 24 * days * 60 * 60 * 1e3);
+    document.cookie = 'dwp_analytics=' + encodeURIComponent(type) + '; expires=' + date.toGMTString() + '; path=/';
+  }
+
+  function hideElement(element) {
+    element.classList.add('hidden');
+  }
+
+  function showElement(element) {
+    element.setAttribute('tabindex', -1);
+    element.classList.remove('hidden');
+  }
+
+  function hideConfirmation(e) {
+    e.preventDefault();
+    hideElement(cookieBanner);
+  }
+
+  function showConfirmation(e) {
+    const cookieValue = e.target.value;
+    e.preventDefault();
+    hideElement(cookieBannerMain);
+    if (cookieValue === 'accept') {
+      setCookie('accept');
+      showElement(cookieBannerAccept);
+    }
+    if (cookieValue === 'reject') {
+      setCookie('reject');
+      showElement(cookieBannerReject);
+    }
+  }
+
+  if (document.cookie && document.cookie.includes('dwp_analytics')) {
+    hideElement(cookieBanner);
+  }
+
+  if (cookieBannerButtonAcceptHide != null) {
+    cookieBannerButtonAcceptHide.addEventListener('click', hideConfirmation);
+    cookieBannerButtonRejectHide.addEventListener('click', hideConfirmation);
+  }
+  if (cookieBanner != null) {
+    cookieBannerButtonAccept.addEventListener('click', showConfirmation);
+    cookieBannerButtonReject.addEventListener('click', showConfirmation);
+  }
+</script>

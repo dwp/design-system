@@ -6,6 +6,8 @@ const express = require('express');
 const nunjucks = require('nunjucks');
 const markdown = require('nunjucks-markdown');
 const marked = require('marked');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser')
 const fileHelper = require('./app/utils/file-helper');
 const NunjucksCodeHighlight = require('nunjucks-highlight.js');
 const hljs = require('highlight.js');
@@ -47,6 +49,10 @@ nunjucksEnvironment.addExtension('NunjucksCodeHighlight', highlight);
 
 // Set view engine
 app.set('view engine', 'html');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 // Middleware to serve static assets
 app.use('/public', express.static(path.join(__dirname, '/public')));

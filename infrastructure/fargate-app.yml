@@ -557,6 +557,7 @@ Resources:
         ScaleOutCooldown: !Ref pScaleOutCooldown
         TargetValue: !Ref pAutoScalingTargetValue
 
+  
   rCloudFrontDistribution:
     Type: AWS::CloudFront::Distribution
     Condition: cCloudFrontEnabled
@@ -573,11 +574,18 @@ Resources:
         DefaultRootObject: index.html
         DefaultCacheBehavior:
           AllowedMethods:
+            - DELETE
             - GET
             - HEAD
+            - OPTIONS
+            - PATCH
+            - POST
+            - PUT
           TargetOriginId: !If ["cIsLive", !Ref pHostedZoneName, !Join ['', [!Ref pFeatureName, ., !Ref pHostedZoneName]]]
           ForwardedValues:
             QueryString: 'false'
+            Cookies:
+              Forward: all
           ViewerProtocolPolicy: redirect-to-https
         PriceClass: PriceClass_100
         ViewerCertificate:
@@ -587,7 +595,7 @@ Resources:
       Tags:
         - Key: Project
           Value: !Ref pProject
-# To do: Parameterise CloudFront config
+# To do: Parameterise CloudFront config.
 
 Outputs:
 
