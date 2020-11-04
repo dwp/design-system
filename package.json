@@ -4,7 +4,8 @@
   "description": "DWP Design System",
   "main": "index.js",
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "repository": {
     "type": "git",
@@ -37,5 +38,8 @@
     "nunjucks-highlight.js": "0.0.5",
     "nunjucks-markdown": "^2.0.1",
     "require-dir": "^1.0.0"
+  },
+  "devDependencies": {
+    "conventional-changelog-cli": "^2.1.0"
   }
 }
