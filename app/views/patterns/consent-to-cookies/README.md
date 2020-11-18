@@ -14,9 +14,7 @@ This should be used on all public facing DWP services.
 
 The content is to be used as a basis for all DWP services but will need to change depending on the service name and cookies it uses.
 
-You can see the prototype on <a href="https://pension-age.herokuapp.com/cookies/apply_cmg_start_banner_v2.html" alt="">Apply for help arranging child maintenance</a>
-Username: <code>Cookies</code>
-Password: <code>Policy</code>
+You can see an <a href="https://https://cookies-consent.design-system.dwp.gov.uk/">example</a>.
 
 ## Content
 
