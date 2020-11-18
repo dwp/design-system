@@ -14,9 +14,8 @@ This should be used on all public facing DWP services.
 
 ## How it works
 
-You can see the prototype of the cookies consent pattern on <a href="https://pension-age.herokuapp.com/cookies/apply_cmg_start_banner_v2.html" alt="">Apply for help arranging child maintenance</a>.
-Username: <code>Cookies</code>
-Password: <code>Policy</code>
+<a href="‹//›" alt="">View the prototype</a> to see how the pattern works</a>.
+
 
 ### The cookie banner and related actions
 The cookie banner is displayed the first time a service is used and persists on every page of the service until the user selects an option and updates their settings.
@@ -77,15 +76,27 @@ If the user accepts cookies but then updates their settings to reject them, any 
 
 
 ## Research on this pattern
+This pattern was created by Apply for help arranging child maintenance. It is based on the NHS consent mechanism.
 
 Services using this pattern:
 <ul>
 <li>Apply for help arranging child maintenance</li>
-<li>Apply for New Style Jobseeker’s Allowance</li>
+<li>Apply for New Style Jobseeker's Allowance</li>
 <li>Apply for New Style Employment and Support Allowance</li>
 <li>Find a job</li>
 <li>Apply for Pension Credit</li>
 <li>Video appointment service</li>
 </ul>
 
-More research is needed on the pattern. If your service uses this pattern, get in touch to share your user research findings.
+More research is needed on the pattern. If you have used this pattern, get in touch to share your user research findings.
+
+## Next steps
+
+Research is needed on:
+<ul>
+<li>users understanding on consent and cookies</li>
+<li>if there is an impact the current layout has on mobile users</li>
+<li>how long the banner should persist through a service if a user does not select an option</li>
+</ul>
+
+More development work is needed on how the cookie consent pattern should work for users that have javascript turned off.
