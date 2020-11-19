@@ -28,7 +28,7 @@ test-dockerfile:
 
 build-docker-image:
   stage: build-feature
-  image: docker
+  image: docker:19.03.13
   before_script:
     - apk add --no-cache py-pip
     - pip install awscli
@@ -57,7 +57,7 @@ build-docker-image:
 
 test-docker-image:
   stage: test-container
-  image: docker
+  image: docker:19.03.13
   before_script:
     - apk add --no-cache py-pip
     - pip install awscli
@@ -110,7 +110,7 @@ delete-feature-stack:
 
 tag-master:
   stage: tag-master
-  image: docker
+  image: docker:19.03.13
   before_script:
     - apk add --no-cache py-pip
     - pip install awscli
