@@ -86,7 +86,7 @@ Services using this pattern:
 <li>Find a job</li>
 <li>Apply for Pension Credit</li>
 <li>Video appointment service</li>
-<li>Repay My Debt</li>
+<li>Repay my debt</li>
 </ul>
 
 More research is needed on the pattern. If you have used this pattern, get in touch to share your user research findings.
