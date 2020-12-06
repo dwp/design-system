@@ -27,7 +27,7 @@
     "gulp-clean": "^0.4.0",
     "gulp-nodemon": "^2.2.1",
     "gulp-sass": "^4.0.1",
-    "highlight.js": "^9.12.0",
+    "highlight.js": "^10.4.1",
     "js-beautify": "^1.7.5",
     "markdown-it": "^8.4.1",
     "marked": "^1.1.1",
