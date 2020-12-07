@@ -14,7 +14,7 @@ This should be used on all public facing DWP services.
 
 ## How it works
 
-<a href="‹//›" alt="">View the prototype</a> to see how the pattern works</a>.
+<a href="‹//›" alt="">View the prototype</a> to see how the pattern works.
 
 
 ### The cookie banner and related actions
@@ -36,9 +36,11 @@ After the user accepts or rejects the use of cookies a confirmation message is d
 
 <img src="/public/images/cookies/cookies-reject.png" alt="If the user does not accept the use of cookies, a confirmation message is displayed with a link which allows them to change their cookie setting at any time" />
 
-#### If the user changes their cookie settings
+#### Putting cookies on a user's browser
+Cookies should be enabled without a page refresh after a user has accepted them. Enabling Google Analytics and Google Tag Manager cookies with a page refresh will mean referral traffic will be converted to direct traffic.
 
-If the user accepts cookies but then updates their settings to reject them, any cookies already placed on the user’s browser must be removed.
+#### Removing cookies from a user's browser
+If the user accepts cookies but then updates their settings to reject them, any cookies that have been placed on the user’s browser must be removed.
 
 ## Content
 
@@ -69,10 +71,6 @@ A link to the cookies policy page is displayed in the footer of every page of th
 
 <img src="/public/images/cookies/cookies-footer.png" alt="Example of the cookie link in the footer of a service" />
 
-## Technical guidance
-Cookies should be enabled without a page refresh after a user has accepted them. Enabling Google Analytics and Google Tag Manager cookies with a page refresh will mean referral traffic will be converted to direct traffic.
-
-If the user accepts cookies but then updates their settings to reject them, any cookies already placed on the user’s browser must be removed.
 
 
 ## Research on this pattern
