@@ -1,6 +1,7 @@
 {% from "components/tabs/macro.njk" import govukTabs %}
 
 {% set cookiesHtml %}
+  {% code %}js
   <div class="cookie-banner govuk-!-padding-top-4 govuk-!-padding-bottom-2" role="region" aria-label="cookie banner">
     <div class="cookie-banner--main govuk-width-container govuk-body">
       <div class="govuk-grid-row">
@@ -30,6 +31,7 @@
       </button>
     </div>
   </div>
+  {% endcode %}
 {% endset %}
 
 {% set cookiesNunjucks %}
