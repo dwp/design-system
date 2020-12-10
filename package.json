@@ -33,7 +33,7 @@
     "highlight.js": "9.18.1",
     "js-beautify": "1.11.0",
     "markdown-it": "8.4.2",
-    "marked": "0.4.0",
+    "marked": "1.2.6",
     "nunjucks": "3.2.1",
     "nunjucks-highlight.js": "0.0.5",
     "nunjucks-markdown": "2.0.1",
