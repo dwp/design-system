@@ -28,7 +28,7 @@ test-dockerfile:
 
 build-docker-image:
   stage: build-feature
-  image: docker:19.03.13@sha256:279beeb5de99e09af79f13e85e20194ce68db4255e8b2d955e408be69d082b5a
+  image: docker:19.03.14@sha256:91d69c044e7fb58727751d735a8b1ec4d4e94a20ed0922af5103b7f098b7122f
   before_script:
     - apk add --no-cache py-pip
     - pip install awscli
@@ -57,7 +57,7 @@ build-docker-image:
 
 test-docker-image:
   stage: test-container
-  image: docker:19.03.13@sha256:279beeb5de99e09af79f13e85e20194ce68db4255e8b2d955e408be69d082b5a
+  image: docker:19.03.14@sha256:91d69c044e7fb58727751d735a8b1ec4d4e94a20ed0922af5103b7f098b7122f
   before_script:
     - apk add --no-cache py-pip
     - pip install awscli
@@ -110,7 +110,7 @@ delete-feature-stack:
 
 tag-master:
   stage: tag-master
-  image: docker:19.03.13@sha256:279beeb5de99e09af79f13e85e20194ce68db4255e8b2d955e408be69d082b5a
+  image: docker:19.03.14@sha256:91d69c044e7fb58727751d735a8b1ec4d4e94a20ed0922af5103b7f098b7122f
   before_script:
     - apk add --no-cache py-pip
     - pip install awscli
