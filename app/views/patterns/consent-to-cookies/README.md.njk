@@ -1,7 +1,7 @@
 {% from "components/tabs/macro.njk" import govukTabs %}
 
 {% set cookiesHtml %}
-  {% code %}js
+  {% code %}html
   <div class="cookie-banner govuk-!-padding-top-4 govuk-!-padding-bottom-2" role="region" aria-label="cookie banner">
     <div class="cookie-banner--main govuk-width-container govuk-body">
       <div class="govuk-grid-row">
@@ -36,7 +36,7 @@
 
 {% set cookiesNunjucks %}
   {% from "button/macro.njk" import govukButton %}
-
+  
   <div class="cookie-banner govuk-!-padding-top-4 govuk-!-padding-bottom-2" role="region" aria-label="cookie banner">
     
     <div class="cookie-banner--main govuk-width-container govuk-body">
@@ -111,24 +111,13 @@ If the service is in 'live' or 'public beta' it should display on the first page
 
 <img src="/public/images/cookies/cookies-banner.png" alt="The cookies banner asks users if we can have their permission to use analytics cookies to improve the service. There's a link to read more about cookies before the user decides. It has buttons which allow users to select their preference." />
 
-{{ govukTabs({
-  items: [
-    {
-      label: "HTML",
-      id: "html",
-      panel: {
-        text: cookiesHtml
-      }
-    },
-    {
-      label: "Nunjucks",
-      id: "nunjucks",
-      panel: {
-        text: cookiesNunjucks
-      }
-    }
-  ]
-}) }}
+{{dsExample({
+  name: 'cookies',
+  example: 'default',
+  height: 454,
+  html: cookiesHtml
+})}}
+
 
 
 #### After the user has accepted or rejected the use of cookies
