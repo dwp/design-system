@@ -1,3 +1,90 @@
+{% from "components/tabs/macro.njk" import govukTabs %}
+
+{% set cookiesHtml %}
+  {% code %}html
+  <div class="cookie-banner govuk-!-padding-top-4 govuk-!-padding-bottom-2" role="region" aria-label="cookie banner">
+    <div class="cookie-banner--main govuk-width-container govuk-body">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 id="cookie-banner-heading" class="govuk-heading-m">Can we use cookies in our services?</h2>
+          <p class="govuk-body">We’d like to use analytics cookies to collect information about how you use our services. We use this information to improve our service.</p>
+          <p class="govuk-body">You can <a class="cookie-policy" href="">read more about our cookies</a> before you decide.</p>
+          <button value="accept" name="cookieChoice" class="govuk-button cookie-banner-button--accept govuk-!-margin-bottom-4 govuk-!-margin-right-4" data-module="govuk-button">
+            Yes, I’m OK with analytics cookies
+          </button>
+          <button value="reject" name="cookieChoice" class="govuk-button cookie-banner-button--reject govuk-!-margin-bottom-4" data-module="govuk-button">
+            No, do not use analytics cookies
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="cookie-banner--accept govuk-width-container govuk-body hidden" tabindex="-1">
+      <p class="govuk-!-margin-top-1 govuk-!-margin-bottom-3">You’ve accepted analytics cookies. You can <a class="cookie-policy" href="/cookies/cookie-policy">change your cookie settings</a> at any time.</p>
+      <button value="hide-accept" name="confirmationHide" class="govuk-button cookie-banner-accept--hide govuk-link govuk-!-margin-top-1  govuk-!-margin-bottom-3" data-module="govuk-button">
+        Hide
+      </button>
+    </div>
+    <div class="cookie-banner--reject govuk-width-container govuk-body hidden" tabindex="-1">
+      <p class="govuk-!-margin-top-1 govuk-!-margin-bottom-3">You’ve rejected analytics cookies. You can <a class="cookie-policy" href="/cookies/cookie-policy">change your cookie settings</a> at any time.</p>
+      <button value="hide-reject" name="confirmationHide" class="govuk-button cookie-banner-reject--hide govuk-link govuk-!-margin-top-1  govuk-!-margin-bottom-3" data-module="govuk-button">
+        Hide
+      </button>
+    </div>
+  </div>
+  {% endcode %}
+{% endset %}
+
+{% set cookiesNunjucks %}
+  {% from "button/macro.njk" import govukButton %}
+  
+  <div class="cookie-banner govuk-!-padding-top-4 govuk-!-padding-bottom-2" role="region" aria-label="cookie banner">
+    
+    <div class="cookie-banner--main govuk-width-container govuk-body">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 id='cookie-banner-heading' class="govuk-heading-m">Can we use cookies in our services?</h2>
+          <p class="govuk-body">We’d like to use analytics cookies to collect information about how you use our services. We use this information to improve our service.</p>
+          <p class="govuk-body">You can <a class="cookie-policy" href="/cookies/cookie-policy" class="govuk-link">read more about our cookies</a> before you decide.</p>
+            {{ govukButton({
+              classes: 'cookie-banner-button--accept govuk-!-margin-bottom-4 govuk-!-margin-right-4',
+              text: 'Yes, I’m OK with analytics cookies',
+              name: 'cookieChoice',
+              value: 'accept'
+            }) }}
+            {{ govukButton({
+              classes: 'cookie-banner-button--reject govuk-!-margin-bottom-4',
+              text: 'No, do not use analytics cookies',
+              name: 'cookieChoice',
+              value: 'reject'
+            }) }}
+        </div>
+      </div>
+    </div>
+
+    <div class="cookie-banner--accept govuk-width-container govuk-body hidden" tabindex="-1">
+      <p class="govuk-!-margin-top-1 govuk-!-margin-bottom-3">You’ve accepted analytics cookies. You can <a class="cookie-policy" href="/cookies/cookie-policy" class="govuk-link">change your cookie settings</a> at any time.</p>
+      {{ govukButton({
+        classes: 'cookie-banner-accept--hide govuk-link govuk-!-margin-top-1  govuk-!-margin-bottom-3',
+        text: 'Hide',
+        name: 'confirmationHide',
+        value: 'hide-accept'
+      }) }}
+    </div>
+
+    <div class="cookie-banner--reject govuk-width-container govuk-body hidden" tabindex="-1">
+      <p class="govuk-!-margin-top-1 govuk-!-margin-bottom-3">You’ve rejected analytics cookies. You can <a class="cookie-policy" href="/cookies/cookie-policy" class="govuk-link">change your cookie settings</a> at any time.</p>
+      {{ govukButton({
+        classes: 'cookie-banner-reject--hide govuk-link govuk-!-margin-top-1  govuk-!-margin-bottom-3',
+        text: 'Hide',
+        name: 'confirmationHide',
+        value: 'hide-reject'
+      }) }}
+    </div>
+
+  </div>
+
+{% endset %}
+
 This pattern is experimental because more research is needed to validate it.
 
 Help users to understand what cookies do on DWP services and accept or reject them. Allow users to review and update their preferences at any time.
@@ -24,6 +111,14 @@ If the service is in 'live' or 'public beta' it should display on the first page
 
 <img src="/public/images/cookies/cookies-banner.png" alt="The cookies banner asks users if we can have their permission to use analytics cookies to improve the service. There's a link to read more about cookies before the user decides. It has buttons which allow users to select their preference." />
 
+{{dsExample({
+  name: 'cookies',
+  example: 'default',
+  height: 454
+})}}
+
+
+
 #### After the user has accepted or rejected the use of cookies
 
 After the user accepts or rejects the use of cookies a confirmation message is displayed until they select “hide” or navigate away from the page.
@@ -35,6 +130,7 @@ After the user accepts or rejects the use of cookies a confirmation message is d
 #### If the user rejects the use of cookies
 
 <img src="/public/images/cookies/cookies-reject.png" alt="If the user does not accept the use of cookies, a confirmation message is displayed with a link which allows them to change their cookie setting at any time" />
+
 
 #### If the user changes their cookie settings
 
