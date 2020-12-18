@@ -16,8 +16,8 @@
 <body>
 	<script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
 	{% block body %}{% endblock %}
-	<script src="/node_modules/govuk-frontend/govuk/all.js"></script>
-	<script>window.GOVUKFrontend.initAll()</script>
+	{# <script src="/govuk/all.js"></script>
+	<script>window.GOVUKFrontend.initAll()</script> #}
 	{% block pageScripts %}{% endblock %}
 </body>
 </html>
