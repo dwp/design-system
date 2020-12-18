@@ -1,6 +1,11 @@
 <script src="/public/javascripts/vendor/jQuery.js"></script>
 <script src="/public/javascripts/components/tabs/tabs.js"></script>
 <script>
+  $('.app-tabs').each(function(e, el) {
+    new Tabs($(el));
+  });
+</script>
+<script>
   const cookieBannerButtonAcceptHide = document.querySelector('.cookie-banner-accept--hide');
   const cookieBannerButtonRejectHide = document.querySelector('.cookie-banner-reject--hide');
   const cookieBannerButtonAccept = document.querySelector('.cookie-banner-button--accept');
