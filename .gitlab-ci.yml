@@ -9,7 +9,7 @@ stages:
 
 test-node:
   stage: test-code
-  image: node:14.15.3-alpine3.11@sha256:bef791f512bb4c3051a1210d7fbd58206538f41eea9b966031abc8a7453308fe
+  image: node:14.15.4-alpine3.11@sha256:51e341881c2b77e52778921c685e711a186a71b8c6f62ff2edfc6b6950225a2f
   script:
     - npm install
     - npm test
@@ -19,7 +19,7 @@ test-node:
 
 test-dockerfile:
   stage: test-code
-  image: node:14.15.3-alpine3.11@sha256:bef791f512bb4c3051a1210d7fbd58206538f41eea9b966031abc8a7453308fe
+  image: node:14.15.4-alpine3.11@sha256:51e341881c2b77e52778921c685e711a186a71b8c6f62ff2edfc6b6950225a2f
   script:
     - npm install -g dockerlint && npm cache clean --force
     - find ./ -name Dockerfile -exec dockerlint {} \;
@@ -70,7 +70,7 @@ test-docker-image:
 
 deploy-feature:
   stage: deploy
-  image: node:14.15.3-alpine3.11@sha256:bef791f512bb4c3051a1210d7fbd58206538f41eea9b966031abc8a7453308fe
+  image: node:14.15.4-alpine3.11@sha256:51e341881c2b77e52778921c685e711a186a71b8c6f62ff2edfc6b6950225a2f
   environment:
     name: $CI_COMMIT_REF_NAME
     url: http://$CI_COMMIT_REF_NAME.$ROOT_DOMAIN_NAME
@@ -91,7 +91,7 @@ deploy-feature:
 
 delete-feature-stack:
   stage: deploy
-  image: node:14.15.3-alpine3.11@sha256:bef791f512bb4c3051a1210d7fbd58206538f41eea9b966031abc8a7453308fe
+  image: node:14.15.4-alpine3.11@sha256:51e341881c2b77e52778921c685e711a186a71b8c6f62ff2edfc6b6950225a2f
   variables:
     GIT_STRATEGY: none
   environment:
@@ -127,7 +127,7 @@ tag-master:
 
 release:
   stage: release
-  image: node:14.15.3-alpine3.11@sha256:bef791f512bb4c3051a1210d7fbd58206538f41eea9b966031abc8a7453308fe
+  image: node:14.15.4-alpine3.11@sha256:51e341881c2b77e52778921c685e711a186a71b8c6f62ff2edfc6b6950225a2f
   environment:
     name: live
     url: http://$ROOT_DOMAIN_NAME
