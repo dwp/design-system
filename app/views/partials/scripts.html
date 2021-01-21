@@ -1,13 +1,11 @@
 <script src="/public/javascripts/vendor/jQuery.js"></script>
-<<<<<<< Updated upstream
-<script src="/public/javascripts/components/tabs/tabs.js"></script>
-=======
 <script src="/public/javascripts/components/tabs/tabs.js"></script>
 <script>
   $('.app-tabs').each(function(e, el) {
     new Tabs($(el));
   });
 </script>
+
 
 {# cookies #}
 <script>
@@ -67,6 +65,7 @@
     cookieBannerButtonAccept.addEventListener('click', showConfirmation);
     cookieBannerButtonReject.addEventListener('click', showConfirmation);
   }
+
 </script>
 
 {# session timeout warning #}
@@ -487,4 +486,3 @@
     new TimeoutWarning($timeoutWarning).init()
   })
 </script>
->>>>>>> Stashed changes
