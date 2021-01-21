@@ -30,15 +30,25 @@
 
 </head>
 <body class="app-template__body">
+<<<<<<< Updated upstream
 	<script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
 
+=======
+	{% include "../components/cookies/cookie-banner.njk" %}
+	{% include "../components/timeout-warning/template.njk" %}
+>>>>>>> Stashed changes
 	{% block body %}{% endblock %}
 
 	{% include "svg.html" %}
 
 	{% block bodyEnd %}
 		{% block scripts %}
+<<<<<<< Updated upstream
 			{% include "scripts.html" %}
+=======
+			<script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+			{% include "../partials/scripts.html" %}
+>>>>>>> Stashed changes
 			{% block pageScripts %}{% endblock %}
 		{% endblock %}
 	{% endblock %}

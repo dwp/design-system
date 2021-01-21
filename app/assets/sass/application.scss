@@ -8,6 +8,8 @@ $govuk-page-width: 1100px;
 @import "../../components/all";
 
 
+@import "../../views/components/timeout-warning/timeout-warning";
+
 body {
   margin: 0;
 }
