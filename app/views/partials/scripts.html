@@ -70,8 +70,6 @@
 
 {# session timeout warning #}
 <script>
-  {# import '../../vendor/polyfills/Function/prototype/bind'
-  import '../../vendor/polyfills/Element/prototype/classList' #}
 
   function TimeoutWarning ($module) {
     this.$module = $module
@@ -219,11 +217,10 @@
       }
 
       var atMinutesText = minutesLeft > 0 ? atMinutesNumberAsText + ' minute' + (minutesLeft > 1 ? 's' : '') + '' : ''
-      var atSecondsText = secondsLeft >= 1 ? ' ' + atSecondsNumberAsText + ' second' + (secondsLeft > 1 ? 's' : '') + '' : ''
-
+      var atSecondsText = secondsLeft >= 1 ? ' ' + atSecondsNumberAsText + ' second' + (secondsLeft > 1 ? 's' : '') + '' : '' 
       // Below string will get read out by screen readers every time the timeout refreshes (every 15 secs. See below).
       // Please add additional information in the modal body content or in below extraText which will get announced to AT the first time the time out opens
-      var text = 'We will reset your application if you do not respond in ' + minutesText + secondsText + '.'
+      var text = 'We will close your application if you do not do anything in the next 5 minutes. ' + minutesText + secondsText + '.'
       var atText = 'We will reset your application if you do not respond in ' + atMinutesText
       if (atSecondsText) {
         if (minutesLeft > 0) {
@@ -233,7 +230,7 @@
       } else {
         atText += '.'
       }
-      var extraText = ' We do this to keep your information secure.'
+      var extraText = ' Your answers will be deleted. This is to protect your information.'
 
       if (timerExpired) {
         // TO DO - client/server interaction
