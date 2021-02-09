@@ -1,0 +1,60 @@
+{% from "button/macro.njk" import govukButton %}
+{% from "fieldset/macro.njk" import govukFieldset %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+<form class="form" action="cookie-policy" method="post" novalidate>
+          {% if validationError %}
+            {{ govukRadios({
+              classes: "govuk-radios--inline",
+              idPrefix: "cookie",
+              name: "cookieChoice",
+              fieldset: {
+                legend: {
+                  text: "Can we use cookies to help us improve the service?",
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              errorMessage: {
+                text: "Select a cookie option"
+              },
+              items: [
+                {
+                  text: "Yes",
+                  value: "accept"
+                },
+                {
+                  text: "No",
+                  value: "reject"
+                }
+              ]
+            }) }}
+          {% else %}
+            {{ govukRadios({
+            classes: "govuk-radios--inline",
+            idPrefix: "cookie",
+            name: "cookieChoice",
+            fieldset: {
+              legend: {
+                text: "Can we use cookies to help us improve the service?",
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            items: [
+              {
+                text: "Yes",
+                value: "accept",
+                checked: cookieChoice === "accept"
+              },
+              {
+                text: "No",
+                value: "reject",
+                checked: cookieChoice === "reject"
+              }
+            ]
+            }) }}
+          {% endif %}
+
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+        </form>
