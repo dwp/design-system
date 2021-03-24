@@ -1,0 +1,26 @@
+{% extends "layouts/guidance.html" %}
+
+{% set sectionId = "patterns" %}
+{% set pageTitle = "Manage session timeout" %}
+{% set pageId = "manage-session-timeout" %}
+
+{% block subNav %}
+  {% include "patterns-subnav.html" %}
+{% endblock %}
+
+{% block pageContent %}
+
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-4"><span class="govuk-caption-xl">Help users to</span> {{pageTitle}}</h1>
+
+  {{ govukTag({
+    classes: 'govuk-!-margin-bottom-8',
+    text: 'Experimental'
+  }) }}
+
+  <div class="app-prose-scope">
+    {% markdown %}{% include "./README.md.njk" %}{% endmarkdown %}
+  </div>
+
+  {{dsContactPanel()}}
+
+{% endblock %}

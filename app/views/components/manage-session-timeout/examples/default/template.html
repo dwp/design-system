@@ -1,0 +1,28 @@
+<!--[if !IE 8]><!-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.5.0/dialog-polyfill.js"></script>
+<!--<![endif]-->
+
+<div class="govuk-timeout-warning-fallback">
+  <p>We will reset your application if you do not complete the form and press Next
+  by <\TIMESTAMP\>.</p>
+  <p>We do this to keep your information secure.</p>
+</div>
+
+<dialog class="govuk-timeout-warning dialog" data-module="govuk-timeout-warning"
+id="js-timeout-warning"
+data-minutes-idle-timeout="{{ data['modalIdleTime'] or '0.1'}}"
+data-minutes-modal-visible="{{ data['modalVisibleTime'] or '0.2'}}"
+data-url-redirect="/timeout-warning/timed-out"
+role="dialog"
+aria-live="polite"
+aria-labelledby="dialog-title"
+aria-describedby="at-timer">
+  <h1 id="dialog-title" class="govuk-heading-l">
+    Your application will be closed soon
+  </h1>
+  <div class="govuk-body">
+    <div class="timer" aria-hidden="true" aria-relevant="additions"></div>
+    <div class="at-timer govuk-visually-hidden" role="status" id="at-timer"></div>
+  </div>
+  <button class="govuk-button dialog-button js-dialog-close" data-module="govuk-button">Continue</button>
+</dialog>
