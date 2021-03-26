@@ -9,7 +9,7 @@ $govuk-page-width: 1100px;
 
 @import "../../views/components/cookies/cookie-banner";
 
-@import "../../views/components/timeout-warning/timeout-warning";
+@import "../../views/components/manage-session-timeout/timeout-warning";
 
 body {
   margin: 0;

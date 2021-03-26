@@ -175,26 +175,22 @@
       this.$module.showModal()
 
       this.startUiCountdown()
-
-      // if (window.history.pushState) {
-      //   window.history.pushState('', '') // This updates the History API to enable state to be "popped" to detect browser navigation for disableBackButtonWhenOpen
-      // }
     }
   }
 
   // Starts a UI countdown timer. If timer is not cancelled before 0
-  // reached + 4 seconds grace period, user is redirected.
+  // reached + 2 seconds grace period, user is redirected.
   TimeoutWarning.prototype.startUiCountdown = function () {
     this.clearTimers() // Clear any other modal timers that might have been running
     var $module = this
     var $countdown = this.$countdown
     var $accessibleCountdown = this.$accessibleCountdown
-    var minutes = this.minutesTimeOutModalVisible
+    var minutes = 1
     var timerRunOnce = false
     var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
     var timers = this.timers
 
-    var seconds = 60 * minutes
+    var seconds =   60 * minutes
 
     $countdown.innerHTML = minutes + ' minute' + (minutes > 1 ? 's' : '');
 
@@ -220,7 +216,7 @@
       var atSecondsText = secondsLeft >= 1 ? ' ' + atSecondsNumberAsText + ' second' + (secondsLeft > 1 ? 's' : '') + '' : '' 
       // Below string will get read out by screen readers every time the timeout refreshes (every 15 secs. See below).
       // Please add additional information in the modal body content or in below extraText which will get announced to AT the first time the time out opens
-      var text = 'We will close your application if you do not do anything in the next 5 minutes. ' + minutesText + secondsText + '.'
+      var text = 'We will close your application if you do not do anything in the next ' + minutesText + secondsText + '.'
       var atText = 'We will reset your application if you do not respond in ' + atMinutesText
       if (atSecondsText) {
         if (minutesLeft > 0) {
@@ -237,10 +233,10 @@
         // GET last interactive time from server before timing out user
         // to ensure that user hasn’t interacted with site in another tab
 
-        $countdown.innerHTML = 'You are about to be redirected'
-        $accessibleCountdown.innerHTML = 'You are about to be redirected'
-
-        setTimeout($module.redirect.bind($module), 4000)
+        {# $countdown.innerHTML = 'You are about to be redirected'
+        $accessibleCountdown.innerHTML = 'You are about to be redirected' #}
+        //
+        setTimeout($module.redirect.bind($module), 500)
       } else {
         seconds--
 

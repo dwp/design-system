@@ -3,7 +3,7 @@
 <!--<![endif]-->
 
 <div class="govuk-timeout-warning-fallback">
-  <p>We will reset your application if you do not complete the form and press Next
+  <p>We will reset your application if you do not complete the form and press Continue
   by <\TIMESTAMP\>.</p>
   <p>We do this to keep your information secure.</p>
 </div>
@@ -12,7 +12,7 @@
 id="js-timeout-warning"
 data-minutes-idle-timeout="{{ data['modalIdleTime'] or '0.1'}}"
 data-minutes-modal-visible="{{ data['modalVisibleTime'] or '0.2'}}"
-data-url-redirect="/timeout-warning/timed-out"
+data-url-redirect="/manage-session-timeout/timed-out"
 role="dialog"
 aria-live="polite"
 aria-labelledby="dialog-title"
