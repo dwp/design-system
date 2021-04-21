@@ -14,10 +14,6 @@
 
 {% set exampleUrl = '/' + section + params.name + '/examples/'+params.example %}
 
-{% if section == 'components/' %}
-  {% set argumentsUrl = 'https://github.com/dwp/frontend/tree/master/src/' + section + 'dwp-' + params.name + '#arguments' %}
-{% endif %}
-
 {% set nunjucksCode %}
 {% code %}js
 {{ getNunjucksCode(codeUrl) | safe}}
@@ -58,11 +54,6 @@
     <button class="app-button app-button--close" type="button">Close</button> #}
 
     {{ nunjucksCode | indent(4) | safe }}
-
-
-    {% if argumentsUrl %}
-    You may be able to configure this component using the [Nunjucks macro arguments]({{argumentsUrl}})
-    {% endif %}
 
   </div>
 
