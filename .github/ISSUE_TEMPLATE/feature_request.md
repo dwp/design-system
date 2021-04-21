@@ -1,20 +1,27 @@
 ---
-name: Feature request
-about: Suggest an idea for this project
+name: "✨ Feature request"
+about: Suggest a new feature or idea
 title: ''
-labels: ''
+labels: "feature request, awaiting triage"
 assignees: ''
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+<!--
+  Please fill in as much of the template below as you’re able to. If you're unsure whether the issue already exists or how to fill in the template, open an issue anyway. Our team will help you to complete the rest.
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+  Your issue might already exist. If so, add a comment to the existing issue instead of creating a new one. You can find existing issues here:
+  - the community backlog: https://github.com/dwp/design-system-community-backlog/issues
+  - an existing Github issue: https://github.com/dwp/design-system/issues
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+  If you are proposing a new component or pattern, please follow the instructions here: https://design-system.dwp.gov.uk/community/propose-a-component-or-pattern/
+-->
 
-**Additional context**
-Add any other context or screenshots about the feature request here.
+## Context
+<!-- What are you trying to do? Is this something you think should behave differently, or something that you currently cannot do? Is this related to an existing issue/bug? -->
+
+## Alternatives
+<!-- Are you currently using a workaround / alternative solution instead? -->
+
+## Additional information (if applicable)
+<!-- What evidence do you have that this meets the needs of users? It’s useful for us to know of any user research/testing you’ve done with this feature. -->
