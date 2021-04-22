@@ -1,5 +1,82 @@
+This is currently experimental because more research is needed.
+
+Use this pattern to warn users that their session is about to time out and explain what has happened after it has.
+
+A timeout warning helps services meet WCAG 2.0 success criterion 2.2.1 - that services warn users before a timeout occurs and allow them to extend it.
+
 {{dsExample({
   name: 'manage-session-timeout',
   example: 'default',
   height: 454
 })}}
+
+## When to use this pattern
+
+We time the user out when they do not do anything for a set amount of time. You should warn them at least 2 minutes before the end of this time to give them time to decide if they want to keep using the service.
+
+## How it works
+After a set amount of time the timeout warning is shown to the user in a modal dialog box.  The box should include a countdown to show amount of time left.
+
+The user can:
+
+- select a button to stay in the service and not time out
+- press the escape key to close the warning, stay in the service and not time out
+- do nothing
+
+If the user does not choose to keep using the service within the time limit, they will be redirected to a timeout page. This page explains what has happened and gives them options for how to continue. The session timeout pattern contains an example of this page.
+
+## When the user is signed in
+
+The warning should read
+
+**Your will be signed out soon**
+
+For your security, we will sign you out soon if you do not continue it in the next (5) minutes. <Continue>
+
+## When the user is not signed in
+
+Your application will be closed soon
+
+**Your will be signed out soon**
+
+We will close your application if you do not continue it in the next (5) minutes.
+Your answers will be deleted. This is to protect your information.
+<Continue>
+
+## Time out page content
+
+**When the user is signed in**
+
+You have been signed out
+
+You have been signed out and any information you have not saved has been deleted
+because you did not do anything for 20 minutes. This is to protect your information.
+
+<Sign back in>
+
+## When the user is not signed in
+
+**Your application has been closed**
+
+We have closed your application and deleted your information because you did not do anything for w0 minutes. This is to protect your information.
+
+You will need to start your application again.
+
+<Start application>
+
+## Technical details
+
+The service team should consider how the client side and service will communicate.
+The service team should work with security teams to agree the length of inactivity for the time out warning. We recommend at least 20 minutes. Services should not limit the number of times users can extend their session.
+
+## If the user’s device is not running JavaScript
+
+If the user’s device is not running JavaScript, display a banner which warns them about the timeout. The banner should include the content specified above for if a user is signed in or not signed into a service.
+
+## Research on this pattern
+
+More research is needed on the pattern. If you have used this pattern, get in touch to share your user research findings.
+
+## Help improve this page
+
+To help make sure that this page is useful, relevant and up to date, you can share your research and feedback on <a href="">GitHub</a>.
