@@ -51,9 +51,9 @@ exports.getHtmlCode = path => {
       console.log('Could not get HTML code from ' + path);
     }
   }
-
+      
   return beautify(html.trim(), {
-    indent_size: 2,
+    //indent_size: 4,
     end_with_newline: true,
     // If there are multiple blank lines, reduce down to one blank new line.
     max_preserve_newlines: 1

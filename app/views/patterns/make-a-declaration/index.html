@@ -1,0 +1,21 @@
+{% extends "layouts/guidance.html" %}
+
+{% set sectionId = "patterns" %}
+{% set pageTitle = "Make a declaration" %}
+{% set pageId = "declaration" %}
+
+{% block subNav %}
+  {% include "patterns-subnav.html" %}
+{% endblock %}
+
+{% block pageContent %}
+
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-4"><span class="govuk-caption-xl">Help users to</span> {{pageTitle}}</h1>
+
+  <div class="app-prose-scope">
+    {% markdown %}{% include "./README.md.njk" %}{% endmarkdown %}
+  </div>
+
+  {{dsContactPanel()}}
+
+{% endblock %}
