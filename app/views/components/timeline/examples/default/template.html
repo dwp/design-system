@@ -1,42 +1,78 @@
-{% from 'dwp-timeline/macro.njk' import dwpTimeline %}
+<!--need to add in somewhere-->
+<style>
 
-{{dwpTimeline({
-  events: [
-    {
-      title: { text: 'Response submitted'},
-      by: 'DWP Appeals Officer',
-      dateUtc: '2018-01-25T14:04',
-      date: '25 Jan 2018',
-      time: '14:04pm',
-      description: { text: 'This is a description of the event. And this is what happens when it is long.' },
-      documents: [{
-        name: 'Statement of information',
-        href: '#1'
-      }, {
-        name: 'Another document',
-        href: '#2'
-      }]
-    },
-    {
-      title: { text: 'Appeal marked as compliant'},
-      by: 'DJ DeVere',
-      dateUtc: '2017-12-05T09:10',
-      date: '5 Dec 2017',
-      time: '9:10am',
-      description: { text: 'This is a description of the event. And this is what happens when it is long.' },
-      documents: [{
-        name: 'Statement of information',
-        href: '#3'
-      }]
-    },
-    {
-      title: { text: 'Interlocutory referral to DJ DeVere'},
-      by: 'DLC Admin',
-      dateUtc: '2017-11-20T14:27',
-      date: '20 Nov 2017',
-      time: '14:27pm',
-      description: { text: 'This is a description of the event. And this is what happens when it is long.' }
+.dwp-timeline {
+border-left: 3px solid #005ea5;
+}
 
-    }
-  ]
-}) }}
+.dwp-timeline__entry {
+margin: 2em 0;
+padding-left: 1em;
+position: relative;
+}
+
+.dwp-timeline__entry::before {
+background-color: #005ea5;
+content: ' ';
+height: 3px;
+left: 0;
+position: absolute;
+top: .5em;
+width: 10px;
+}
+
+.dwp-timeline__entry .dwp-timeline__title {
+display: block;
+font-weight: 700;
+}
+
+.dwp-timeline__entry .dwp-timeline__author,
+.dwp-timeline__entry .dwp-timeline__date {
+color: #6f777b;
+display: block;
+}
+
+.dwp-timeline__entry .dwp-timeline__info {
+margin-top: 0;
+}
+
+.dwp-timeline__entry .dwp-timeline__body {
+display: block;
+}
+
+</style>
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-one-third">
+
+      <h2 class="heading-medium">Claim history</h2>
+      <ol class="dwp-timeline">
+        <li class="dwp-timeline__entry">
+          <h3 class="dwp-timeline__title">Claim disallowed</h3>
+          <p class="dwp-timeline__info">
+            <span class="govuk-visually-hidden visually-hidden">Claim disallowed</span>
+            <span class="dwp-timeline__author">by John Smith</span>
+            <span class="dwp-timeline__date">1 January 2018 at 13:02</span>
+          </p>
+          <p class="dwp-timeline__body">
+            Claimant over state pension age.
+          </p>
+        </li>
+
+        <li class="dwp-timeline__entry">
+          <h3 class="dwp-timeline__title">Marriage verified</h3>
+          <p class="dwp-timeline__info">
+            <span class="dwp-visually__hidden">Marriage verified</span>
+            <span class="dwp-timeline__author">by John Smith</span>
+            <span class="dwp-timeline__date">1 January 2018 at 13:21</span>
+          </p>
+          <p class="dwp-timeline__body">
+            Marriage certificate uploaded to DRS.
+          </p>
+        </li>
+      </ol>
+
+    </div>
+  </div>
+</div>

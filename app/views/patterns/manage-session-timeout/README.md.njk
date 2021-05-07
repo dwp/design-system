@@ -1,0 +1,77 @@
+This is currently experimental because more research is needed.
+
+Use this pattern to warn users that their session is about to time out and explain what has happened after it the session has timed out.
+
+A timeout warning helps services meet WCAG 2.1 success criterion 2.2.1 - that services warn users before a timeout occurs and allow them to extend it.
+
+{{dsExample({
+  name: 'manage-session-timeout',
+  example: 'default',
+  height: 454
+})}}
+
+## When to use this pattern
+
+We time the user out when they do not do anything for a set amount of time. You should warn them at least 2 minutes before the end of this time to give them time to decide if they want to keep using the service.
+
+## How it works
+After a set amount of time the timeout warning is shown to the user in a modal dialog box.  The box should include a countdown to show amount of time left.
+
+The user can:
+
+- select a button to stay in the service and not time out
+- press the escape key to close the warning, stay in the service and not time out
+- do nothing
+
+If the user does not choose to keep using the service within the time limit, they will be redirected to a timeout page. This page explains what has happened and gives them options for how to continue.
+
+## Time out warning
+
+### When the user is signed in to a service
+
+{{dsExample({
+  name: 'manage-session-timeout',
+  example: 'signedin',
+  height: 300
+})}}
+
+Show this page to a user after they have been timed out of a session.
+
+{{dsExample({
+  name: 'manage-session-timeout',
+  example: 'timeout-signedin',
+  height: 300
+})}}
+
+### When the user is not signed in to a service
+
+{{dsExample({
+  name: 'manage-session-timeout',
+  example: 'notsignedin',
+  height: 300
+})}}
+
+Show this page to a user after they have been timed out of a session.
+
+{{dsExample({
+  name: 'manage-session-timeout',
+  example: 'timeout-notsignedin',
+  height: 300
+})}}
+
+
+## Technical details
+
+The service team should work with security teams to agree the length of inactivity for the time out warning. We recommend at least 20 minutes. Services should not limit the number of times users can extend their session.
+
+### If the user’s device is not running JavaScript
+
+If the user’s device is not running JavaScript, display a banner which warns them about the timeout. The banner should include the content specified above for if a user is signed in or not signed into a service.
+
+## Research on this pattern
+
+More research is needed on the pattern. If you have used this pattern, get in touch to share your user research findings.
+
+## Help improve this page
+
+To help make sure that this page is useful, relevant and up to date, you can share your research and feedback on <a href="">GitHub</a>.
