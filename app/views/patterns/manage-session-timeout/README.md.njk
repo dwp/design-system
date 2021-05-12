@@ -2,7 +2,7 @@ This is currently experimental because more research is needed.
 
 Use this pattern to warn users that their session is about to time out and explain what has happened after it the session has timed out.
 
-A timeout warning helps services meet WCAG 2.1 success criterion 2.2.1 - that services warn users before a timeout occurs and allow them to extend it.
+A timeout warning helps services meet <a href="https://www.w3.org/TR/WCAG21/#timing-adjustable">WCAG 2.1 success criterion 2.2.1</a> - that services warn users before a timeout occurs and allow them to extend it.
 
 {{dsExample({
   name: 'manage-session-timeout',
@@ -15,6 +15,7 @@ A timeout warning helps services meet WCAG 2.1 success criterion 2.2.1 - that se
 We time the user out when they do not do anything for a set amount of time. You should warn them at least 2 minutes before the end of this time to give them time to decide if they want to keep using the service.
 
 ## How it works
+
 After a set amount of time the timeout warning is shown to the user in a modal dialog box.  The box should include a countdown to show amount of time left.
 
 The user can:
@@ -25,9 +26,9 @@ The user can:
 
 If the user does not choose to keep using the service within the time limit, they will be redirected to a timeout page. This page explains what has happened and gives them options for how to continue.
 
-## Time out warning
-
 ### When the user is signed in to a service
+
+After a set amount of time show the user the time out warning. They should be shown this warning for at least 2 minutes and see a countdown of the remaining time.
 
 {{dsExample({
   name: 'manage-session-timeout',
@@ -35,7 +36,7 @@ If the user does not choose to keep using the service within the time limit, the
   height: 300
 })}}
 
-Show this page to a user after they have been timed out of a session.
+If the user does not continue the session they are redirected to a page that tells them they have been timed out of a session. You should tell the user if any information they have entered has been saved or not.
 
 {{dsExample({
   name: 'manage-session-timeout',
@@ -45,13 +46,16 @@ Show this page to a user after they have been timed out of a session.
 
 ### When the user is not signed in to a service
 
+After a set amount of time show the user the time out warning. They should be shown this warning for at least 2 minutes and see a countdown of the remaining time.
+
+
 {{dsExample({
   name: 'manage-session-timeout',
   example: 'notsignedin',
   height: 300
 })}}
 
-Show this page to a user after they have been timed out of a session.
+If the user does not continue the session they are redirected to a page that tells them they have been timed out of a session.
 
 {{dsExample({
   name: 'manage-session-timeout',
@@ -62,7 +66,7 @@ Show this page to a user after they have been timed out of a session.
 
 ## Technical details
 
-The service team should work with security teams to agree the length of inactivity for the time out warning. We recommend at least 20 minutes. Services should not limit the number of times users can extend their session.
+The service team should work with security teams to agree the length of inactivity before the user is timed out of a session. We recommend at least 20 minutes. Services should not limit the number of times users can extend their session.
 
 ### If the user’s device is not running JavaScript
 
