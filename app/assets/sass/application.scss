@@ -99,6 +99,9 @@ p {
   }
 }
 
+.dwp-tag-retire {
+  background-color: govuk-colour("dark-grey");
+}
 
 // Add styling for inline code
 li code,
@@ -196,6 +199,37 @@ p code {
     @include govuk-typography-weight-bold;
     display: table-caption;
     text-align: left;
+  }
+
+  // Specificity conflict with resetting styles with the containing class. Duplication of styles here, with nesting to override.
+
+  .govuk-notification-banner {
+    @include govuk-font($size: 19);
+    @include govuk-responsive-margin(8, "bottom");
+
+    border-width: $govuk-border-width;
+    border-style: solid;
+    border-color: govuk-colour("purple");
+    background-color: govuk-colour("purple");
+
+    &:focus {
+      outline: $govuk-focus-width solid $govuk-focus-colour;
+    }
+  }
+
+  .govuk-notification-banner__title {
+    @include govuk-font($size: 19, $weight: bold);
+
+    margin: 0;
+    padding: 0;
+    color: govuk-colour("white");
+  }
+
+  .govuk-notification-banner__heading {
+    @include govuk-font($size: 24, $weight: bold);
+    
+    margin: 0 0 govuk-spacing(3) 0;
+    padding: 0;
   }
 
 }
