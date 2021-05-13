@@ -1,4 +1,4 @@
-The timeline is a way to display updates to something or actions that have been done. For example a claim history.
+The timeline component to show a linear record of what has happened.
 
 {{dsExample({
   name: 'timeline',
@@ -8,27 +8,35 @@ The timeline is a way to display updates to something or actions that have been 
 
 ## When to use this pattern
 
-Use the timeline when you need to show a list of entries that can be followed in chronological order.
+Use the timeline when you need to show a history of information or events that can be followed in chronological order.
 
-The timeline should use give a brief overview of what has happened, and not used to display large bodies of text.
-
-The timeline has currently only been researched in agent-facing systems so you will need to research it thouroughly in a citizen-facing service.
+The timeline should show a brief overview of what has happened at each point and should not be used to show give intricate details of the task.
 
 
 ## When not to use this pattern
 
-The timeline should not mix past and future events. If you need to show both past and future events, show them as separate timelines or use an alternative design.
+The timeline should not be used to include and show large amounts of information.
 
-The timeline should not be used as a dumping ground for notes. It is to give an understanding of what has happened, not all the details of the task.
+You should not use the timeline component if you need to let users know where they are in a journey.
+
+## How it works
+
+The timeline should display in chronological order with the newest item appearing at the top of the list.
 
 ## Research on this pattern
 
+This component has been used on services across DWP, including:
+
 <ul>
-  <li>User type: Agents</li>
-  <li>Accessibility: Tested on JAWS, Dragon, Zoomtext and Read&Write</li>
+<li>Manage Bereavement Support Payment</li>
+<li>Access to work</li>
+<li>Prepare for Universal Credit</li>
+<li>Support for Mortgage Interest</li>
+<li>Apply for New Style Jobseeker’s Allowance</li>
 </ul>
 
-Examples of these can be seen on the Manage Bereavement Support Payment, Access to work, Prepare for Universal Credit, Support for Mortgage Interest
+The timeline has only been researched on agent-facing systems.
+More research is needed on the pattern. If you have used this pattern, get in touch to share your user research findings.
 
 ## Help improve this page
 To help make sure that this page is useful, relevant and up to date, you can share your research and feedback on <a href="https://github.com/dwp/design-system-community-backlog/issues/1">GitHub</a>.
