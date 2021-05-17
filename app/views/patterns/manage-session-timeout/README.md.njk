@@ -7,7 +7,7 @@ A timeout warning helps services meet WCAG 2.1 success criterion 2.2.1 - that se
 {{dsExample({
   name: 'manage-session-timeout',
   example: 'default',
-  height: 454
+  height: 450
 })}}
 
 ## When to use this pattern
@@ -67,6 +67,12 @@ The service team should work with security teams to agree the length of inactivi
 ### If the user’s device is not running JavaScript
 
 If the user’s device is not running JavaScript, display a banner which warns them about the timeout. The banner should include the content specified above for if a user is signed in or not signed into a service.
+
+{{dsExample({
+  name: 'manage-session-timeout',
+  example: 'nojs-timeout',
+  height: 450
+})}}
 
 ## Research on this pattern
 
