@@ -1,12 +1,24 @@
+{% from "govukNotificationBanner/macro.njk" import govukNotificationBanner %}
+
 <!--[if !IE 8]><!-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.5.0/dialog-polyfill.js"></script>
 <!--<![endif]-->
 
-<div class="govuk-timeout-warning-fallback">
-  <p>We will reset your application if you do not complete the form and press Next
-  by <\TIMESTAMP\>.</p>
-  <p>We do this to keep your information secure.</p>
-</div>
+{% set html %}
+  <div class="dwp-timeout-warning-fallback">
+    <h1 id="dialog-title" class="govuk-heading-l">
+      Your answers will be deleted soon
+    </h1>
+    <div class="govuk-body">
+      <p>We will delete your answers if you do not continue in the next <strong>2 minutes</strong>. This is to protect your information.</p>
+    </div>
+    <button class="govuk-button dialog-button js-dialog-close" data-module="govuk-button">Continue</button>
+  </div>  
+{% endset %}
+
+{{ govukNotificationBanner({
+  html: html
+}) }}
 
 <dialog class="govuk-timeout-warning dialog" data-module="govuk-timeout-warning"
 id="js-timeout-warning"
