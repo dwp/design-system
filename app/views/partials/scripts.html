@@ -1,37 +1,49 @@
 <script src="/public/javascripts/vendor/jQuery.js"></script>
 <script src="/public/javascripts/components/tabs/tabs.js"></script>
 <script>
-  $('.app-tabs').each(function(e, el) {
+  $(".app-tabs").each(function (e, el) {
     new Tabs($(el));
   });
 </script>
 
-
 {# cookies #}
 <script>
-  const cookieBannerButtonAcceptHide = document.querySelector('.cookie-banner-accept--hide');
-  const cookieBannerButtonRejectHide = document.querySelector('.cookie-banner-reject--hide');
-  const cookieBannerButtonAccept = document.querySelector('.cookie-banner-button--accept');
-  const cookieBannerButtonReject = document.querySelector('.cookie-banner-button--reject');
-  const cookieBannerAccept = document.querySelector('.cookie-banner--accept');
-  const cookieBannerReject = document.querySelector('.cookie-banner--reject');
-  const cookieBannerMain = document.querySelector('.cookie-banner--main');
-  const cookieBanner = document.querySelector('.cookie-banner');
+  const cookieBannerButtonAcceptHide = document.querySelector(
+    ".cookie-banner-accept--hide"
+  );
+  const cookieBannerButtonRejectHide = document.querySelector(
+    ".cookie-banner-reject--hide"
+  );
+  const cookieBannerButtonAccept = document.querySelector(
+    ".cookie-banner-button--accept"
+  );
+  const cookieBannerButtonReject = document.querySelector(
+    ".cookie-banner-button--reject"
+  );
+  const cookieBannerAccept = document.querySelector(".cookie-banner--accept");
+  const cookieBannerReject = document.querySelector(".cookie-banner--reject");
+  const cookieBannerMain = document.querySelector(".cookie-banner--main");
+  const cookieBanner = document.querySelector(".cookie-banner");
 
   function setCookie(type) {
     const date = new Date();
     const days = 365;
     date.setTime(date.getTime() + 24 * days * 60 * 60 * 1e3);
-    document.cookie = 'dwp_analytics=' + encodeURIComponent(type) + '; expires=' + date.toGMTString() + '; path=/';
+    document.cookie =
+      "dwp_analytics=" +
+      encodeURIComponent(type) +
+      "; expires=" +
+      date.toGMTString() +
+      "; path=/";
   }
 
   function hideElement(element) {
-    element.classList.add('hidden');
+    element.classList.add("hidden");
   }
 
   function showElement(element) {
-    element.setAttribute('tabindex', -1);
-    element.classList.remove('hidden');
+    element.setAttribute("tabindex", -1);
+    element.classList.remove("hidden");
   }
 
   function hideConfirmation(e) {
@@ -43,29 +55,28 @@
     const cookieValue = e.target.value;
     e.preventDefault();
     hideElement(cookieBannerMain);
-    if (cookieValue === 'accept') {
-      setCookie('accept');
+    if (cookieValue === "accept") {
+      setCookie("accept");
       showElement(cookieBannerAccept);
     }
-    if (cookieValue === 'reject') {
-      setCookie('reject');
+    if (cookieValue === "reject") {
+      setCookie("reject");
       showElement(cookieBannerReject);
     }
   }
 
-  if (document.cookie && document.cookie.indexOf('dwp_analytics') !== -1) {
+  if (document.cookie && document.cookie.indexOf("dwp_analytics") !== -1) {
     hideElement(cookieBanner);
   }
 
   if (cookieBannerButtonAcceptHide != null) {
-    cookieBannerButtonAcceptHide.addEventListener('click', hideConfirmation);
-    cookieBannerButtonRejectHide.addEventListener('click', hideConfirmation);
+    cookieBannerButtonAcceptHide.addEventListener("click", hideConfirmation);
+    cookieBannerButtonRejectHide.addEventListener("click", hideConfirmation);
   }
   if (cookieBanner != null) {
-    cookieBannerButtonAccept.addEventListener('click', showConfirmation);
-    cookieBannerButtonReject.addEventListener('click', showConfirmation);
+    cookieBannerButtonAccept.addEventListener("click", showConfirmation);
+    cookieBannerButtonReject.addEventListener("click", showConfirmation);
   }
-
 </script>
 
 {# session timeout warning #}
@@ -135,7 +146,7 @@
   // If user is idle for specified time period, open timeout warning as dialog
   TimeoutWarning.prototype.countIdleTime = function () {
     var idleTime
-    var milliSecondsBeforeTimeOut = this.idleMinutesBeforeTimeOut * 50000
+    var milliSecondsBeforeTimeOut = this.idleMinutesBeforeTimeOut * 20000
 
     // As user interacts with the page, keep resetting the timer
     window.onload = resetIdleTime.bind(this)
@@ -190,7 +201,7 @@
     var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
     var timers = this.timers
 
-    var seconds =   60 * minutes
+    var seconds = 10 * minutes
 
     $countdown.innerHTML = minutes + ' minute' + (minutes > 1 ? 's' : '');
 
@@ -213,7 +224,7 @@
       }
 
       var atMinutesText = minutesLeft > 0 ? atMinutesNumberAsText + ' minute' + (minutesLeft > 1 ? 's' : '') + '' : ''
-      var atSecondsText = secondsLeft >= 1 ? ' ' + atSecondsNumberAsText + ' second' + (secondsLeft > 1 ? 's' : '') + '' : '' 
+      var atSecondsText = secondsLeft >= 1 ? ' ' + atSecondsNumberAsText + ' second' + (secondsLeft > 1 ? 's' : '') + '' : ''
       // Below string will get read out by screen readers every time the timeout refreshes (every 15 secs. See below).
       // Please add additional information in the modal body content or in below extraText which will get announced to AT the first time the time out opens
       var text = 'We will close your application if you do not do anything in the next ' + minutesText + secondsText + '.'
