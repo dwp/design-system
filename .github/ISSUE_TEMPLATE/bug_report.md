@@ -1,38 +1,30 @@
 ---
-name: Bug report
-about: Create a report to help us improve
+name: "🐛 Bug report"
+about: Report a bug or regression
 title: ''
-labels: ''
+labels: "\U0001F41B bug, awaiting triage"
 assignees: ''
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+<!--
+    Please fill in as much of the template below as you’re able to. If you're unsure whether the issue already exists or how to fill in the template, open an issue anyway. Our team will help you to complete the rest.
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+    Your issue might already exist. If so, add a comment to the existing issue instead of creating a new one. You can find existing issues here: https://github.com/dwp/design-system-community-backlog/issuess
+-->
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+## Describe the issue
+<!-- A clear and concise summary of what the bug is. -->
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+## Steps to reproduce the issue
+<!-- How can we reproduce this issue? If you think it will be helpful, please provide a small code snippet and/or screenshots. -->
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+## Actual vs expected behaviour
+<!-- What is happening vs what would you expect to happen instead? -->
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+## Environment (where applicable)
+<!-- Details of your operating system, browser and the version of GOVUK Frontend you’re using may help us to reproduce your issue. -->
 
-**Additional context**
-Add any other context about the problem here.
+- Operating system:
+- Browser:
+- Browser version:

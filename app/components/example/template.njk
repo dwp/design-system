@@ -14,10 +14,6 @@
 
 {% set exampleUrl = '/' + section + params.name + '/examples/'+params.example %}
 
-{% if section == 'components/' %}
-  {% set argumentsUrl = 'https://github.com/dwp/frontend/tree/master/src/' + section + 'dwp-' + params.name + '#arguments' %}
-{% endif %}
-
 {% set nunjucksCode %}
 {% code %}js
 {{ getNunjucksCode(codeUrl) | safe}}
@@ -50,20 +46,13 @@
   <div class="app-tabs__panel app-js-hidden" id="html{{'-' + params.example}}" role="tabpanel">
     {# <button class="app-button app-button--copy app-hide-mobile" type="button" aria-live="assertive">Copy</button> #}
     {# <button class="app-button app-button--close" type="button">Close</button> #}
-    {{htmlCode | indent(4) | safe}}
+    {{htmlCode | indent(2) | safe}}
   </div>
 
   <div class="app-tabs__panel app-js-hidden" id="nunjucks{{'-' + params.example}}" role="tabpanel">
     {# <button class="app-button app-button--copy app-hide-mobile" type="button" aria-live="assertive">Copy</button>
     <button class="app-button app-button--close" type="button">Close</button> #}
-
-    {{ nunjucksCode | indent(4) | safe }}
-
-
-    {% if argumentsUrl %}
-    You may be able to configure this component using the [Nunjucks macro arguments]({{argumentsUrl}})
-    {% endif %}
-
+    {{ nunjucksCode | indent(2) | safe }}
   </div>
 
 </div>

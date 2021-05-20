@@ -101,6 +101,9 @@ p {
   }
 }
 
+.dwp-tag-retire {
+  background-color: govuk-colour("dark-grey");
+}
 
 // Add styling for inline code
 li code,
@@ -199,7 +202,6 @@ p code {
     display: table-caption;
     text-align: left;
   }
-
 }
 
 
