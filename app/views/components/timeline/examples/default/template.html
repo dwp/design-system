@@ -9,6 +9,7 @@
     margin: 2em 0;
     padding-left: 1em;
     position: relative;
+    font-family: "GDS Transport", arial, sans-serif;
   }
 
   .dwp-timeline__entry::before {
@@ -24,30 +25,34 @@
   .dwp-timeline__entry .dwp-timeline__title {
     display: block;
     font-weight: 700;
+    font-size: 19px;
+font-size: 1.1875rem;
+line-height: 1.31579;
   }
 
   .dwp-timeline__entry .dwp-timeline__author,
   .dwp-timeline__entry .dwp-timeline__date {
+    font-weight: 400;
     color: #6f777b;
-    display: block;
+    display: inline;
+    margin: 0;
+    font-size: 19px;
   }
 
   .dwp-timeline__entry .dwp-timeline__info {
-    margin-top: 0;
+    margin-top: 5px;
   }
 
   .dwp-timeline__entry .dwp-timeline__body {
     display: block;
+    font-size: 19px;
   }
 
   .heading-medium {
+    font-size: 24px;
+    line-height: 1.25;
     font-family: "nta", Arial, sans-serif;
     font-weight: 700;
-    text-transform: none;
-    font-size: 18px;
-    line-height: 1.2;
-    margin-top: 1.25em;
-    margin-bottom: 0.5em;
 }
 
 ul, ol {
@@ -79,28 +84,30 @@ p, .body-text {
       <h2 class="heading-medium">Claim history</h2>
       <ol class="dwp-timeline">
         <li class="dwp-timeline__entry">
-          <h3 class="dwp-timeline__title">Claim disallowed</h3>
+          <h3 class="dwp-timeline__title">Appointment booked <span class="dwp-timeline__author">by John Smith</span></h3>
+          <span class="dwp-timeline__info">
+            <span class="dwp-timeline__date">25 May 2021</span>
+          </span>
+        </li>
+
+        <li class="dwp-timeline__entry">
+          <h3 class="dwp-timeline__title">Appointment attended <span class="dwp-timeline__author">by John Smith</span></h3>
           <p class="dwp-timeline__info">
-            <span class="govuk-visually-hidden visually-hidden">Claim disallowed</span>
-            <span class="dwp-timeline__author">by John Smith</span>
-            <span class="dwp-timeline__date">1 January 2018 at 13:02</span>
+            <span class="dwp-timeline__date">24 May 2021</span>
           </p>
           <p class="dwp-timeline__body">
-            Claimant over state pension age.
+            <a href="">Appointment notes</a>
           </p>
         </li>
 
         <li class="dwp-timeline__entry">
-          <h3 class="dwp-timeline__title">Marriage verified</h3>
-          <p class="dwp-timeline__info">
-            <!--Hidden incase we want to use this later on <span class="dwp-visually__hidden">Marriage verified</span>-->
-            <span class="dwp-timeline__author">by John Smith</span>
-            <span class="dwp-timeline__date">1 January 2018 at 13:21</span>
-          </p>
-          <p class="dwp-timeline__body">
-            Marriage certificate uploaded to DRS.
-          </p>
+          <h3 class="dwp-timeline__title">Appointment booked <span class="dwp-timeline__author">by John Smith</span></h3>
+          <span class="dwp-timeline__info">
+            <span class="dwp-timeline__date">23 May 2021</span>
+          </span>
+
         </li>
+
       </ol>
 
     </div>
