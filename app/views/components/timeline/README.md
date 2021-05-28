@@ -35,7 +35,6 @@ This component has been used on services across DWP, including:
 <ul>
 <li>Manage Bereavement Support Payment</li>
 <li>Access to work</li>
-<li>Prepare for Universal Credit</li>
 <li>Support for Mortgage Interest</li>
 <li>Apply for New Style Jobseeker’s Allowance</li>
 </ul>
