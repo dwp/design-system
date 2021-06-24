@@ -1,4 +1,4 @@
-The timeline component to show a linear record of what has happened.
+The timeline component shows a linear record of what has happened.
 
 {{dsExample({
   name: 'timeline',
@@ -10,7 +10,7 @@ The timeline component to show a linear record of what has happened.
 
 Use the timeline when you need to show a history of information or events that can be followed in chronological order.
 
-The timeline should show a brief overview of what has happened at each point and should not be used to show give intricate details of the task.
+The timeline should show a brief overview of what has happened at each point and should not be used to give details information about the task.
 
 
 ## When not to use this pattern
@@ -22,11 +22,11 @@ The timeline should not be used to include and show large amounts of information
 
 ## How it works
 
-The timeline should display in chronological order with the newest item appearing at the top of the list.
+The timeline should display in chronological order, with the newest item appearing at the top of the list.
 
-Show all entries in the timeline in a list. You should not use a reveal to hide entries from the user.
+You should show all entries in the timeline in a list. You should not use a reveal to hide entries from the user.
 
-If a timeline entry has more information attached to it this should be linked to from the timeline and shown on a separate page.
+If a timeline entry has more information that needs to be shown or attached to it you should provide a link in the timeline entry and show the information on a separate page.
 
 ## Research on this pattern
 
