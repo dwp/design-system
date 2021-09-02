@@ -29,7 +29,7 @@
     "gulp": "4.0.2",
     "gulp-clean": "0.4.0",
     "gulp-nodemon": "2.5.0",
-    "gulp-sass": "4.1.0",
+    "gulp-sass": "5.0.0",
     "highlight.js": "10.5.0",
     "js-beautify": "1.13.2",
     "markdown-it": "12.0.4",
