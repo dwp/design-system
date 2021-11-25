@@ -1,0 +1,35 @@
+{% from "govukNotificationBanner/macro.njk" import govukNotificationBanner %}
+
+{% set html %}
+  <div class="dwp-timeout-warning-fallback">
+    <h1 id="dialog-title" class="govuk-heading-l">
+      Your answers will be deleted soon
+    </h1>
+    <div class="govuk-body">
+      <p>We will delete your answers if you do not continue in the next <strong>2 minutes</strong>. This is to protect your information.</p>
+    </div>
+    <button class="govuk-button dialog-button js-dialog-close" data-module="govuk-button">Continue</button>
+  </div>  
+{% endset %}
+
+{{ govukNotificationBanner({
+  html: html
+}) }}
+
+<dialog class="govuk-timeout-warning dialog" data-module="govuk-timeout-warning"
+id="js-timeout-warning"
+data-minutes-idle-timeout="{{ data['modalIdleTime'] or '0.1'}}"
+data-minutes-modal-visible="{{ data['modalVisibleTime'] or '0.2'}}"
+data-url-redirect="/manage-a-session-timeout/timed-out"
+aria-live="polite"
+aria-labelledby="dialog-title"
+aria-describedby="at-timer">
+  <h1 id="dialog-title" class="govuk-heading-l">
+    Your application will be closed soon
+  </h1>
+  <div class="govuk-body">
+    <div class="timer" aria-hidden="true" aria-relevant="additions"></div>
+    <div class="at-timer govuk-visually-hidden" role="status" id="at-timer"></div>
+  </div>
+  <button class="govuk-button dialog-button js-dialog-close" data-module="govuk-button">Continue</button>
+</dialog>

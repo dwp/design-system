@@ -1,0 +1,27 @@
+{% extends "basic.html" %}
+
+
+{% block pageTitle %}
+  You’ll have to start again
+{% endblock %}
+
+{% block pageContent %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l" role="status">
+      Your application has timed out
+    </h1>
+
+    <p role="status">We have reset your application because you did not do anything for 30 minutes. We did this to keep your information secure.</p>
+
+    <p>
+      <a class="govuk-button" draggable="false" href="/" role="button" data-module="govuk-button">Start application again</a>
+    </p>
+    <p>If you don’t want to start again, you can <a href="https://www.gov.uk">return to GOV.UK</a>.</p>
+
+  </div>
+</div>
+
+{% endblock %}
