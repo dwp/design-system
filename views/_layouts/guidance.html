@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% set navItems = {
+    sectionId: sectionId,
+    pageId: pageId,
+    navItems: navItems
+} %}
+{% block body %}
+  {% block skipLink %}
+    {{ govukSkipLink({
+      href: '#main-content',
+      text: 'Skip to main content'
+    }) }}
+  {% endblock %}
+  <div class="app-pane app-pane--enabled" id="top">
+    {% include "_header.html" %}
+    <div class="app-phase-banner__wrapper">
+    {{ govukPhaseBanner({
+      classes: "govuk-phase-banner app-phase-banner app-width-container app-phase-banner--no-border",
+      tag: {
+        text: "alpha"
+      },
+      html: 'This is a new service – your <a class="govuk-link" href="mailto:dwp-design-system@engineering.digital.dwp.gov.uk">feedback</a> will help us to improve it.'
+    }) }}
+    </div>
+    {{appMobileNavigation(navItems)}}
+    {{appNavigation(navItems)}}
+    <div class="app-pane__body app-width-container">
+      <div class="app-pane__subnav">
+          {{appSubNavigation(navItems)}}
+      </div>
+      <div class="app-pane__content">
+        <main id="main-content" class="app-content" role="main">
+            {% block pageContent %}{% endblock %}
+            {% block pageContentFoot %}{% endblock %}
+          </main>
+      </div>
+      {% include "_back-to-top.njk" %}
+    </div>
+    {% include "_footer.njk" %}
+  </div>
+{% endblock %}
+  {% block pageScripts %}
+{% endblock %}

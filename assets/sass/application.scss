@@ -1,0 +1,279 @@
+// GOV.UK-specific variables
+$govuk-global-styles: true;
+$govuk-page-width: 1100px;
+$govuk-new-link-styles: true;
+$govuk-font-family: Helvetica, Arial, sans-serif;
+$govuk-blue: #1d70b8;
+
+// App-specific variables
+$app-light-grey: #f8f8f8;
+$app-code-color: #d13118;
+
+// DWP colour palette
+$dwp-brand-colour: #513184;
+$app-purple: $dwp-brand-colour;
+$app-light-purple: #7c57cc;
+$app-mid-purple: #38206b;
+$app-dark-purple: #1c1037;
+
+// Overrides
+$govuk-link-colour: $app-purple;
+$govuk-link-hover-colour: $app-dark-purple;
+$govuk-link-visited-colour: $app-light-purple;
+
+@import "node_modules/govuk-frontend/govuk/all";
+@import "node_modules/@dwp/frontend/components/timeline/timeline";
+@import "node_modules/@dwp/frontend/components/internal-header/internal-header";
+@import "node_modules/@dwp/frontend/components/key-details-bar/key-details-bar";
+
+@import "contact-panel";
+@import "back-to-top";
+@import "app-pane";
+@import "app-phase-banner";
+@import "header";
+@import "navigation";
+@import "masthead";
+@import "highlight";
+@import "tabs";
+@import "mobile-navigation";
+@import "sub-navigation";
+@import "example";
+@import "cookie-banner";
+@import "timeout-warning";
+@import "toggle-to-welsh";
+
+
+.govuk-skip-link {
+  text-decoration: underline !important;
+}
+
+// Override utilities
+.dwp-\!-background-grey {
+  background-color: $app-light-grey !important;
+}
+
+.dwp-\!-background-dark-grey {
+  background-color: govuk-colour("dark-grey") !important;
+}
+
+.dwp-\!-color-white {
+  color: white !important;
+}
+
+.dwp-\!-list-inline {
+  display: inline-block !important;
+}
+
+.dwp-\!-no-bullet {
+  list-style: none !important;
+}
+
+// Custom widths
+
+.govuk-grid-column-one-third-from-mobile {
+  @include govuk-grid-column(one-third, $at: mobile);
+}
+
+.govuk-grid-column-two-thirds-from-mobile {
+  @include govuk-grid-column(two-thirds, $at: mobile);
+}
+
+// App utility classes
+.js-enabled .app-js-hidden {
+  display: none;
+}
+
+// We don't change the global width container width so that examples are the current width.
+.app-width-container {
+  @include govuk-width-container(1100px);
+}
+
+.app-content {
+
+  padding: govuk-spacing(3) govuk-spacing(0) govuk-spacing(4);
+
+  @include govuk-media-query($from: tablet) {
+    padding: govuk-spacing(6);
+    padding-right: 0;
+    padding-bottom: govuk-spacing(8);
+  }
+
+  h1 {
+    max-width: 15em;
+  }
+
+  h2 {
+    max-width: 20em;
+  }
+
+  h3 {
+    max-width: 30em;
+  }
+
+  h4,
+  h5,
+  h6,
+  p,
+  ul:not(.app-tabs__list),
+  ol,
+  img,
+  video,
+  .app-table--constrained {
+    max-width: 38em;
+  }
+
+  .app-video__player,
+  img {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 722px;
+    height: auto;
+    @include govuk-responsive-margin(2, "top");
+    border: 1px solid $govuk-border-colour;
+  }
+
+  img {
+    padding: govuk-spacing(2);
+    @include govuk-responsive-margin(6, "bottom");
+  }
+
+  .app-video__player {
+    @include govuk-responsive-margin(2, "bottom");
+  }
+
+  .app-video__player:focus {
+    border-color: $govuk-focus-text-colour;
+    outline: $govuk-focus-width solid $govuk-focus-text-colour;
+    box-shadow: 0 0 0 ($govuk-focus-width * 2) $govuk-focus-colour;
+  }
+
+  .app-video__description {
+    @include govuk-responsive-margin(6, "bottom");
+  }
+
+
+  // IE8 does not support the video element, so we hide the element entirely.
+  @if $govuk-is-ie8 == true {
+    .app-video {
+      display: none;
+    }
+  }
+
+  // Fix monospace font size when used with relative typography
+  //
+  // Browsers automatically reduce monospace font size
+  //
+  // [1] restores the normal text size in Mozilla Firefox, Google Chrome,
+  // and Safari; this unusual style rule should also be used anywhere where
+  // you would otherwise set the font-family property to ‘monospace’.
+  // [2] restores the normal text size in Internet Explorer and Opera.
+  //
+  // source:
+  // http://code.iamkate.com/html-and-css/fixing-browsers-broken-monospace-font-handling/
+  code {
+    font-family: monospace, monospace; // [1]
+    font-size: 1em; // [2]
+  }
+}
+
+.app-example-page {
+  padding: govuk-spacing(5);
+}
+
+.no-js {
+  // Adjustments in app-pane layout as it has toc below
+  .app-pane__content .app-content {
+
+    @include govuk-media-query($until: tablet) {
+      padding-bottom: 10px;
+    }
+  }
+}
+
+// Add styling for inline code
+li code,
+td code,
+p code {
+  padding: 0 govuk-spacing(1);
+  color: $app-code-color;
+  background-color: govuk-colour("light-grey");
+}
+
+// rewove these conflicts and replace elements affected with class selectors
+.app-prose-scope {
+
+  h1,
+  .govuk-heading-xl {
+    @extend %govuk-heading-xl;
+  }
+
+  h2,
+  .govuk-heading-l {
+    @extend %govuk-heading-l;
+  }
+
+  h3,
+  .govuk-heading-m {
+    @extend %govuk-heading-m;
+  }
+
+  h4,
+  .govuk-heading-s {
+    @extend %govuk-heading-s;
+  }
+
+  p {
+    @extend %govuk-body-m;
+  }
+
+  strong,
+  b {
+    @include govuk-typography-weight-bold;
+  }
+
+  ul,
+  ol {
+    @extend %govuk-list;
+  }
+
+  ol {
+    @extend %govuk-list--number;
+  }
+
+  ul {
+    @extend %govuk-list--bullet;
+  }
+
+  a {
+    @extend %govuk-link;
+  }
+
+  hr {
+    @extend %govuk-section-break;
+    @extend %govuk-section-break--visible;
+    @extend %govuk-section-break--xl;
+  }
+
+  pre + h2 {
+    padding-top: govuk-spacing(4);
+  }
+
+  pre + h3,
+  pre + h4 {
+    padding-top: govuk-spacing(2);
+  }
+
+  // Ensure that content at the bottom of the page does not have margins
+  // so that they line up with the back to top link.
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+pre {
+  margin: 0;
+  padding: 40px 20px 20px 20px;
+  overflow: auto;
+  font-size: 16px;
+  @include govuk-responsive-margin(4, "bottom");
+}

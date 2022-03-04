@@ -1,0 +1,30 @@
+<dialog
+  class="govuk-timeout-warning dialog"
+  data-module="govuk-timeout-warning"
+  id="js-timeout-warning"
+  data-minutes-idle-timeout="{{ data['modalIdleTime'] or '0.1'}}"
+  data-minutes-modal-visible="{{ data['modalVisibleTime'] or '0.2'}}"
+  data-url-redirect="timeout-notsignedin"
+  aria-live="polite"
+  aria-labelledby="dialog-title"
+  aria-describedby="at-timer"
+>
+  <h1 id="dialog-title" class="govuk-heading-l">
+    Your application will be closed soon
+  </h1>
+  <div class="govuk-body">
+    <div class="timer" aria-hidden="true" aria-relevant="additions"></div>
+    <div
+      class="at-timer govuk-visually-hidden"
+      role="status"
+      id="at-timer"
+    ></div>
+  </div>
+  <button
+    class="govuk-button dialog-button js-dialog-close"
+    data-module="govuk-button"
+  >
+    Continue
+  </button>
+</dialog>
+

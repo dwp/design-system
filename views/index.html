@@ -1,0 +1,68 @@
+{% extends "landing.html" %}
+{% set pageTitle = "Home" %}
+
+{% block pageContent %}
+<div class="app-masthead">
+  <div class="app-width-container">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds-from-desktop">
+        <h1 class="govuk-heading-xl app-masthead__title">Design your service using DWP components and&nbsp;patterns</h1>
+        <p class="app-masthead__description">Use this design system to make your service consistent with DWP services. Learn from the research and experience of other service teams and avoid repeating work that’s already been done.</p>
+      </div>
+      <div class="govuk-grid-column-one-third-from-desktop">
+        <div class="app-masthead__new">
+          <h2 class="govuk-heading-l govuk-!-font-weight-bold dwp-!-color-white">Latest updates</h2>
+          {% markdown %}{% include "latest-updates/_index-updates.md" %}{% endmarkdown %}
+          <a href="/latest-updates" class="govuk-!-margin-10-from-mobile govuk-!-font-weight-bold dwp-!-color-white">View all updates</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="app-width-container">
+  <div class="govuk-main-wrapper govuk-main-wrapper--l">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds-from-desktop">
+        <h2 class="govuk-heading-l">Components</h2>
+        <p class="govuk-body">Components are reusable parts of the user interface that have been made to support a variety of applications.</p>
+      </div>
+    </div>
+    {% include "_component-index.njk" %}
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl govuk-!-margin-top-0">
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds-from-desktop">
+          <h2 id="community" class="govuk-heading-l">Patterns</h2>
+          <p class="govuk-body">Patterns are best practice design solutions for specific user-focused tasks and page types.</p>
+        </div>
+      </div>
+    {% include "_pattern-index.njk" %}
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl govuk-!-margin-top-0">
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds-from-desktop">
+          <h2 id="support" class="govuk-heading-l">Contribute</h2>
+          <p class="govuk-body">
+            The DWP Design System is <a class="govuk-link" href="/latest-updates/team">maintained by the DWP Design System team</a>. Anyone can contribute to it by proposing new components or patterns and sharing their research and findings.</p>
+        </div>
+      </div>
+    {% include "_contribute-index.njk" %}
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl govuk-!-margin-top-0">
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          {% include "_contact-panel.njk" %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

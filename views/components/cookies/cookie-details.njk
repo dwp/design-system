@@ -1,0 +1,198 @@
+{% from "table/macro.njk" import govukTable %}
+
+{% extends "landing.html" %}
+
+{% block pageTitle %}Details about cookies on this service{% endblock %}
+
+{% block pageContent %}
+<main class="govuk-main-wrapper app-content" role="main">
+  <div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Details about cookies on this service</h1>
+
+      <div class="page-description">
+        <p>We need to use some essential cookies to make the DWP Design System website work.</p>
+        <div class="govuk-inset-text">
+          <p>You can <a href="/cookie-policy">change which cookies you are happy for us to use</a>.</p>
+        </div>
+
+        <h2 class="govuk-heading-m">If your cookies are switched off</h2>
+        <p>You will see an error message when you try to use the website if your cookies are disabled.</p>
+        <p>How to turn cookies on depends on the
+        <a href="https://www.whatsmybrowser.org/" class="govuk-link" target="_blank" rel="noopener noreferrer">browser you are using</a>
+        and how up to date it is.</p>
+        <p>Find out how to change your settings for the most popular browsers, including:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="https://support.microsoft.com/en-us/products/windows?os=windows-10" class="govuk-link" target="_blank" rel="noopener noreferrer">Internet Explorer</a></li>
+          <li><a href="https://www.mozilla.org/en-US/?v=a" class="govuk-link" target="_blank" rel="noopener noreferrer">Mozilla Firefox</a></li>
+          <li><a href="https://support.google.com/accounts/answer/61416?hl=en" class="govuk-link" target="_blank" rel="noopener noreferrer">Google Chrome</a></li>
+          <li><a href="https://www.apple.com" class="govuk-link" target="_blank" rel="noopener noreferrer">Safari</a>, commonly used on iPads, iPhones and other Apple computers</li>
+        </ul>
+
+        <p>Find out <a href="http://www.aboutcookies.org/Default.aspx?page=1" class="govuk-link" target="_blank" rel="noopener noreferrer">how to manage cookies</a> for other browsers.</p>
+
+        <h3 class="govuk-heading-m">Cookies that measure website use</h3>
+        <p>We use Google Analytics software to collect information about how you use the website.
+        We use this information to improve this website.</p>
+        <div class="govuk-inset-text">
+          <p>We do not allow Google to use or share the data about how you use this site.</p>
+        </div>
+        <p>Google analytics cookies collect and store information about:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>the page you visit - what you click on when using the website</li>
+          <li>how long you spend on each page</li>
+          <li>how you got to the website</li>
+        </ul>
+
+        {{ govukTable({
+          caption: "Google analytics cookies",
+          classes: "cookie-table",
+          head: [
+            {
+              text: "Name"
+            },
+            {
+              text: "Purpose"
+            },
+            {
+              text: "Expires"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "_ga"
+              },
+              {
+                text: "Counts how many people visit the website by tracking if they've visited before."
+              },
+              {
+                text: "60 minutes or when you close your browser"
+              }
+            ],
+            [
+              {
+                text: "_gat"
+              },
+              {
+                text: "Counts how many pages are viewed and how often."
+              },
+              {
+                text: "10 minutes"
+              }
+            ]
+          ]
+        }) }}
+        <h3 class="govuk-heading-m">Cookies that help performance</h3>
+        <p>We use some cookies to help make sure this website works consistently for everyone.</p>
+
+        {{ govukTable({
+          caption: "Amazon Web Services cookies",
+          classes: "cookie-table",
+          head: [
+            {
+              text: "Name"
+            },
+            {
+              text: "Purpose"
+            },
+            {
+              text: "Expires"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "AWSALB"
+              },
+              {
+                text: "Cookies help us to allocate server traffic to make the user experience as smooth as possible."
+              },
+              {
+                text: "1 day"
+              }
+            ]
+          ]
+        }) }}
+
+        <h3 class="govuk-heading-m">Cookies that help keep your information secure</h3>
+        <p>We use session cookies to keep your information secure as you move back and forward through the website.</p>
+        <p>These cookies are automatically removed from your computer when you complete your application or if you:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>do not do anything for 60 minutes</li>
+          <li>close your browser</li>
+          <li>switch off your computer</li>
+        </ul>
+
+        {{ govukTable({
+          caption: "Security cookies",
+          classes: "cookie-table",
+          head: [
+            {
+              text: "Name"
+            },
+            {
+              text: "Purpose"
+            },
+            {
+              text: "Expires"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "sessionID"
+              },
+              {
+                text: "To remember where you are in the application and your previous answers so you can move back and forward through the website."
+              },
+              {
+                text: "15 minutes or when you close your browser"
+              }
+            ]
+          ]
+        }) }}
+
+        <h2 class="govuk-heading-m">Cookies message</h2>
+        <p>You may see a banner when you visit this website inviting you to accept cookies or review your settings.
+        We will set cookies so that your computer knows you have seen it and not to show it again, and also to store your settings.</p>
+
+        {{ govukTable({
+          caption: "Service cookies",
+          classes: "cookie-table",
+          head: [
+            {
+              text: "Name"
+            },
+            {
+              text: "Purpose"
+            },
+            {
+              text: "Expires"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "seen_cookie_message"
+              },
+              {
+                text: "Saves your cookie consent settings"
+              },
+              {
+                text: "1 year"
+              }
+            ]
+          ]
+        }) }}
+
+      </div>
+
+    </div>
+  </div>
+  </div>
+</main>
+{% endblock %}

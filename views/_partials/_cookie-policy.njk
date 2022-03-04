@@ -1,0 +1,113 @@
+{% from "button/macro.njk" import govukButton %}
+{% from "fieldset/macro.njk" import govukFieldset %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "button/macro.njk" import govukButton %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+
+
+{% extends "landing.html" %}
+
+{% block pageTitle %}How we use cookies{% endblock %}
+
+{% block pageContent %}
+<main class="govuk-main-wrapper app-content" role="main">
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if validationError %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: [
+            {
+              text: "Select a cookie option",
+              href: "#cookie"
+            }
+          ]
+        }) }}
+      {% endif %}
+
+      <h1 class="govuk-heading-xl">How we use cookies</h1>
+
+      <div class="page-description">
+        <p>A cookie is a small file which is stored on your device for a short time to make this service work.</p>
+        <p>We use cookies that are:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>essential for the service to work, like remembering your answers to certain questions</li>
+          <li>optional and will not stop the service from working, but will give us information to help us make it better</li>
+        </ul>
+        <p>We will not:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>use any essential cookies until you use the service</li>
+          <li>use any optional cookies unless you tell us we can</li>
+          <li>be able identify you through using cookies</li>
+        </ul>
+
+        <h2 class="govuk-heading-l">Optional cookie settings</h2>
+        <h3 class="govuk-heading-s">Analytics cookies</h3>
+        <p>We use Google Analytics to get information about how you use this service and help us make it better.</p>
+
+        <form class="form" action="cookie-policy" method="post" novalidate>
+          {% if validationError %}
+            {{ govukRadios({
+              classes: "govuk-radios--inline",
+              idPrefix: "cookie",
+              name: "cookieChoice",
+              fieldset: {
+                legend: {
+                  text: "Can we use cookies to help us improve the service?",
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              errorMessage: {
+                text: "Select a cookie option"
+              },
+              items: [
+                {
+                  text: "Yes",
+                  value: "accept"
+                },
+                {
+                  text: "No",
+                  value: "reject"
+                }
+              ]
+            }) }}
+          {% else %}
+            {{ govukRadios({
+            classes: "govuk-radios--inline",
+            idPrefix: "cookie",
+            name: "cookieChoice",
+            fieldset: {
+              legend: {
+                text: "Can we use cookies to help us improve the service?",
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            items: [
+              {
+                text: "Yes",
+                value: "accept",
+                checked: cookieChoice === "accept"
+              },
+              {
+                text: "No",
+                value: "reject",
+                checked: cookieChoice === "reject"
+              }
+            ]
+            }) }}
+          {% endif %}
+
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+        </form>
+       <p class="cookie-detail"><a href="/cookie-details">Find out more about cookies on this service</a></p>
+
+       </div>
+    </div>
+  </div>
+</div>  
+</main>
+{% endblock %}

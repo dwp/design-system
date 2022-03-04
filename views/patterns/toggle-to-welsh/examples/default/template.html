@@ -1,0 +1,27 @@
+{% from "internal-header/macro.njk" import dwpHeader %}
+
+  {{ dwpHeader({
+    name: "Apply for a benefit"
+  }) }}
+
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      alpha
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service – your <a class="govuk-link" href="#">feedback (opens in a new window)</a> will help us to improve it.
+    </span>
+  </p>
+</div>
+<nav class="dwp-language-toggle" aria-label="Language toggle">
+  <ul class="dwp-language-toggle__list">
+    <li class="dwp-language-toggle__list-item">
+      English
+    </li>
+    <li lang="cy" class="dwp-language-toggle__list-item">
+      <span class="govuk-visually-hidden">Newid yr iaith ir Gymraeg</span>
+      <a href="?lang=cy" class="govuk-link">Cymraeg</a>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,17 @@
+{% extends "guidance.html" %}
+
+{% set sectionId = "components" %}
+{% set pageTitle = "Components" %}
+{% set pageId = "components" %}
+
+{% block pageContent %}
+  <div class="app-prose-scope">
+    {% markdown %}{% include "./README.md" %}{% endmarkdown %}
+    {% include "_component-table.njk" %}
+  </div>
+{% endblock %}
+{% block pageContentFoot %}
+  <div class="app-prose-scope">
+    <p>See all the <a href="https://github.com/dwp/design-system-community-backlog/issues?q=is%3Aissue+is%3Aopen+label%3Acomponent" class="govuk-link govuk-!-font-weight-bold">components in the backlog</a></p>
+  </div>
+{% endblock %}
