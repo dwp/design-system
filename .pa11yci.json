@@ -1,0 +1,60 @@
+{
+  "defaults": {
+    "ignore": [
+      "color-contrast"
+    ],
+    "timeout": 10000,
+    "reporters": [
+      "cli",
+      [
+        "./node_modules/pa11y-ci-reporter-html",
+        {
+          "destination": "./pa11y-ci-report",
+          "includeZeroIssues": true
+        }
+      ]
+    ],
+    "standard": "WCAG2AA",
+    "runners": [
+      "htmlcs",
+      "axe"
+    ]
+  },
+  "urls": [
+    "http://localhost:3000/",
+    "http://localhost:3000/get-started",
+    "http://localhost:3000/get-started/for-designers",
+    "http://localhost:3000/community",
+    "http://localhost:3000/community/roadmap",
+    "http://localhost:3000/community/contribute",
+    "http://localhost:3000/community/backlog",
+    "http://localhost:3000/community/latest-updates",
+    "http://localhost:3000/community/team",
+    "http://localhost:3000/patterns",
+    "http://localhost:3000/patterns/retired-patterns",
+    "http://localhost:3000/patterns/retired-patterns/consent-to-cookies",
+    "http://localhost:3000/patterns/add-another-thing",
+    "http://localhost:3000/patterns/manage-a-session-timeout",
+    "http://localhost:3000/patterns/manage-a-session-timeout/examples/default",
+    "http://localhost:3000/patterns/manage-a-session-timeout/examples/signedin",
+    "http://localhost:3000/patterns/manage-a-session-timeout/examples/timedout-signedin",
+    "http://localhost:3000/patterns/manage-a-session-timeout/examples/notsignedin",
+    "http://localhost:3000/patterns/manage-a-session-timeout/examples/timedout-notsignedin",
+    "http://localhost:3000/patterns/manage-a-session-timeout/examples/timedout-nojs",
+    "http://localhost:3000/patterns/make-a-declaration",
+    "http://localhost:3000/patterns/make-a-declaration/examples/default",
+    "http://localhost:3000/patterns/toggle-to-welsh",
+    "http://localhost:3000/patterns/toggle-to-welsh/examples/default",
+    "http://localhost:3000/patterns/toggle-to-welsh/examples/start-page",
+    "http://localhost:3000/components/hint-text",
+    "http://localhost:3000/components/timeline",
+    "http://localhost:3000/components/timeline/examples/default",
+    "http://localhost:3000/components/internal-services-header",
+    "http://localhost:3000/components/internal-services-header/examples/default",
+    "http://localhost:3000/components/internal-services-header/examples/signin",
+    "http://localhost:3000/components/key-details-bar",
+    "http://localhost:3000/components/key-details-bar/examples/default",
+    "http://localhost:3000/cookie-details",
+    "http://localhost:3000/cookie-policy"
+  ]
+}

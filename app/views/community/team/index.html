@@ -1,0 +1,19 @@
+{% extends "guidance.html" %}
+
+{% set sectionId = "community" %}
+{% set pageTitle = "The team" %}
+{% set pageId = "team" %}
+
+{% block pageContent %}
+
+  {% markdown %}{% include "./README.md" %}{% endmarkdown %}
+  {% include "latest-updates/_team-simone.njk" %}
+  {% include "latest-updates/_team-jon.njk" %}
+  {% include "latest-updates/_team-daniella.njk" %}
+  {% include "latest-updates/_team-martin.njk" %}
+
+  <div class="govuk-!-margin-top-4">
+    {% include "_contact-panel.njk" %}
+  </div>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% for section in params %}
+  <h2>{{section.title}}</h2>
+  <ul class="govuk-list govuk-list--bullet">
+    {% for item in section.items %}
+      <li>
+        <a href="{{item.url}}">{{item.name}}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endfor %}

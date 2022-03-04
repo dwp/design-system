@@ -1,0 +1,113 @@
+/* ==========================================================================
+   #TABS
+   ========================================================================== */
+
+.app-tabs {
+  background: govuk-colour("white");
+  margin-bottom: govuk-spacing(6);
+}
+
+
+.app-tabs__list {
+  border: 1px solid $govuk-border-colour;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0; // Remove white space when using display: inline-block
+
+}
+
+
+.app-tabs__list-item {
+  display: inline-block;
+  margin: 0;
+  margin-bottom: 0;
+
+}
+
+
+.app-tabs__tab {
+  @include govuk-font($size: 19, $weight: bold);
+  background-color: govuk-colour("white");
+  color: govuk-colour("purple");
+  display: inline-block;
+  padding: 20px;
+  position: relative;
+  border: 0;
+  cursor: pointer;
+  text-decoration: underline;
+
+  &:link,
+  &:active,
+  &:visited {
+    background-color: govuk-colour("white");
+    color: govuk-colour("purple");
+  }
+
+  &:hover {
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: 3px;
+    color: govuk-colour("light-purple");
+  }
+
+  &:focus {
+    z-index: 2; // Focus state must sit above
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: 3px;
+    color: $govuk-focus-text-colour;
+    background-color: $govuk-focus-colour;
+    box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
+    border-color: $govuk-focus-text-colour;
+    text-decoration: none;
+  }
+
+  &[aria-expanded=true] {
+    color: govuk-colour("black");
+    margin-bottom: -1px;
+    padding-bottom: 21px;
+    border-left: 1px solid $govuk-border-colour;
+    border-right: 1px solid $govuk-border-colour;
+  }
+
+  &:first-of-type {
+    &[aria-expanded=true] {
+      border-left: 0;
+    }
+  }
+
+}
+
+
+.app-tabs__panel {
+  @include govuk-font($size: 19);
+  border: 1px solid $govuk-border-colour;
+  border-top: 0;
+  position: relative;
+  padding: 20px;
+
+  *:last-child {
+    margin-bottom: 0; // Remove margin bottom from any last element
+  }
+
+  p {
+    background-color: govuk-colour("white");
+    max-width: 100% !important;
+    padding: govuk-spacing(2);
+  }
+
+  &__details {
+    margin-bottom: 16px;
+    p {
+      padding: 0;
+    }
+  }
+
+  &__code {
+    position: relative;
+  }
+}
+
+// add slight indent to css code snippet
+.hljs-attribute {
+  padding-left: 15px;
+}

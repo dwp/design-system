@@ -1,0 +1,32 @@
+.dwp-header {
+  background-color: #0b0c0c;
+  border-bottom: 0;
+  width: 100%;
+}
+
+.dwp-header__container {
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+
+.dwp-header__container--service-name {
+  width: 66.66%;
+  float: left;
+}
+
+.dwp-header__container--sign-in {
+  width: 33.33%;
+  float: right;
+}
+
+.sign-in {
+  float: right;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+@media (min-width: 40.0625em) {
+  .sign-in {
+    margin-top: 5px;
+  }
+}

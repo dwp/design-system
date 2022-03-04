@@ -1,0 +1,17 @@
+{% extends "guidance.html" %}
+
+{% set sectionId = "patterns" %}
+{% set pageTitle = "Patterns" %}
+{% set pageId = "patterns" %}
+
+{% block subNav %}
+{% endblock %}
+
+{% block pageContent %}
+  {% markdown %}{% include "./README.md" %}{% endmarkdown %}
+  {% include "_pattern-table.njk" %}
+{% endblock %}
+
+{% block pageContentFoot %}
+  <p>See all the <a href="https://github.com/dwp/design-system-community-backlog/issues?q=is%3Aissue+is%3Aopen+label%3Apattern" class="govuk-link govuk-!-font-weight-bold">patterns in the backlog</a></p>
+{% endblock %}

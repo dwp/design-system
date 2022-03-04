@@ -1,0 +1,22 @@
+{% extends "guidance.html" %}
+
+{% set sectionId = "patterns" %}
+{% set pageTitle = "Toggle to Welsh" %}
+{% set pageId = "toggle-to-welsh" %}
+
+{% block pageContent %}
+
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-4"><span class="govuk-caption-xl">Help users to</span> {{pageTitle}}</h1>
+
+  {{ govukTag({
+    classes: 'govuk-!-margin-bottom-8',
+    text: 'observed'
+  }) }}
+
+  {% markdown %}{% include "./README.md.njk" %}{% endmarkdown %}
+
+  <div class="govuk-!-margin-top-4">
+    {% include "_contact-panel.njk" %}
+  </div>
+
+{% endblock %}

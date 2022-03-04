@@ -1,0 +1,10 @@
+{% extends "guidance.html" %}
+
+{% set sectionId = "patterns" %}
+{% set pageTitle = "Retired patterns" %}
+{% set pageId = "retired-patterns" %}
+
+{% block pageContent %}
+  {% markdown %}{% include "./README.md.njk" %}{% endmarkdown %}
+  {% include "_contact-panel.njk" %}
+{% endblock %}

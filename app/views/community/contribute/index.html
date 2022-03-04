@@ -1,0 +1,10 @@
+{% extends "guidance.html" %}
+
+{% set sectionId = "community" %}
+{% set pageTitle = "Contribute" %}
+{% set pageId = "contribute" %}
+
+{% block pageContent %}
+  {% markdown %}{% include "./README.md" %}{% endmarkdown %}
+  {% include "_contact-panel.njk" %}
+{% endblock %}

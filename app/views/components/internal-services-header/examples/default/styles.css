@@ -1,0 +1,15 @@
+.dwp-header {
+  background-color: #0b0c0c;
+  border-bottom: 0;
+  width: 100%;
+}
+
+.dwp-header__container {
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+
+.dwp-header__container--service-name {
+  width: 66.66%;
+  float: left;
+}

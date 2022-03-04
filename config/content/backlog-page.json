@@ -1,0 +1,132 @@
+{
+  "backlogSections": [
+    {
+      "title": "In progress",
+      "items": [
+        {
+          "name": "Get help with an application or service",
+          "url": "https://github.com/dwp/design-system/issues/238"
+        }
+      ]
+    },
+    {
+      "title": "To do",
+      "items": [
+        {
+          "name": "Filters",
+          "url": "https://github.com/dwp/design-system-community-backlog/issues/28"
+        },
+        {
+          "name": "Contact preferences",
+          "url": "https://github.com/dwp/design-system-community-backlog/issues/51"
+        },
+        {
+          "name": "Navigation menu",
+          "url": "https://github.com/dwp/design-system-community-backlog/issues/25"
+        }
+      ]
+    },
+    {
+      "title": "Proposed",
+      "items": [
+        {
+          "name": "Advisor instructions/actions",
+          "url": "https://github.com/dwp/design-system-community-backlog/issues/30"
+        },
+        {
+          "name": "Claim start date",
+          "url": "https://github.com/dwp/design-system-community-backlog/issues/57"
+        },
+        {
+          "name": "Confirm action",
+          "url": "https://github.com/dwp/design-system-community-backlog/issues/29"
+        },
+        {
+          "name": "Confirmation of actions of agent screens",
+          "url": "https://github.com/dwp/design-system-community-backlog/issues/61"
+        },
+        {
+          "name": "Display CIS markers",
+          "url": "https://github.com/dwp/design-system-community-backlog/issues/56"
+        },
+        {
+          "name": "Error/Timeout pages when we cannot infer the language",
+          "url": "https://github.com/dwp/design-system-community-backlog/issues/65"
+        },
+        {
+          "name": "Find my address by postcode/house number",
+          "url": "https://github.com/dwp/design-system-community-backlog/issues/8"
+        },
+        {
+          "name": "Find someone",
+          "url": "https://github.com/dwp/design-system-community-backlog/issues/31"
+        },
+        {
+          "name": "Pagination control",
+          "url": "https://github.com/dwp/design-system-community-backlog/issues/53"
+        },
+        {
+          "name": "Presenting the amount and terms of financial support",
+          "url": "https://github.com/dwp/design-system-community-backlog/issues/32"
+        },
+        {
+          "name": "Search",
+          "url": "https://github.com/dwp/design-system-community-backlog/issues/27"
+        },
+        {
+          "name": "Staying safe online",
+          "url": "https://github.com/dwp/design-system-community-backlog/issues/5"
+        },
+        {
+          "name": "Upload documents",
+          "url": "https://github.com/dwp/design-system-community-backlog/issues/62"
+        }
+      ]
+    },
+    {
+      "title": "DWP Design Examples",
+      "items": [
+        {
+          "name": "Accessible date picker",
+          "url": "https://dwpdigital.atlassian.net/wiki/spaces/INTD/pages/132216489830/Accessible+date+picker"
+        },
+        {
+          "name": "Agent interfaces",
+          "url": "https://dwpdigital.atlassian.net/wiki/spaces/INTD/pages/132204463135/Agent+interfaces"
+        },
+        {
+          "name": "Alternative formats",
+          "url": "https://dwpdigital.atlassian.net/wiki/spaces/INTD/pages/132256924926/Alternative+Formats"
+        },
+        {
+          "name": "Asking for binary sex data",
+          "url": "https://dwpdigital.atlassian.net/wiki/spaces/INTD/pages/131986494178/Asking+for+binary+sex+data"
+        },
+        {
+          "name": "Capture International Addresses",
+          "url": "https://dwpdigital.atlassian.net/wiki/spaces/INTD/pages/132208788778/Capture"
+        },
+        {
+          "name": "Citizen facing Habitual Residency test [Residency]",
+          "url": "https://dwpdigital.atlassian.net/wiki/spaces/INTD/pages/131987087895/Citizen+facing+Habitual+Residency+test+Residency"
+        },
+        {
+          "name": "Find a citizen record (National Insurance number)",
+          "url": "https://dwpdigital.atlassian.net/wiki/spaces/INTD/pages/132105734313/Find+a+citizen+record+National+Insurance+number"
+        },
+        {
+          "name": "Get support to use the digital service",
+          "url": "https://dwpdigital.atlassian.net/wiki/spaces/INTD/pages/132095413448/Get+support+to+use+the+digital+service"
+        },
+        {
+          "name": "Print something",
+          "url": "https://dwpdigital.atlassian.net/wiki/spaces/INTD/pages/131986494319/Print+something"
+        },
+        {
+          "name": "Sign out of a service",
+          "url": "https://dwpdigital.atlassian.net/wiki/spaces/INTD/pages/132240245154/Sign+out+of+a+service"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{% from "key-details-bar/macro.njk" import dwpKeyDetailsBar %}
+
+{{ dwpKeyDetailsBar({
+  primaryIdentifier: {
+    text: 'Name:',
+    value: 'Jane Doe'
+  },
+  secondaryIdentifier: {
+    text: 'Nino:',
+    value: 'QQ 12 34 56 X'
+  },
+  status: {
+    text: 'Claim status:',
+    value: 'completed'
+  },
+  additionalData: [
+    {
+      value: "4 June 1972",
+      text: "Date of birth:"
+    },
+    {
+      value: "07777 900 900",
+      text: "Mobile number:"
+    },
+    {
+      value: "Welsh speaker",
+      text: "Language:"
+    }
+  ]
+}) }}

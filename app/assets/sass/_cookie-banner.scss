@@ -1,0 +1,46 @@
+/* Cookie banner */
+.cookie-banner,
+.cookie-banner-noscript {
+  background: #f3f2f1;
+  & form {
+    display: inline;
+  }
+}
+
+.cookie-banner--main,
+.cookie-banner--accept,
+.cookie-banner--reject {
+  margin-bottom: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.cookie-banner--reject:focus,
+.cookie-banner--accept:focus {
+  outline: none;
+}
+.cookie-banner--reject p,
+.cookie-banner--accept p,
+.cookie-banner-accept--hide,
+.cookie-banner-reject--hide,
+.cookie-banner--hide {
+  display: inline-block;
+}
+
+.cookie-banner--hide,
+.cookie-banner-accept--hide,
+.cookie-banner-reject--hide {
+  float: none;
+}
+
+@media (min-width: 840px) {
+  .cookie-banner--hide,
+  .cookie-banner-accept--hide,
+  .cookie-banner-reject--hide {
+    float: right;
+    margin-right: 30px;
+    width: auto;
+  }
+}

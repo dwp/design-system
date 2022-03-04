@@ -1,0 +1,86 @@
+Hint text gives brief additional information that helps people understand and answer a question.
+
+Hint text is an optional part of several GOV.UK components and patterns. This page sets out some general principles for using it well.
+
+## When to use this component
+Use hint text when users need help to answer a question. Only add it when there is a clear user need, and after you have first tried improving the question.
+
+Hint text can:
+
+- explain the interface: for example, 'Select all that apply.'
+- give examples of valid formats
+- give examples that help the user recognise their own situation
+- briefly clarify or define a term used in the question  
+- tell the user where they can find or look up the information you're asking for
+- briefly explain how the information will be used
+
+In agent-facing services you can also use hint text to alert the agent to any important or unexpected outcomes from their answer, for example:
+
+- 'This will be added to the claimant's journal.'
+- 'This will appear in the title of the To-Do.'
+
+As with public-facing services, you should first try to make the results of the action clearer so that hint text is not needed.
+
+## When not to use this component
+Do not use hint text for important information that a user cannot skip. Users will pay less attention to hint text than to the question and field label, so make sure these are descriptive and clear.
+
+Do not use hint text for explanations longer than a few words. The GOV.UK Design System has advice on [asking complex questions without using hint text](https://design-system.service.gov.uk/patterns/question-pages/#asking-complex-questions-without-using-hint-text). 
+
+Do not use hint text for general help content or to explain the wider service. Focus on helping users answer a single question.
+
+You do not have to add hint text to all the questions in a journey just because you have used it once. 
+
+## How it works
+
+### Keep it short
+Do not separate question and answer with lots of text. Hint text should be a few words only; ideally, one sentence.
+
+If you find yourself needing to write more, it’s probably because the question is confusing and needs to be clarified, improved, or split into more than one question.
+
+### End with a full stop
+End hint text with a full stop, even if it is an example of a format. 
+
+There is a great deal of variation in practice on when (and whether) to include full stops in hint text. [We have collected and summarised this here](https://github.com/dwp/design-system-community-backlog/discussions/81) and this recommendation is based on that research.
+
+### Text only
+Don't use hint text as a container for other elements like links or details components. If you need to include these elements, you are probably not writing hint text anyway.
+
+### Styling and code
+In govuk-frontend and the GOV.UK Design System, hint text is styled with the class `govuk-hint`. The GOV.UK Design System includes coded examples of hint text used with:
+
+- [Date input](https://design-system.service.gov.uk/components/date-input/)
+- [Checkboxes](https://design-system.service.gov.uk/components/checkboxes/)
+- [Radios (including hint text for individual radio items)](https://design-system.service.gov.uk/components/radios/)
+- [Text input](https://design-system.service.gov.uk/components/text-input/)
+- [Textarea](https://design-system.service.gov.uk/components/textarea/)
+
+
+## Accessibility
+### Contrast ratio
+Although the standard GOV.UK colour for hint text meets WCAG 2.1 level 'AAA' requirements for contrast when used on a white background, some people with dyslexia or visual impairments cannot read it. (This is a good reason not to use it for essential information.)
+
+If your users have difficulty reading hint text please share your research on the [Hint text discussion on GitHub](https://github.com/dwp/design-system-community-backlog/discussions/88). 
+
+### Screen readers
+Screen readers read out the entire hint text when users interact with the form element it relates to. This is another reason to keep hint text short.
+
+Don't include links in hint text. While screen readers will read link text, they will not tell the user it is a link.
+
+## Research
+Hint text is a very widely used component across DWP and other government services but we are interested in more research on how it works.
+
+[Department for Education research on one service](https://github.com/alphagov/govuk-design-system-backlog/issues/51#issuecomment-585218585) found that hint text helped reduce confusion by giving examples of job titles. 
+
+Many services have reported that users don't always notice hint text; we would like more documented evidence of this. 
+
+### Have you used this component?
+Please let us know what you found in the [Hint text discussion on GitHub](https://github.com/dwp/design-system-community-backlog/discussions/88) so we can make it better for everyone. For this component we’re particularly interested in:
+- when hint text has helped to reduce confusion
+- accessibility issues, including contrast levels and how screen readers handle hint text
+- when people do and do not notice hint text
+
+[Discuss hint text on GitHub](https://github.com/dwp/design-system-community-backlog/discussions/88)
+
+## Notes
+This is based closely on the work of Angela Moore in the DWP Universal Credit team and on research and guidance shared by HMRC and NHS Digital. 
+

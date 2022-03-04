@@ -1,0 +1,206 @@
+{% from "components/tabs/macro.njk" import govukTabs %}
+
+{% set cookiesHtml %}
+  {% code %}html
+  <div class="cookie-banner govuk-!-padding-top-4 govuk-!-padding-bottom-2" role="region" aria-label="cookie banner">
+    <div class="cookie-banner--main govuk-width-container govuk-body">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 id="cookie-banner-heading" class="govuk-heading-m">Can we use cookies in our services?</h2>
+          <p class="govuk-body">We’d like to use analytics cookies to collect information about how you use our services. We use this information to improve our service.</p>
+          <p class="govuk-body">You can <a class="cookie-policy" href="">read more about our cookies</a> before you decide.</p>
+          <button value="accept" name="cookieChoice" class="govuk-button cookie-banner-button--accept govuk-!-margin-bottom-4 govuk-!-margin-right-4" data-module="govuk-button">
+            Yes, I’m OK with analytics cookies
+          </button>
+          <button value="reject" name="cookieChoice" class="govuk-button cookie-banner-button--reject govuk-!-margin-bottom-4" data-module="govuk-button">
+            No, do not use analytics cookies
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="cookie-banner--accept govuk-width-container govuk-body hidden" tabindex="-1">
+      <p class="govuk-!-margin-top-1 govuk-!-margin-bottom-3">You’ve accepted analytics cookies. You can <a class="cookie-policy" href="/cookie-policy">change your cookie settings</a> at any time.</p>
+      <button value="hide-accept" name="confirmationHide" class="govuk-button cookie-banner-accept--hide govuk-link govuk-!-margin-top-1  govuk-!-margin-bottom-3" data-module="govuk-button">
+        Hide
+      </button>
+    </div>
+    <div class="cookie-banner--reject govuk-width-container govuk-body hidden" tabindex="-1">
+      <p class="govuk-!-margin-top-1 govuk-!-margin-bottom-3">You’ve rejected analytics cookies. You can <a class="cookie-policy" href="/cookie-policy">change your cookie settings</a> at any time.</p>
+      <button value="hide-reject" name="confirmationHide" class="govuk-button cookie-banner-reject--hide govuk-link govuk-!-margin-top-1  govuk-!-margin-bottom-3" data-module="govuk-button">
+        Hide
+      </button>
+    </div>
+  </div>
+  {% endcode %}
+{% endset %}
+
+{% set cookiesNunjucks %}
+  {% from "button/macro.njk" import govukButton %}
+
+  <div class="cookie-banner govuk-!-padding-top-4 govuk-!-padding-bottom-2" role="region" aria-label="cookie banner">
+
+    <div class="cookie-banner--main govuk-width-container govuk-body">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 id='cookie-banner-heading' class="govuk-heading-m">Can we use cookies in our services?</h2>
+          <p class="govuk-body">We’d like to use analytics cookies to collect information about how you use our services. We use this information to improve our service.</p>
+          <p class="govuk-body">You can <a class="cookie-policy" href="/cookie-policy" class="govuk-link">read more about our cookies</a> before you decide.</p>
+            {{ govukButton({
+              classes: 'cookie-banner-button--accept govuk-!-margin-bottom-4 govuk-!-margin-right-4',
+              text: 'Yes, I’m OK with analytics cookies',
+              name: 'cookieChoice',
+              value: 'accept'
+            }) }}
+            {{ govukButton({
+              classes: 'cookie-banner-button--reject govuk-!-margin-bottom-4',
+              text: 'No, do not use analytics cookies',
+              name: 'cookieChoice',
+              value: 'reject'
+            }) }}
+        </div>
+      </div>
+    </div>
+
+    <div class="cookie-banner--accept govuk-width-container govuk-body hidden" tabindex="-1">
+      <p class="govuk-!-margin-top-1 govuk-!-margin-bottom-3">You’ve accepted analytics cookies. You can <a class="cookie-policy" href="/cookie-policy" class="govuk-link">change your cookie settings</a> at any time.</p>
+      {{ govukButton({
+        classes: 'cookie-banner-accept--hide govuk-link govuk-!-margin-top-1  govuk-!-margin-bottom-3',
+        text: 'Hide',
+        name: 'confirmationHide',
+        value: 'hide-accept'
+      }) }}
+    </div>
+
+    <div class="cookie-banner--reject govuk-width-container govuk-body hidden" tabindex="-1">
+      <p class="govuk-!-margin-top-1 govuk-!-margin-bottom-3">You’ve rejected analytics cookies. You can <a class="cookie-policy" href="/cookie-policy" class="govuk-link">change your cookie settings</a> at any time.</p>
+      {{ govukButton({
+        classes: 'cookie-banner-reject--hide govuk-link govuk-!-margin-top-1  govuk-!-margin-bottom-3',
+        text: 'Hide',
+        name: 'confirmationHide',
+        value: 'hide-reject'
+      }) }}
+    </div>
+
+  </div>
+
+{% endset %}
+
+This pattern helps users to add another thing of the same type. Items are added one by one to a summary list page where the user can also change or remove previous items.
+
+## When to use this pattern
+Use this pattern when a user can add more than one item of the same type.
+
+## When not to use this pattern
+Do not use this pattern to collect information about items of different types. Instead consider using a separate instance of this pattern for each type.
+
+## How it works
+
+The basic flow is:
+
+1. Question page or pages for an item 
+2. Summary list page with options to add another item, change or remove existing items, or continue the journey
+3. If a user chooses to add another item they return to the first question page for the new item
+
+<img src="/public/images/add-another-thing/add-another-single-page.svg" alt="">
+
+For complex items with many fields or with more than one question page, include a [Check answers page](https://design-system.service.gov.uk/patterns/check-answers/) after the last question and before the summary list page.
+
+<img src="/public/images/add-another-thing/add-another-multi-page.svg" alt="">
+
+This loop can be repeated as many times as your service allows. 
+
+### Summary list page
+After adding each item, the user is shown a summary list of what they have added so far and can:
+- change or remove previous items
+- add another item of the same type
+- continue to the next step in the service 
+
+This uses the GOV.UK [Summary list](https://design-system.service.gov.uk/components/summary-list/) with a 'Remove' link added for each item alongside the 'Change' link ([see how the HMRC Add to a list pattern does this](https://design.tax.service.gov.uk/hmrc-design-patterns/add-to-a-list/)).
+
+The 'Add another' button is a standard GOV.UK [secondary button](https://design-system.service.gov.uk/components/button/) which returns the user to the first question page for a new item.
+
+### Changing and removing items from the summary list page
+On the summary list page each item has a 'Change' link and a 'Remove' link.
+
+The 'Change' link works differently for single page items and multi-page items.
+
+If each item only has one question page, selecting 'Change' returns the user to that item's question page with the previous answers prepopulated.
+<img src="/public/images/add-another-thing/add-another-single-page-change-remove.svg" alt="">
+
+If each item has several question pages and a Check answers page, selecting 'Change' returns the user to the item's Check answers page. From there they can change individual answers.
+<img src="/public/images/add-another-thing/add-another-multi-page-change-remove.svg" alt="">
+
+Selecting 'Remove' on the summary list page sends the user to a question page asking if they are sure they want to remove that item. From here they return to the updated summary list page.
+
+## Things to consider
+Think about how adding or removing items might alter the onward journey. For example removing items might affect eligibility, or a service might pass applications with multiple items to an agent.
+
+Decide which information from each item will appear on the summary list page. It may be useful to show more than one field for each item, for example name and date of birth or vehicle registration and model. 
+
+If there is a Check answers page at the end of the overall online journey, think about how items added to the list will be represented there and where the 'Change' links from that page will go. 
+
+If at least one item is required, consider how the summary list will behave when a user wants to remove the only item. You might decide that this item can only be changed, not removed.  
+
+If there is a maximum number of items, make this clear to the user. For example, you might include text to show how many more items can be added and display an error message if they try to add too many items.
+
+Check that your service can make 'Back' links work within the Add another loop. If not, consider how users can exit the loop without losing their progress.
+
+
+## Content
+You may need error or validation messages for:
+- when too many items are added
+- when the user tries to remove the only item
+
+Keep the text of the secondary 'Add another' button short. This may mean using a short name for the item you are adding: for example, 'Add another condition' rather than 'Add another health condition to your application'.  
+
+Use the same word for an item on question pages, summary list heading and the 'Add another' button. For example: 
+
+> - Add a vehicle
+> - You have added 4 vehicles
+> - Add another vehicle
+
+When asking a user for confirmation before removing an item, it can be helpful to include the item name in the radio label, like this:
+
+> - Yes, remove [item name]
+> - No
+
+## Accessibility
+On the summary list page, use visually hidden text to give each 'Change' and 'Remove' link a unique and descriptive name: 
+
+`<a class="govuk-link" href="#">`
+`Change`
+`<span class="govuk-visually-hidden">Elizabeth Kean</span>`
+`</a>`
+
+There is a [known issue with some screen readers and visually hidden text](https://github.com/alphagov/govuk-frontend/issues/1643) where spaces between words are omitted. 
+
+## Research
+This pattern is based on the [HMRC 'Add to a list' pattern](https://design.tax.service.gov.uk/hmrc-design-patterns/add-to-a-list/) but we recommend using a secondary button instead of radios to add new items. This follows [research from HMRC in 2019 which found usability issues with radios](https://github.com/alphagov/govuk-design-system-backlog/issues/21#issuecomment-474790592).
+
+Follow this pattern instead of cloning fields on the same screen and then adding all items at once. [Research on this approach at Ministry of Justice](https://github.com/ministryofjustice/moj-frontend/discussions/203#using-the-existing-component) found that it could cause performance and validation problems; it also makes it more difficult for users to fix validation errors as they go.
+
+### Services using this pattern
+- Manage Child Maintenance Payments 
+
+### Have you used this pattern?
+Please let us know what you found so we can make it better for everyone. There is an [open discussion for this pattern on GitHub](https://github.com/dwp/design-system-community-backlog/discussions/87) where you can share anything you think might be useful.
+
+We're particularly interested in:
+- research with users with access needs
+- how well users can keep track of which item they are adding
+
+[Discuss Add another thing on GitHub](https://github.com/dwp/design-system-community-backlog/discussions/87)
+
+
+## Notes
+Other departments have similar patterns:
+- [Add to a list (HMRC)](https://design.tax.service.gov.uk/hmrc-design-patterns/add-to-a-list/)
+- [Add multiple things (Home Office)](https://design.homeoffice.gov.uk/patterns/add-multiple-things)
+
+This pattern uses the following elements of the GOV.UK Design System:
+- [Summary list](https://design-system.service.gov.uk/components/summary-list/) 
+- [Check answers](https://design-system.service.gov.uk/patterns/check-answers/)
+- [Button](https://design-system.service.gov.uk/components/button/)
+
+
+

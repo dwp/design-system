@@ -1,0 +1,160 @@
+{
+  "navItems": [
+    {
+      "title": "Get started",
+      "id": "get-started",
+      "link": "/get-started",
+      "subsections": [
+        {
+          "sectionHeading": "",
+          "subsections": [
+            {
+              "title": "For designers",
+              "id": "for-designers",
+              "link": "/get-started/for-designers",
+              "subsections": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Components",
+      "id": "components",
+      "link": "/components",
+      "subsections": [
+        {
+          "sectionHeading": "",
+          "subsections": [
+            {
+              "title": "Hint text",
+              "id": "hint-text",
+              "link": "/components/hint-text",
+              "sectionId": "",
+              "subsections": []
+            },
+            {
+              "title": "Internal services header",
+              "id": "internal-services-header",
+              "link": "/components/internal-services-header",
+              "sectionId": "",
+              "subsections": []
+            },
+            {
+              "title": "Key details bar",
+              "id": "key-details-bar",
+              "link": "/components/key-details-bar",
+              "sectionId": "",
+              "subsections": []
+            },
+            {
+              "title": "Timeline",
+              "id": "timeline",
+              "link": "/components/timeline",
+              "sectionId": "",
+              "subsections": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Patterns",
+      "id": "patterns",
+      "link": "/patterns",
+      "subsections": [
+        {
+          "sectionHeading": "",
+          "subsections": [
+            {
+              "title": "Add another thing",
+              "id": "add-another-thing",
+              "link": "/patterns/add-another-thing",
+              "sectionId": "",
+              "subsections": []
+            },
+            {
+              "title": "Make a declaration",
+              "id": "make-a-declaration",
+              "link": "/patterns/make-a-declaration",
+              "sectionId": "",
+              "subsections": []
+            },
+            {
+              "title": "Manage a session timeout",
+              "id": "manage-a-session-timeout",
+              "link": "/patterns/manage-a-session-timeout",
+              "sectionId": "",
+              "subsections": []
+            },
+            {
+              "title": "Toggle to Welsh",
+              "id": "toggle-to-welsh",
+              "link": "/patterns/toggle-to-welsh",
+              "sectionId": "",
+              "subsections": []
+            },
+            {
+              "title": "Retired patterns",
+              "id": "retired-patterns",
+              "link": "/patterns/retired-patterns",
+              "sectionId": "",
+              "subsections": [
+                {
+                  "title": "Consent to cookies",
+                  "id": "consent-to-cookies",
+                  "link": "/patterns/retired-patterns/consent-to-cookies",
+                  "sectionId": "",
+                  "subsections": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Community",
+      "id": "community",
+      "link": "/community",
+      "subsections": [
+        {
+          "sectionHeading": "",
+          "subsections": [
+            {
+              "title": "Latest updates",
+              "id": "latest-updates",
+              "link": "/community/latest-updates",
+              "subsections": []
+            },
+            {
+              "title": "Roadmap",
+              "id": "roadmap",
+              "link": "/community/roadmap",
+              "subsections": []
+            },
+            {
+              "title": "Backlog",
+              "id": "backlog",
+              "link": "/community/backlog",
+              "subsections": []
+            },
+            {
+              "title": "Contribute",
+              "id": "contribute",
+              "link": "/community/contribute",
+              "subsections": []
+            },
+            {
+              "title": "The team",
+              "id": "team",
+              "link": "/community/team",
+              "sectionId": "",
+              "subsections": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

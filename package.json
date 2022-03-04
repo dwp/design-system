@@ -1,0 +1,50 @@
+{
+  "name": "dwp-design-system",
+  "version": "2.0.0",
+  "description": "DWP Design System",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp",
+    "lint": "eslint --ignore-path .gitignore .",
+    "reports": "pa11y-ci"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dwp/design-system.git"
+  },
+  "author": "Adam Silver, Trevor Saint, Jon Hurrell, Simone Duca",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dwp/design-system"
+  },
+  "homepage": "https://github.com/dwp/design-system#readme",
+  "engines": {
+    "node": "12.13.1"
+  },
+  "dependencies": {
+    "@dwp/dwp-frontend": "^2.0.5",
+    "@dwp/eslint-config-base": "6.0.0",
+    "cookie-parser": "1.4.6",
+    "dialog-polyfill": "0.5.6",
+    "express": "4.17.2",
+    "govuk-frontend": "4.0.0",
+    "gray-matter": "4.0.3",
+    "gulp": "4.0.2",
+    "gulp-clean": "0.4.0",
+    "gulp-nodemon": "2.5.0",
+    "gulp-rename": "2.0.0",
+    "gulp-sass": "5.1.0",
+    "highlight.js": "11.4.0",
+    "js-beautify": "1.14.0",
+    "js-yaml": "4.1.0",
+    "markdown-it": "12.3.2",
+    "marked": "3.0.4",
+    "node-sass": "7.0.1",
+    "nunjucks": "3.2.3",
+    "nunjucks-highlight.js": "0.0.5",
+    "nunjucks-markdown": "2.0.1",
+    "pa11y-ci-reporter-html": "4.0.0",
+    "require-dir": "1.2.0",
+    "webpack-stream": "6.1.2"
+  }
+}

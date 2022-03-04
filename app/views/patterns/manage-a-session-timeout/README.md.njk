@@ -1,0 +1,87 @@
+This is currently experimental because more research is needed.
+
+Use this pattern to warn users that their session is about to end and explain what has happened after the session has timed out.
+
+A timeout warning helps services meet <a href="https://www.w3.org/TR/WCAG21/#timing-adjustable">WCAG 2.1 success criterion 2.2.1</a> 'Timing Adjustable'. This means a service must warn users before a session timeout occurs and allow them to extend the session.
+
+<a href="/patterns/manage-a-session-timeout/examples/default" target="_blank">Open the <span class="govuk-visually-hidden">manage a session timeout</span> example in a new window.</a>
+
+## When to use this pattern
+
+If your service has sessions, it will time the user out when they do not do anything for a set amount of time. This is for security reasons.
+
+You should warn a user at least 2 minutes before the end of this time. This will give them time to decide if they want to keep using the service.
+
+## How it works
+
+Show the user the timeout warning at least 2 minutes before the time runs out. This should be shown to the user in a modal dialog, also known as a pop-up. The modal dialog is based on the information in the <a href="https://github.com/alphagov/govuk-design-system-backlog/issues/30">GOV.UK Design System community backlog</a>.
+
+The user can:
+
+- select a button to stay in the service and not time out
+- press the escape key to close the warning, stay in the service and not time out
+- do nothing
+
+If the user does nothing within the time limit, redirect them to a timeout page. This page explains what has happened and gives them options for how to continue.
+
+### When the user is signed in to a service
+
+If a user signs in to your service, tell them they will be signed out if the time runs out. You should tell the user if any information they have entered will be deleted or not. You should include a countdown of the remaining time.
+
+<a href="/patterns/manage-a-session-timeout/examples/signedin" target="_blank">Open the <span class="govuk-visually-hidden">signed in to a service</span> example in a new window.</a>
+
+If the user does not continue the session they are redirected to a page that tells them the time has run out. You should tell the user if any information they have entered has been deleted or not.
+
+{{dsExample({
+  section: 'patterns',
+  name: 'manage-a-session-timeout',
+  description: 'session timeout pattern with a user signed in',
+  example: 'timedout-signedin',
+  height: 300
+})}}
+
+### When the user is not signed in to a service
+
+If a user is not signed in to your service, tell them their answers will be deleted if the time runs out. You should include a countdown of the remaining time.
+
+<a href="/patterns/manage-a-session-timeout/examples/notsignedin" target="_blank">Open the <span class="govuk-visually-hidden">not signed in to a service</span> example in a new window.</a>
+
+If the user does not continue the session they are redirected to a page that tells them the the time has run out.
+
+{{dsExample({
+  section: 'patterns',
+  name: 'manage-a-session-timeout',
+  description: 'session timeout pattern with a user signed out',
+  example: 'timedout-notsignedin',
+  height: 300
+})}}
+
+
+## If the user’s device is not running JavaScript
+
+If the user’s device is not running JavaScript, display a banner which warns them about the timeout. The banner should include the content specified above for if a user is signed in or not signed into a service.
+
+{{dsExample({
+  section: 'patterns',
+  name: 'manage-a-session-timeout',
+  description: 'session timeout pattern with not running JavaScript',
+  example: 'timedout-nojs',
+  height: 300
+})}}
+
+## Technical details
+
+The service team should work with security teams to agree the length of inactivity before the user is timed out of a session. The modal dialogue example is based on code from the <a href="https://github.com/hannalaakso/accessible-timeout-warning">GOV.UK Design System community backlog</a>. We recommend at least 20 minutes. Services should not limit the number of times users can extend their session.
+
+## Research on this pattern
+
+More research is needed on the pattern. If you have used the session timeout pattern, get in touch to share your research findings.
+
+You can help to improve this pattern by:
+
+<ul>
+<li>joining the <a href="https://github.com/dwp/design-system-community-backlog/discussions/66">discussion on GitHub</a></li>
+<li>adding to the <a href="https://github.com/dwp/design-system-community-backlog/issues/64">community backlog ticket</a></li>
+<li>using the <a href="https://dwpdigital.slack.com/archives/CJ11B0VFV"><span aria-hidden="true">#</span><span class="govuk-visually-hidden">hashtag</span>design-system channel on Slack</a></li>
+<li>emailing the Design System team on <a href="mailto:dwp-design-system@engineering.digital.dwp.gov.uk">dwp-design-system@engineering.digital.dwp.gov.uk</a></li>
+</ul>

@@ -1,0 +1,73 @@
+This pattern lets the user change the language used in a service from English to Welsh and from Welsh to English.
+
+## When to use this pattern
+
+Use the Welsh language toggle when a service is available in Welsh.
+
+## When not to use this pattern
+
+Do not use the Welsh language toggle when a service has no Welsh language option.
+
+## How it works
+
+You should put the toggle to Welsh on the right-hand side  below the:
+
+<ul>
+<li><a href="https://design-system.service.gov.uk/components/header/">GOV.UK header</a> or <a href="https://design-system.dwp.gov.uk/components/internal-services-header">internal services header</a></li>
+<li><a href="https://design-system.service.gov.uk/components/phase-banner/">phase banner</a></li>
+</ul>
+
+The Welsh language toggle should appear on every page of the service.
+
+When a user selects a language the page should change to the language selected. The user should be shown this language for the rest of the journey unless they decide to change to the other language option.
+
+When a user selects a language they should stay on the same page of the service. They should not be taken back to the beginning of the service.  Any information they have already entered should be kept.
+
+{{dsExample({
+  section: 'patterns',
+  name: 'toggle-to-welsh',
+  description: 'welsh toggle pattern',
+  example: 'default',
+  height: 300
+})}}
+
+### If your service is not able to use the toggle to Welsh pattern
+
+If you're unable to use the toggle to Welsh pattern on your service you should include a signpost to the Welsh language option on the start page of the service.
+
+Do not place the Welsh language option in the footer of the page.
+
+{{dsExample({
+  section: 'patterns',
+  name: 'toggle-to-welsh',
+  description: 'welsh language option pattern',
+  example: 'start-page',
+  height: 350
+})}}
+
+## Accessibility requirements
+
+To meet WCAG 2.1 success criteria [3.1.1 Language of page](https://www.w3.org/WAI/WCAG21/Understanding/language-of-page) and [3.1.2 Language of parts](https://www.w3.org/WAI/WCAG21/Understanding/language-of-parts) services should make sure the language attribute has been applied properly. This helps things like screen readers to pronounce the content correctly.
+
+In the English version of the service:
+- the page's default language must be set to English with `<html lang=en>`
+- the link text 'Cymraeg' must be set to Welsh with `lang=cy`
+
+In the Welsh version of the service:
+- the page's default language must be set to Welsh with `<html lang=cy>`
+- the link text 'English' must be set to English with `lang=en`
+
+The inactive toggle text ('English' on the English version of the site, 'Cymraeg' on the Welsh version) does not need a separate language attribute because it is in the default language of the page.
+
+## Research on this pattern
+
+More research is needed on this pattern.
+
+You can help to improve this pattern by:
+
+<ul>
+<li>joining the <a href="https://github.com/dwp/design-system-community-backlog/discussions/72">discussion on GitHub</a></li>
+<li>adding to the <a href="https://github.com/dwp/design-system-community-backlog/issues/26">community backlog ticket</a></li>
+<li>using the <a href="https://dwpdigital.slack.com/archives/CJ11B0VFV"><span aria-hidden="true">#</span><span class="govuk-visually-hidden">hashtag</span>design-system channel on Slack</a></li>
+<li>emailing the Design System team on <a href="mailto:dwp-design-system@engineering.digital.dwp.gov.uk">dwp-design-system@engineering.digital.dwp.gov.uk</a></li>
+</ul>

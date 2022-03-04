@@ -1,0 +1,163 @@
+{% from "details/macro.njk" import govukDetails %}
+
+{% if params.section.length %}
+  {% set section = (params.section + '/') %}
+{% else %}
+  {% set section = 'components/' %}
+{% endif %}
+
+{% if params.height %}
+  {% set height = params.height %}
+{% else %}
+  {% set height = 350 %}
+{% endif %}
+
+{% set componentDescription = params.description | lower if params.description %}
+
+{% set codeUrl = './app/views/' + section + params.name + '/examples/'+params.example+'/template.html' %}
+{% set stylesheetUrl = './app/views/' + section + params.name + '/examples/' + params.example + '/styles.css' %}
+{% set exampleUrl = '/' + section + params.name + '/examples/' + params.example %}
+
+{# get all code examples from file #}
+{% set htmlCode %}
+  {% code %}html
+    {{ getHtmlCode(codeUrl) | safe}}
+  {% endcode %}
+{% endset %}
+
+{% set cssExample = getCSSCode(stylesheetUrl) | safe %}
+{% if cssExample.length > 0 %}
+  {%- set cssCode -%}
+    {% code %}css
+      {{ cssExample | safe }}
+    {% endcode %}
+  {%- endset -%}
+{% endif %}
+
+{% set nunjucksCode %}
+  {% code %}js
+    {{ getNunjucksCode(codeUrl) | safe}}
+  {% endcode %}
+{% endset %}
+
+{# get nunjucks params #}
+{% if section == 'components/' %}
+  {% set paramsUrl = 'node_modules/@dwp/dwp-frontend/components/' + params.name + '/' + params.name + ".yaml" %}
+  {% set macroParams = getMacroParams(paramsUrl) %}
+  {% set macroOptions %}
+    <p>Use options to customise the appearance, content and behaviour of a component when using a macro, for example, changing the text.</p>
+    <p>Some options are required for the macro to work; these are marked as "Required" in the option description.</p>
+    <p>If you're using Nunjucks macros in production with "html" options, or ones ending with "html", you must sanitise the HTML to protect against  <a href="https://developer.mozilla.org/en-US/docs/Glossary/Cross-site_scripting">cross-site scripting exploits</a>.</p>
+
+    <table class="govuk-table app-example__table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header app-example__table-col" scope="col">Name</th>
+          <th class="govuk-table__header app-example__table-col" scope="col">Type</th>
+          <th class="govuk-table__header app-example__table-col" scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        {%- for param in getMacroParams(paramsUrl) -%}
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header app-example__table-col" scope="row">{{ param.name }}</th>
+            <td class="govuk-table__cell app-example__table-col">{{ param.type }}</td>
+            <td class="govuk-table__cell app-example__table-col">{% if (param.required === true) %}<strong>Required.</strong>{% endif %}{{ param.description }}</td>
+          </tr>
+        {%- endfor -%}
+      </tbody>
+    </table>
+  {% endset %}
+{% endif %}
+
+{# set tabs markup #}
+{% set tabs %}
+  {%- if cssCode -%}
+    <button class="app-tabs__tab" data-tab-identifier="html{{'-' + params.example}}" role="tab">HTML {% if componentDescription -%}<span class="govuk-visually-hidden">for {{ componentDescription }}</span>{% endif %}</button>
+    <button class="app-tabs__tab" data-tab-identifier="css{{'-' + params.example}}" role="tab">CSS {% if componentDescription -%}<span class="govuk-visually-hidden">for {{ componentDescription }}</span>{% endif %}</button>
+    <button class="app-tabs__tab" data-tab-identifier="nunjucks{{'-' + params.example}}" role="tab">Nunjucks {% if componentDescription -%}<span class="govuk-visually-hidden">for {{ componentDescription }}</span>{% endif %}</button>
+  {%- else -%}
+    <button class="app-tabs__tab" data-tab-identifier="html{{'-' + params.example}}" role="tab">HTML {% if componentDescription %}<span class="govuk-visually-hidden">for {{ componentDescription }}</span>{% endif %}</button>
+    <button class="app-tabs__tab" data-tab-identifier="nunjucks{{'-' + params.example}}" role="tab">Nunjucks {% if componentDescription %}<span class="govuk-visually-hidden">for {{ componentDescription }}</span>{% endif %}</button>
+  {%- endif -%}
+{% endset %}
+
+{# Set tab contents markup #}
+{% set tabContents %}
+  {%- if cssCode -%}
+    <div class="app-tabs__panel app-js-hidden" id="html{{'-' + params.example}}" role="tabpanel" tabindex="0">
+      <div class="app-example__code">
+        <button class="app-example__copy-code-button" aria-live="assertive">Copy code</button>
+        {{ htmlCode | safe }}
+      </div>
+    </div>
+    <div class="app-tabs__panel app-js-hidden" id="css{{'-' + params.example}}" role="tabpanel" tabindex="0">
+      <div class="app-example__code">
+        <button class="app-example__copy-code-button" aria-live="assertive">Copy code</button>
+        {{ cssCode | safe }}
+      </div>
+    </div>
+    <div class="app-tabs__panel app-js-hidden" id="nunjucks{{'-' + params.example}}" role="tabpanel" tabindex="0">
+      {%- if section == 'components/' -%}
+        {{ govukDetails({
+          summaryText: "Nunjucks macro options",
+          html: macroOptions | safe,
+          classes: "app-tabs__panel__details"
+        }) }}
+      {%- endif -%}
+      <div class="app-example__code">
+        <button class="app-example__copy-code-button" aria-live="assertive">Copy code</button>
+        {{ nunjucksCode | safe }}
+      </div>
+    </div>
+  {%- else -%}
+    <div class="app-tabs__panel app-js-hidden" id="html{{'-' + params.example}}" role="tabpanel" tabindex="0">
+      <div class="app-example__code">
+        <button class="app-example__copy-code-button" aria-live="assertive">Copy code</button>
+        {{ htmlCode | safe }}
+      </div>
+    </div>
+    <div class="app-tabs__panel app-js-hidden" id="nunjucks{{'-' + params.example}}" role="tabpanel" tabindex="0">
+      {%- if section == 'components/' -%}
+        {{ govukDetails({
+          summaryText: "Nunjucks macro options",
+          html: macroOptions | safe,
+          classes: "app-tabs__panel__details"
+        }) }}
+      {%- endif -%}
+      <div class="app-example__code">
+        <button class="app-example__copy-code-button" aria-live="assertive">Copy code</button>
+        {{ nunjucksCode | safe }}
+      </div>
+    </div>
+  {%- endif -%}
+{% endset %}
+
+{# Code Example Markup #}
+<div class="app-example-wrapper" data-module="app-tabs">
+  <div class="app-example app-example--tabs">
+    
+    <div class="app-example__toolbar">
+      <a href="{{ exampleUrl }}" class="app-example__new-window" target="_blank">
+        Open this <span class="govuk-visually-hidden">{{ componentDescription }}</span> example in a new tab
+      </a>
+    </div>
+
+    {% set example = getHtmlCode(codeUrl) %}
+    {% if example %}
+      <div class="app-example__component">
+        {{ example | safe }}
+      </div>
+    {% endif %}
+
+  </div>
+
+  <div class="app-tabs">
+    <div class="app-tabs__list" role="tablist" aria-label="Component code examples tabs">
+      {{ tabs | safe }}
+    </div>
+
+    {{ tabContents | safe }}
+
+  </div>
+</div>

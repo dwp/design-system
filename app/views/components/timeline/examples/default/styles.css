@@ -1,0 +1,23 @@
+.dwp-timeline {
+  font-family: Arial, sans-serif;
+  border-left: 3px solid #1d70b8;
+  list-style-type: none; 
+  padding: 0;
+}
+    
+.dwp-timeline__entry {
+  margin: 2em 0;
+  padding-left: 1.125em;
+  position: relative;
+  top: -.6em;
+}
+
+.dwp-timeline__entry::before {
+  background-color: #1d70b8; 
+  content: '';    
+  height: 3px;  
+  left: 0;     
+  position: absolute; 
+  top: .6em;  
+  width: 10px;
+}

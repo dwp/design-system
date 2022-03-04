@@ -1,0 +1,77 @@
+The key details bar groups and highlights the most relevant information on a page so that agents can find it easily.
+
+It has only been researched on agent-facing services.
+
+## When to use this component
+
+Use the key details bar when there is a small set of information that users check before starting a task or refer to while doing it. 
+
+Examples of key details could include:
+<ul>
+<li>name</li>
+<li>National Insurance number</li>
+<li>date of birth</li>
+<li>phone number</li>
+<li>postcode</li>
+<li>appointee status</li>
+<li>claim status</li>
+</ul>
+
+
+## When not to use this component
+
+Too much text will make this component hard to use, especially on smaller screens. Before using this component always check it on a range of screen sizes, including mobile devices.  
+
+If you need to highlight more information than can be usefully shown in the key details bar on a mobile device, use a different solution. 
+
+## How it works
+
+{{dsExample({
+  name: 'key-details-bar',
+  description: 'Key details bar',
+  example: 'default',
+  height: 200
+})}}
+
+The key details bar has a top block for the first and second most important items, and an optional bottom block for other key details. 
+
+You should use:
+
+<ul>
+<li>in the top block: no more than two items plus an optional status tag</li>
+<li>in the bottom block: no more than four items</li>
+</ul> 
+
+In the top block, do not use the same style for multiple items. 
+
+### Using status tags
+
+You can use the [tag component from the GOV.UK Design System](https://design-system.service.gov.uk/components/tag/) in the key details bar when something can have more than one status and it’s useful to the user to know that status. 
+
+## Technical details
+
+The key details bar should be placed outside the `<main>` tag. This will allow a screen reader user to skip past it using the skip link.
+
+You may need your `<h1>` to reference something from the key details bar so that it still makes sense when a screen reader user skips the bar. This may be required even if your `<h1>` is visually hidden.
+
+## Research on this component
+This component has only been researched on agent-facing services. 
+
+## Services using this component
+This is an updated version of a component used in several DWP services:
+
+<ul>
+<li>Access to work</li>
+<li>DCAMS</li>
+<li>Apply for New Style Jobseeker’s Allowance</li>
+</ul>
+
+## Help us improve this component
+You can help to improve this component by:
+
+<ul>
+<li>joining the <a href="https://github.com/dwp/design-system/discussions/78">discussion on GitHub</a></li>
+<li>adding to the <a href="https://github.com/dwp/design-system-community-backlog/issues/63">community backlog ticket</a></li>
+<li>using the <a href="https://dwpdigital.slack.com/archives/CJ11B0VFV"><span aria-hidden="true">#</span><span class="govuk-visually-hidden">hashtag</span>design-system channel on Slack</a></li>
+<li>emailing the Design System team on <a href="mailto:dwp-design-system@engineering.digital.dwp.gov.uk">dwp-design-system@engineering.digital.dwp.gov.uk</a></li>
+</ul>
