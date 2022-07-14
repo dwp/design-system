@@ -2,7 +2,7 @@
 
 Anyone can contribute to the Design System by proposing a new component or pattern, helping to develop an existing component or pattern or adding research insights to existing components or patterns.
 
-Before you start, check the [GOV.UK Design System](https://design-system.service.gov.uk/) and the [DWP Design System Community Backlog](/backlog) to see if your idea has already been suggested.
+Before you start, check the [GOV.UK Design System](https://design-system.service.gov.uk/) and the [DWP Design System Community Backlog](/community/backlog) to see if your idea has already been suggested.
 
 ## To help develop a proposed pattern
 - If your idea is already on the backlog, follow the link from the [backlog page](/community/backlog) to its GitHub issue or discussion. 
