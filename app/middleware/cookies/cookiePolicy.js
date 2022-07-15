@@ -3,7 +3,7 @@ const { setCookieChoice } = require('./cookiesConsent');
 const renderCookiePolicy = (req, res) => {
   res.locals.cookieConsent = req.cookies.seen_cookie_message;
   res.render(
-    'cookies/cookie-policy.njk',
+    '_cookie-policy.njk',
   );
 };
 

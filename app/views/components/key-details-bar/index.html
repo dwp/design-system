@@ -1,4 +1,4 @@
-{% extends "guidance.html" %}
+{% extends "sidebar-width.html" %}
 
 {% set sectionId = "components" %}
 {% set pageTitle = "Key details bar" %}
@@ -6,10 +6,6 @@
 
 {% block pageContent %}
   <h1 class="govuk-heading-xl govuk-!-margin-bottom-4"><span class="govuk-caption-xl">Components</span> {{pageTitle}}</h1>
-  {{ govukTag({
-    classes: 'govuk-!-margin-bottom-8',
-    text: 'observed'
-  }) }}
 
   {% markdown %}{% include "./README.md.njk" %}{% endmarkdown %}
 

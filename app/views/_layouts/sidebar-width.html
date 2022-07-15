@@ -1,0 +1,36 @@
+<!-- use for pages that needs a sidenav -->
+{% extends "base.html" %}
+{% set navItems = {
+sectionId: sectionId,
+pageId: pageId,
+navItems: navItems,
+urlPartials: urlPartials
+} %}
+{% block body %}
+{% block skipLink %}
+{{ govukSkipLink({
+href: '#main-content',
+text: 'Skip to main content'
+}) }}
+{% endblock %}
+<div class="app-pane app-pane--enabled" id="top">
+  {% include "_header.html" %}
+  {{appMobileNavigation(navItems)}}
+  {{appNavigation(navItems)}}
+  <div class="app-pane__body app-width-container">
+    <div class="app-pane__subnav">
+      {{appSubNavigation(navItems)}}
+    </div>
+    <div class="app-pane__content">
+      <main id="main-content" class="app-content" role="main">
+        {% block pageContent %}{% endblock %}
+        {% block pageContentFoot %}{% endblock %}
+      </main>
+    </div>
+    {% include "_back-to-top.njk" %}
+  </div>
+  {% include "_footer.njk" %}
+</div>
+{% endblock %}
+{% block pageScripts %}
+{% endblock %}

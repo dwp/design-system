@@ -1,6 +1,20 @@
 # Latest updates
 
-## 14 February 2022
+## June 2022
+### Published Internal services footer component
+The [Internal services footer](https://design-system.dwp.gov.uk/components/internal-services-footer) is a simplified standard footer with GOV.UK branding elements removed, for services used by DWP staff or agents. Alongside this component we also published guidance on [how to adapt the GOV.UK Prototype Kit for an internal service](https://github.com/dwp/design-system/discussions/347). 
+
+### Removed "Experimental" and "Observed" labels from patterns and components
+We have removed the “Experimental” and “Observed” tags from the elements of the DWP Design System. Here's why we decided to do this: [Removing "Experimental" and "Observed" labels from the design system](https://github.com/dwp/design-system-community-backlog/discussions/91)
+
+## March 2022
+### dwp-frontend available on npm
+We made dwp-frontend publicly available on npm, and published [guidance on how to install it](https://design-system.dwp.gov.uk/get-started/npm).
+
+### Published working example of Add another thing pattern
+We built a [working example](https://design-system.dwp.gov.uk/patterns/add-another-thing/example) of the Add another thing pattern to help designers make the routing work correctly. The example includes detailed instructions for using the pattern in prototypes.
+
+## February 2022
 ###  Published Add another thing pattern and Hint text component
 [Add another thing](/patterns/add-another-thing) is a pattern that helps users to add more than one thing of the same type, using a summary list.
 
@@ -15,19 +29,18 @@ We have reorganised this website, most noticeably updating the [Community](/comm
 ### Published updated roadmap
 The updated [Roadmap](/community/roadmap) shows our latest plans for the future of the DWP Design System.
 
-## 5 November 2021
+## November 2021
 ### Published Toggle to Welsh pattern and Key details bar component
 Both include coded examples and guidance on how and when to use them. [Toggle to Welsh](/patterns/toggle-to-welsh) includes detailed accessibility information; [Key details bar](/components/key-details-bar) includes guidance on how much information is too much to include.
 
 
-## 29 September 2021
+## September 2021
 ### Published Internal services header component
 
 The Internal services header includes:
 - an example of the header with and without a sign in/out link
 - guidance on when it should be used
 
-## 8 September 2021
 ### Published DWP Design System roadmap
 
 The [DWP Design System roadmap](/community/roadmap) has been published and includes the future plans for the Design System.
@@ -47,7 +60,7 @@ The timeline component includes:
 - guidance on when to use it
 - information on how it should work
   
-## 12 August 2021
+## August 2021
 ### Published manage a session timeout pattern
 
 The pattern meets the [WCAG 2.1 success criterion 2.2.1 ‘Timing Adjustable’](https://www.w3.org/TR/WCAG21/#timing-adjustable). This means that a service must warn users before a session timeout occurs and allow them to extend the session.
@@ -62,7 +75,7 @@ The [manage a session timeout pattern](/patterns/manage-a-session-timeout) inclu
 - an example of the session timeout for users with devices not running JavaScript
 
 
-## 17 May 2021
+## May 2021
 ### Retired consent to cookies pattern after launch of GOV.UK Design System pattern
 
 This pattern has been retired and replaced by the [cookies page](https://design-system.service.gov.uk/patterns/cookies-page/) and [cookie banner](https://design-system.service.gov.uk/components/cookie-banner/) on the [GOV.UK Design System](https://design-system.service.gov.uk). Existing services that are using the DWP consent to cookies pattern do not need to update to the GOV.UK page and banner.

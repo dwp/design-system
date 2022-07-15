@@ -19,6 +19,7 @@ const autoRoutes = require('./app/routes/auto');
 
 // Middleware
 const { errorHandler } = require('./app/middleware/errorHandler');
+const { urlPartials } = require('./app/middleware/urlPartials');
 
 // Port
 const port = process.env.PORT || 3000;
@@ -63,6 +64,8 @@ app.use(cookieParser());
 // Middleware to serve static assets
 app.use('/public', express.static(path.join(__dirname, '/public')));
 app.use('/assets', express.static(path.join(__dirname, 'node_modules', 'govuk-frontend', 'govuk', 'assets')));
+
+app.use(urlPartials);
 
 // Use routes
 app.use(routes);

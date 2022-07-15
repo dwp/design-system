@@ -4,6 +4,14 @@
 .app-example-wrapper {
   @include govuk-responsive-margin(6, "top");
   @include govuk-responsive-margin(6, "bottom");
+
+  // HACK - this feels like a hack, will need revisiting
+  @supports (margin: max(0px)) {
+    .govuk-width-container {
+        margin-right: max(30px, 15px);
+        margin-left: max(30px, 15px);
+    }
+  }
 }
 
 .app-example {
@@ -24,6 +32,7 @@
   background: $govuk-body-background-colour;
 }
 
+pre,
 .app-example__code {
   background-color: govuk-colour("light-grey");
   padding: 10px 10px 0 0;

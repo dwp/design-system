@@ -1,0 +1,10 @@
+{% extends "sidebar-width.html" %}
+
+{% set sectionId = "get-started" %}
+{% set pageTitle = "Get started: install using npm" %}
+{% set pageId = "dwp-frontend" %}
+
+{% block pageContent %}
+  {% markdown %}{% include "./README.md" %}{% endmarkdown %}
+  {% include "_contact-panel.njk" %}
+{% endblock %}

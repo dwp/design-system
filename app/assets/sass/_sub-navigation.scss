@@ -24,6 +24,7 @@
   }
 
   .app-subnav__section-item {
+    position: relative;
     margin-bottom: govuk-spacing(1);
     padding-top: govuk-spacing(1);
     padding-bottom: govuk-spacing(1);
@@ -39,6 +40,33 @@
 
   .app-subnav__section-item--current .app-subnav__link {
     font-weight: bold;
+  }
+
+  .app-subnav__section-item--top {
+    .app-subnav__link {
+      position: relative;
+      z-index: 2;
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      $_current-indicator-width: 4px;
+      padding-left: govuk-spacing(2);
+      border-left: $_current-indicator-width solid govuk-colour("purple");
+      background-color: $app-light-grey;
+      position: absolute;
+      top: 0;
+      left: -(govuk-spacing(4) + $_current-indicator-width);
+      width: 100%;
+      height: 35px;
+    }
+  }  
+
+  .app-subnav__section-item--bold .app-subnav__link {
+    font-weight: bold;
+    position: relative;
+    z-index: 2;
   }
 
   .app-subnav__section--nested {

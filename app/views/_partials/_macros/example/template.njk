@@ -12,7 +12,7 @@
   {% set height = 350 %}
 {% endif %}
 
-{% set componentDescription = params.description | lower if params.description %}
+{% set componentDescription = params.description | lower if params.description else "component" %}
 
 {% set codeUrl = './app/views/' + section + params.name + '/examples/'+params.example+'/template.html' %}
 {% set stylesheetUrl = './app/views/' + section + params.name + '/examples/' + params.example + '/styles.css' %}
