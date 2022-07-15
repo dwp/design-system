@@ -1,0 +1,17 @@
+{% extends "sidebar-width.html" %}
+
+{% set sectionId = "patterns" %}
+{% set pageTitle = "Add another thing: example" %}
+{% set pageId = "add-another-thing" %}
+
+{% block pageContent %}
+
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">{{pageTitle}}</h1>
+
+  {% markdown %}{% include "./README.md.njk" %}{% endmarkdown %}
+
+  <div class="govuk-!-margin-top-4">
+    {% include "_contact-panel.njk" %}
+  </div>
+
+{% endblock %}

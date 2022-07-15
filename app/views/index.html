@@ -1,7 +1,8 @@
-{% extends "landing.html" %}
+{% extends "full-width.html" %}
 {% set pageTitle = "Home" %}
 
 {% block pageContent %}
+
 <div class="app-masthead">
   <div class="app-width-container">
     <div class="govuk-grid-row">
@@ -12,6 +13,7 @@
     </div>
   </div>
 </div>
+
 <div class="app-width-container">
   <div class="govuk-main-wrapper govuk-main-wrapper--l">
     <div class="govuk-grid-row">
@@ -21,41 +23,36 @@
       </div>
     </div>
     {% include "_component-index.njk" %}
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-          <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl govuk-!-margin-top-0">
-        </div>
-      </div>
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds-from-desktop">
-          <h2 id="community" class="govuk-heading-l">Patterns</h2>
-          <p class="govuk-body">Patterns are best practice design solutions for specific user-focused tasks and page types.</p>
-        </div>
-      </div>
-    {% include "_pattern-index.njk" %}
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-          <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl govuk-!-margin-top-0">
-        </div>
-      </div>
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds-from-desktop">
-          <h2 id="support" class="govuk-heading-l">Contribute</h2>
-          <p class="govuk-body">
-            The DWP Design System is <a class="govuk-link" href="/community/team">maintained by the DWP Design System team</a>. Anyone can contribute to it by proposing new components or patterns and sharing their research and findings.</p>
-        </div>
-      </div>
-    {% include "_contribute-index.njk" %}
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-          <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl govuk-!-margin-top-0">
-        </div>
-      </div>
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          {% include "_contact-panel.njk" %}
+
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl govuk-!-margin-top-0">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds-from-desktop">
+        <h2 id="community" class="govuk-heading-l">Patterns</h2>
+        <p class="govuk-body">Patterns are best practice design solutions for specific user-focused tasks and page types.</p>
       </div>
     </div>
+    {% include "_pattern-index.njk" %}
+
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl govuk-!-margin-top-0">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds-from-desktop">
+        <h2 id="support" class="govuk-heading-l">Contribute</h2>
+        <p class="govuk-body">
+          The DWP Design System is <a class="govuk-link" href="/community/team">maintained by the DWP Design System team</a>. Anyone can contribute to it by proposing new components or patterns and sharing their research and findings.</p>
+      </div>
+    </div>
+    {% include "_contribute-index.njk" %}
+    
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl govuk-!-margin-top-0">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        {% include "_contact-panel.njk" %}
+      </div>
+    </div>
+
   </div>
 </div>
 {% endblock %}

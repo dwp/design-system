@@ -25,7 +25,7 @@ $govuk-link-visited-colour: $app-light-purple;
 @import "node_modules/@dwp/dwp-frontend/components/timeline/timeline";
 @import "node_modules/@dwp/dwp-frontend/components/internal-services-header/internal-services-header";
 @import "node_modules/@dwp/dwp-frontend/components/key-details-bar/key-details-bar";
-
+@import "layout";
 @import "contact-panel";
 @import "back-to-top";
 @import "app-pane";
@@ -237,6 +237,11 @@ p {
 strong,
 b {
   @include govuk-typography-weight-bold;
+}
+
+footer ul {
+  @extend %govuk-list;
+  font-size: 16px;
 }
 
 ul,

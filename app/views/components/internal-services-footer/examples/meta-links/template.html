@@ -1,0 +1,21 @@
+{% from "internal-services-footer/macro.njk" import dwpFooter %}
+
+  {{ dwpFooter({
+    meta: {
+      visuallyHiddenTitle: "Meta links",
+      items: [
+        {
+          href: "#1",
+          text: "Item 1"
+        },
+        {
+          href: "#2",
+          text: "Item 2"
+        },
+        {
+          href: "#3",
+          text: "Item 3"
+        }
+      ]
+    }
+  }) }}

@@ -9,9 +9,15 @@
           "sectionHeading": "",
           "subsections": [
             {
-              "title": "For designers",
-              "id": "for-designers",
-              "link": "/get-started/for-designers",
+              "title": "HTML and CSS",
+              "id": "html-and-css",
+              "link": "/get-started/html-and-css",
+              "subsections": []
+            },
+            {
+              "title": "Install using npm",
+              "id": "npm",
+              "link": "/get-started/npm",
               "subsections": []
             }
           ]
@@ -30,6 +36,13 @@
               "title": "Hint text",
               "id": "hint-text",
               "link": "/components/hint-text",
+              "sectionId": "",
+              "subsections": []
+            },
+            {
+              "title": "Internal services footer",
+              "id": "internal-services-footer",
+              "link": "/components/internal-services-footer",
               "sectionId": "",
               "subsections": []
             },
@@ -71,7 +84,15 @@
               "id": "add-another-thing",
               "link": "/patterns/add-another-thing",
               "sectionId": "",
-              "subsections": []
+              "subsections": [
+                {
+                  "title": "Example",
+                  "id": "example",
+                  "link": "/patterns/add-another-thing/example",
+                  "sectionId": "",
+                  "subsections": []
+                }
+              ]
             },
             {
               "title": "Make a declaration",
@@ -150,6 +171,42 @@
               "id": "team",
               "link": "/community/team",
               "sectionId": "",
+              "subsections": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "About this website",
+      "id": "about-this-website",
+      "link": "",
+      "subsections": [
+        {
+          "sectionHeading": "",
+          "subsections": [
+            {
+              "title": "Accessibility",
+              "id": "accessibility",
+              "link": "/accessibility",
+              "subsections": []
+            },
+            {
+              "title": "Cookies",
+              "id": "cookie-details",
+              "link": "/cookie-details",
+              "subsections": []
+            },
+            {
+              "title": "Privacy",
+              "id": "privacy",
+              "link": "https://www.gov.uk/government/organisations/department-for-work-pensions/about/personal-information-charter",
+              "subsections": []
+            },
+            {
+              "title": "Sitemap",
+              "id": "sitemap",
+              "link": "/sitemap",
               "subsections": []
             }
           ]

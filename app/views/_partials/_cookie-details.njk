@@ -1,15 +1,11 @@
 {% from "table/macro.njk" import govukTable %}
 
-{% extends "landing.html" %}
-
-{% block pageTitle %}Details about cookies on this service{% endblock %}
+{% extends "sidebar-width.html" %}
+{% set sectionId = "about-this-website" %}
+{% set pageTitle = "Cookie details" %}
+{% set pageId = "cookie-details" %}
 
 {% block pageContent %}
-<main class="govuk-main-wrapper app-content" role="main">
-  <div class="govuk-width-container">
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-
       <h1 class="govuk-heading-xl">Details about cookies on this service</h1>
 
       <div class="page-description">
@@ -191,8 +187,4 @@
 
       </div>
 
-    </div>
-  </div>
-  </div>
-</main>
 {% endblock %}

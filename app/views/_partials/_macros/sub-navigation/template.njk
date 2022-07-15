@@ -1,5 +1,6 @@
 <nav class="app-subnav{% if params.classes %} {{ params.classes }}{% endif %}" aria-label="{{params.pageTitle}}" role="navigation">
   <h2 class="govuk-visually-hidden" id="app-subnav-heading">Pages in this section</h2>
+
   {% if params.sectionId === 'patterns' %}
     <h2 class="app-subnav__theme">Help users to...</h2>
   {% endif %}
@@ -13,15 +14,20 @@
         {% endif %}
         <ul class="app-subnav__section">
           {% for subItem in pageSubsection.subsections %}
-            {% set current = (subItem.id === params.pageId) %}
-            <li class="app-subnav__section-item{{' app-subnav__section-item--current' if current }}">
+
+            {% set subNavVisible = subItem.id === params.pageId and (subItem.subsections.length > 0) %}
+            {% set current = subItem.id === params.pageId and (subItem.subsections.length < 1) %}
+            {% set atTop = subItem.id === params.pageId and params.urlPartials | length === 2 %}
+
+            <li class="app-subnav__section-item{{' app-subnav__section-item--current' if current }}{{' app-subnav__section-item--bold' if subNavVisible }}{{' app-subnav__section-item--top' if atTop }}">
               <a class="govuk-link govuk-link--no-visited-state govuk-link--no-underline app-subnav__link" href="{{subItem.link}}"{% if current %} aria-current="location"{% endif %}>
                 {{subItem.title}}
               </a>
-              {% if current and (subItem.subsections.length > 0) %}
+              {% if subNavVisible and (subItem.subsections.length > 0) %}
                 <ul class="app-subnav__section app-subnav__section--nested">
                   {% for subItem in subItem.subsections %}
-                    <li class="app-subnav__section-item">
+                    {% set active = subItem.id === params.urlPartials[2]  %}
+                    <li class="app-subnav__section-item{{' app-subnav__section-item--current' if active }} ">
                       <a class="govuk-link govuk-link--no-visited-state govuk-link--no-underline app-subnav__link" href="{{subItem.link}}">
                         {{subItem.title}}
                       </a>

@@ -1,9 +1,0 @@
-{% extends "guidance.html" %}
-
-{% set sectionId = "contribute" %}
-{% set pageTitle = "contribute" %}
-
-{% block pageContent %}
-  <div class="app-prose-scope">{% markdown %}{% include "./README.md" %}{% endmarkdown %}</div>
-  {% include "_contact-panel.njk" %}
-{% endblock %}

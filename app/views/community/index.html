@@ -1,10 +1,10 @@
-{% extends "guidance.html" %}
+{% extends "sidebar-width.html" %}
 
 {% set sectionId = "community" %}
 {% set pageTitle = "Community" %}
 {% set pageId = "community" %}
 
 {% block pageContent %}
-  {% markdown %}{% include "./README.md" %}{% endmarkdown %}
-  {% include "_contact-panel.njk" %}
+{% markdown %}{% include "./README.md" %}{% endmarkdown %}
+{% include "_contact-panel.njk" %}
 {% endblock %}

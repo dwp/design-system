@@ -1,0 +1,73 @@
+{% from "internal-services-footer/macro.njk" import dwpFooter %}
+
+{{ dwpFooter({
+    navigation: [
+      {
+        title: "Two column list",
+        width: "two-thirds",
+        columns: 2,
+        items: [
+          {
+            text: "Item 1",
+            href: "#1"
+          },
+          {
+            text: "Item 2",
+            href: "#2"
+          },
+          {
+            text: "Item 3",
+            href: "#3"
+          },
+          {
+            text: "Item 4",
+            href: "#4"
+          },
+          {
+            text: "Item 5",
+            href: "#5"
+          },
+          {
+            text: "Item 6",
+            href: "#6"
+          }
+        ]
+      },
+      {
+        title: "One column list",
+        width: "one-third",
+        items: [
+          {
+            text: "Item 1",
+            href: "#1"
+          },
+          {
+            text: "Item 2",
+            href: "#2"
+          },
+          {
+            text: "Item 3",
+            href: "#3"
+          }
+        ]
+      }
+    ],
+    meta: {
+      visuallyHiddenTitle: "Meta links",
+      items: [
+        {
+          href: "#1",
+          text: "Item 1"
+        },
+        {
+          href: "#2",
+          text: "Item 2"
+        },
+        {
+          href: "#3",
+          text: "Item 3"
+        }
+      ],
+      text: "Plain text item"
+    }
+  }) }}

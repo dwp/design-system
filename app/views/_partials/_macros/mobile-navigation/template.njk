@@ -13,14 +13,20 @@
 				</div>
 				{# Create a list for the section and add an overview page as the first item #}
 				<ul class="app-mobile-nav__list app-mobile-nav__subnav js-app-mobile-nav-subnav{{' app-mobile-nav__subnav--active' if currentSection}}" aria-label="{{item.title}}">
+					
+					{# Only create an overpage link for items that have a link to the page e.g. skip this for footer links #}
+					{% if item.link !== '' %}
 					<li class="app-mobile-nav__subnav-item{{' app-mobile-nav__subnav-item--current' if item.id === params.pageId}}">
 						<a class="govuk-link govuk-link--no-visited-state app-mobile-nav__link" href="{{item.link}}">
 							{{item.title}} overview
 						</a>
 					</li>
+					{% endif %}
+
 					{# Loop through the subsections for this section #}
 					{% for pageSubsection in item.subsections %}
             {# Output the section header if it's not blank #}
+						
 						{% if pageSubsection.sectionHeading !== '' %}
 							<li>
 								<h4 class="app-mobile-nav__theme">
@@ -29,6 +35,7 @@
 								<ul class="app-mobile-nav__list">
 									{# Loop through the pages for this section #}
 									{% for subItem in pageSubsection.subsections %}
+									
 										{# Work out if the page is the page currently being viewed #}
 										{% set currentPage = (subItem.id === params.pageId) %}
 										{# Add the page into list and set it to have the current class if it is currently being viewed #}
@@ -42,7 +49,7 @@
 							</li>
 						{% else %}
 							{# Loop through the pages for this section #}
-							{% for subItem in pageSubsection.subsections %}
+							{% for subItem in pageSubsection.subsections %}						
 								{# Work out if the page is the page currently being viewed #}
 								{% set currentPage = (subItem.id === params.pageId) %}
 								{# Add the page into list and set it to have the current class if it is currently being viewed #}
@@ -50,6 +57,15 @@
 									<a class="govuk-link govuk-link--no-visited-state app-mobile-nav__link" href="{{subItem.link}}">
 										{{subItem.title}}
 									</a>
+									<ul class="app-mobile-nav__list app-subnav__section--nested">
+										{% for subSectionItem in subItem.subsections %}
+											<li class="app-mobile-nav__section-item">
+												<a class="govuk-link govuk-link--no-visited-state app-mobile-nav__link" href="{{subSectionItem.link}}">
+													{{subSectionItem.title}}
+												</a>
+											</li>
+										{% endfor %}
+									</ul>
 								</li>
 							{% endfor %}
 						{% endif %}

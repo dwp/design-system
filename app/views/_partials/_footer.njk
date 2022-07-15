@@ -1,39 +1,27 @@
-  {% from "footer/macro.njk" import govukFooter %}
+ {% from "internal-services-footer/macro.njk" import dwpFooter %}
 
-  {{ govukFooter({
-    "classes": "app-footer app-footer--full",
-    "containerClasses" : "app-width-container",
-    "navigation": [
-      {
-        "title": "Related resources",
-        "columns": 1,
-        "items": [
-          {
-            "href": "https://www.gov.uk/guidance/government-design-principles",
-            "text": "Government Design Principles"
-          },
-          {
-            "href": "https://design-system.service.gov.uk",
-            "text": "GOV.UK Design System"
-          },
-          {
-            "href": "https://www.gov.uk/service-manual",
-            "text": "GOV.UK Service Manual"
-          }
-        ]
-      }
-    ],
-    "meta": {
-      "items": [
+  {{ dwpFooter({
+    classes: "app-footer app-footer--full",
+    containerClasses: "app-width-container",
+     meta: {
+      visuallyHiddenTitle: "About this website",
+      items: [
         {
-          "href": "/cookie-details",
-          "text": "Cookies"
+          href: "/accessibility",
+          text: "Accessibility"
+        },
+        {
+          href: "/cookie-details",
+          text: "Cookies"
         },
          {
-          "href": "https://www.gov.uk/government/organisations/department-for-work-pensions/about/personal-information-charter",
-          "text": "Privacy"
+          href: "https://www.gov.uk/government/organisations/department-for-work-pensions/about/personal-information-charter",
+          text: "Privacy"
+        },{
+          href: "/sitemap",
+          text: "Sitemap"
         }
-      ],
-      "html": 'Built by the <a href="/community/team" class="govuk-footer__link">DWP Design System team</a>'
+      ]
     }
   }) }}
+ 

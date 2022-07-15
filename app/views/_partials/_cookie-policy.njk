@@ -5,9 +5,10 @@
 {% from "error-summary/macro.njk" import govukErrorSummary %}
 
 
-{% extends "landing.html" %}
-
-{% block pageTitle %}How we use cookies{% endblock %}
+{% extends "sidebar-width.html" %}
+{% set sectionId = "about-this-website" %}
+{% set pageTitle = "Cookie policy" %}
+{% set pageId = "cookie-policy" %}
 
 {% block pageContent %}
 <main class="govuk-main-wrapper app-content" role="main">

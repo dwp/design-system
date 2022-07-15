@@ -5,6 +5,9 @@ const { navigationDataLoader } = require('../utils/navigation-data-loader');
 const { renderCookiePolicy, cookiePolicyPostHandler } = require('../middleware/cookies/cookiePolicy');
 const { renderCookieDetails } = require('../middleware/cookies/cookieDetails');
 const { setCookieChoice, getCookieChoice } = require('../middleware/cookies/cookiesConsent');
+const { renderA11yStatement } = require('../middleware/accessibility')
+const { renderSitemap } = require('../middleware/sitemap')
+
 
 const redirects = require('./redirects');
 
@@ -24,6 +27,8 @@ router.get('/index', (req, res) => {
 
 router.get('/cookie-policy', renderCookiePolicy);
 router.get('/cookie-details', renderCookieDetails);
+router.get('/accessibility', renderA11yStatement);
+router.get('/sitemap', renderSitemap)
 
 // redirects
 router.use('/', redirects);

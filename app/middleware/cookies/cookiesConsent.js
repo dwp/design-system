@@ -29,7 +29,7 @@ const setCookieChoice = (req, res) => {
     consentCookieOptions(res, cookieChoice);
     cookieDecisionMadeOptions(res, true);
   }
-  if (res.locals.currentUrl === '/cookies/cookie-policy') {
+  if (res.locals.currentUrl === '/cookie-policy') {
     res.redirect('/');
   } else {
     res.redirect('back');

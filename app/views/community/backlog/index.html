@@ -1,4 +1,4 @@
-{% extends "guidance.html" %}
+{% extends "sidebar-width.html" %}
 
 {% set sectionId = "community" %}
 {% set pageTitle = "Backlog" %}
@@ -7,12 +7,12 @@
 {%- from "../../_partials/_macros/backlog/macro.njk" import backlogPage -%}
 
 {% block pageContent %}
-  {% markdown %}{% include "./README.md" %}{% endmarkdown %}
-  {{backlogPage(backlogSections)}}
+{% markdown %}{% include "./README.md" %}{% endmarkdown %}
+{{backlogPage(backlogSections)}}
 {% endblock %}
 
 {% block pageContentFoot %}
-  <div class="govuk-!-margin-top-4">
-    {% include "_contact-panel.njk" %}
-  </div>
+<div class="govuk-!-margin-top-4">
+  {% include "_contact-panel.njk" %}
+</div>
 {% endblock %}
